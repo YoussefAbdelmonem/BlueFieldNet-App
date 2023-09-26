@@ -19,7 +19,7 @@ class ButtonWidget extends StatelessWidget {
       {Key? key,
       this.gradient,
       this.title = "OK",
-      this.width = 308.0,
+      this.width = double.infinity,
       this.height = 60.0,
       this.onTap,
       this.child,
@@ -30,7 +30,7 @@ class ButtonWidget extends StatelessWidget {
       this.buttonColor,
       this.borderColor,
       this.withBorder = false,
-      this.radius = 80.0})
+      this.radius = 8.0})
       : super(key: key);
 
   @override
@@ -69,8 +69,8 @@ class ButtonWidget extends StatelessWidget {
   }
 }
 
-class MyTextButton extends StatelessWidget {
-  MyTextButton({
+class TextButtonWidget extends StatelessWidget {
+  TextButtonWidget({
     super.key,
     required this.function,
     required this.text,

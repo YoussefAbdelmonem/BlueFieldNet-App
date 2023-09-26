@@ -30,6 +30,6 @@ class AppThemes {
     onBackground: Color(0xff160D5D),
     surface: Color(0xff1f222a),
     shadow: Color(0xff1f222a),
-    outline: Color(0xffc5c6d0),
+    outline: Color(0xFF636363),
   );
 }

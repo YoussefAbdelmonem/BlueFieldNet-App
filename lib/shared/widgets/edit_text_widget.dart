@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/dynamic_theme/colors.dart';
 import '../../core/utiles/utiles.dart';
 
-class EditTextWidget extends StatefulWidget {
+class TextFormFieldWidget extends StatefulWidget {
   final String? hintText, label, errorText;
   final TextInputType type;
   bool password;
@@ -27,7 +27,7 @@ class EditTextWidget extends StatefulWidget {
   bool? isOutline;
   bool? enable;
   bool? readOnly;
-  EditTextWidget(
+  TextFormFieldWidget(
       {this.onChanged,
       this.onSaved,
       this.isOutline,
@@ -45,7 +45,7 @@ class EditTextWidget extends StatefulWidget {
       this.maxLengh,
       this.errorText,
       this.controller,
-      this.activeBorderColor = Colors.black,
+      this.activeBorderColor = Colors.grey,
       this.borderRadius = 8.0,
       this.borderColor = Colors.black,
       this.backgroundColor = Colors.white,
@@ -62,10 +62,10 @@ class EditTextWidget extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<EditTextWidget> createState() => _EditTextWidgetState();
+  State<TextFormFieldWidget> createState() => _TextFormFieldWidgetState();
 }
 
-class _EditTextWidgetState extends State<EditTextWidget> {
+class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   bool? isPass;
   @override
   void initState() {
@@ -128,8 +128,8 @@ class _EditTextWidgetState extends State<EditTextWidget> {
               focusedBorder: borderType(isOutline: widget.isOutline),
               enabledBorder: borderType(isOutline: widget.isOutline),
               errorBorder: borderType(isOutline: widget.isOutline),
-              labelStyle: TextStyle(
-                color: AppColors.primary,
+              labelStyle: const TextStyle(
+                color: Color(0xFF8CAAC5),
                 // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
                 fontFamily: "candra",
               ),

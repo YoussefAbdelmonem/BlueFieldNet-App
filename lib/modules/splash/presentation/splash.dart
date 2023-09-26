@@ -1,4 +1,5 @@
 import 'package:animated_widgets_flutter/animated_widgets.dart';
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +41,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 duration: const Duration(milliseconds: 3000),
                 enabled: true,
                 animationFinished: (finished) async {
-                  // Navigator.pushNamedAndRemoveUntil(
-                  //     context, await cubit.checkLogin(), (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Routes.AuthScreen, (route) => false);
                 },
                 child: SvgPicture.asset(
                   "logo".svg('icons'),

@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/cubit.dart';
 ///// put it in routes 
 ///  import '../../modules/<FTName | lowercase>/presentation/<FTName | lowercase>.dart';
-/// static const String <FTName | pascalcase>Screen = "/<FTName | camelcase>Screen";
-//  case Routes./<FTName | camelcase>Screen:
+/// static const String <FTName | lowercase>Screen = "/<FTName | camelcase>Screen";
+//  case Routes.<FTName | lowercase>Screen:
         // return CupertinoPageRoute(
         //     settings: routeSettings,
         //     builder: (_) {

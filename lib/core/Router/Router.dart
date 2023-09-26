@@ -2,9 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import '../../modules/splash/presentation/splash.dart';
+import '../../modules/auth/presentation/auth.dart';
 
 class Routes {
-  static const String splashRoute = "/";
+  static const String SplashScreen = "/";
+  static const String AuthScreen = "/authScreen";
 }
 
 class RouteGenerator {
@@ -13,7 +16,18 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     currentRoute = routeSettings.name.toString();
     switch (routeSettings.name) {
-      case Routes.splashRoute:
+      case Routes.SplashScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const SplashScreen();
+            });
+      case Routes.AuthScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const AuthScreen();
+            });
       default:
         return unDefinedRoute();
     }

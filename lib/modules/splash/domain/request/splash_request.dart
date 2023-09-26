@@ -1,0 +1,3 @@
+class SplashRequest {
+  String? page;
+}

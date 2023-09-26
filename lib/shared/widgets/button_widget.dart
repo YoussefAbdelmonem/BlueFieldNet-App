@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+
+import '../../core/theme/dynamic_theme/colors.dart';
+import 'customtext.dart';
+
+class ButtonWidget extends StatelessWidget {
+  final String title;
+  final double width, height, radius;
+  final Widget? child;
+  final Gradient? gradient;
+  final double? fontSize;
+  final FontWeight? fontweight;
+  final Alignment? alignment;
+  final Color? textColor, buttonColor, borderColor;
+  final void Function()? onTap;
+  final bool withBorder;
+
+  ButtonWidget(
+      {Key? key,
+      this.gradient,
+      this.title = "OK",
+      this.width = 308.0,
+      this.height = 60.0,
+      this.onTap,
+      this.child,
+      this.fontSize,
+      this.fontweight,
+      this.alignment,
+      this.textColor = Colors.white,
+      this.buttonColor,
+      this.borderColor,
+      this.withBorder = false,
+      this.radius = 80.0})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        gradient: gradient,
+        borderRadius: BorderRadius.circular(radius),
+      ),
+      child: ElevatedButton(
+        onPressed: onTap,
+        style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+                buttonColor ?? AppColors.primary),
+            shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(radius),
+                    side: withBorder
+                        ? BorderSide(color: borderColor ?? AppColors.primary)
+                        : const BorderSide(color: Colors.transparent)))),
+        child: Align(
+          alignment: alignment ?? Alignment.center,
+          child: child ??
+              CustomText(
+                weight: fontweight ?? FontWeight.w400,
+                title,
+                fontsize: fontSize ?? 16,
+                color: textColor ?? Colors.white,
+              ),
+        ),
+      ),
+    );
+  }
+}
+
+class MyTextButton extends StatelessWidget {
+  MyTextButton({
+    super.key,
+    required this.function,
+    required this.text,
+    this.fontweight,
+    this.color,
+    this.size,
+  });
+  final Function function;
+  final String text;
+  final double? size;
+  final Color? color;
+  final FontWeight? fontweight;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        function();
+      },
+      child: CustomText(
+        text,
+        weight: fontweight ?? FontWeight.w400,
+
+        fontsize: size ?? 16,
+        color: color ?? AppColors.primary,
+        //  style: TextStyle(color: AppColors.secondary),
+      ),
+      // style: TextButton.styleFrom(
+      //   elevation: 0,
+      //   textStyle: TextStyle(
+      //     fontWeight: FontWeight.w600,
+      //     fontSize: (width <= 550) ? 13 : 17,
+      //   ),
+      // ),
+    );
+  }
+}

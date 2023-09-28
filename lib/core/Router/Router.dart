@@ -1,15 +1,17 @@
 import 'dart:io';
 
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
+import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../modules/splash/presentation/splash.dart';
-import '../../modules/auth/presentation/login/auth.dart';
+import '../../modules/auth/presentation/login/login_screen.dart';
 
 class Routes {
   static const String SplashScreen = "/";
   static const String AuthScreen = "/authScreen";
   static const String ForgetPassword = "/ForgetPasswordScreen";
+  static const String SignUp = "/SignUpScreen";
 }
 
 class RouteGenerator {
@@ -35,6 +37,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const ForgetPasswordScreen();
+            });
+      case Routes.SignUp:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const SignUpScreen();
             });
       default:
         return unDefinedRoute();

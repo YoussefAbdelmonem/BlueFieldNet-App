@@ -12,7 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../cubit/cubit.dart';
 
 ///// put it in routes
-///  import '../../modules/auth/presentation/auth.dart';
+///  import '../../modules/auth/presentation/login_screen.dart';
 /// static const String AuthScreen = "/authScreen";
 
 class AuthScreen extends StatefulWidget {
@@ -99,7 +99,9 @@ class _AuthScreenState extends State<AuthScreen> {
                           ),
                           8.pw,
                           TextButtonWidget(
-                            function: () {},
+                            function: () {
+                              Navigator.pushNamed(context, Routes.SignUp);
+                            },
                             text: "Sign Up".tr(),
                             color: Color(0xFF057EE7),
                           )

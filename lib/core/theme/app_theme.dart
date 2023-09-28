@@ -9,7 +9,7 @@ class ThemesManger {
     return ThemeData(
         fontFamily: 'candra',
         primarySwatch: AppThemes().selectedSchema.primary.toMaterialColor(),
-        scaffoldBackgroundColor: AppColors.background,
+        scaffoldBackgroundColor: Colors.grey.shade100,
         appBarTheme: AppBarTheme(
             surfaceTintColor: Colors.transparent,
             backgroundColor: AppColors.primary,

@@ -18,7 +18,7 @@ class TextFormFieldWidget extends StatefulWidget {
   TextDirection? textdirection;
   EdgeInsetsDirectional? contentPadding;
   double borderRadius;
-  Widget? prefixIcon, suffixIcon, suffixWidget;
+  Widget? prefixIcon, suffixIcon, suffixWidget,prefixWidget;
   TextEditingController? controller;
   InputDecoration? inputDecoration;
   ValueChanged<String>? onChanged;
@@ -35,6 +35,7 @@ class TextFormFieldWidget extends StatefulWidget {
       this.enable,
       this.validator,
       this.onTap,
+      this.prefixWidget,
       this.password = false,
       this.expanded = false,
       this.floatingHint = false,
@@ -104,6 +105,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
               filled: true,
               fillColor: widget.backgroundColor,
               prefixIcon: widget.prefixIcon,
+              prefix: widget.prefixWidget,
               suffix: widget.suffixWidget,
               suffixIcon: widget.suffixIcon ??
                   (isPass!

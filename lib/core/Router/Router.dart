@@ -58,7 +58,7 @@ class RouteGenerator {
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
-              return const CompleteRegisterScreen();
+              return  CompleteRegisterScreen();
             });
       default:
         return unDefinedRoute();

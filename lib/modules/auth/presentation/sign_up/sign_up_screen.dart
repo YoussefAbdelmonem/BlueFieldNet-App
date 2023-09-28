@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/auth/cubit/cubit.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
@@ -114,7 +115,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ButtonWidget(
                       width: double.infinity,
                       radius: 8,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context,Routes.completeRegister );
+                      },
                       title: "Sign Up".tr(),
                       borderColor: Color(0xFF057EE7),
                     ),

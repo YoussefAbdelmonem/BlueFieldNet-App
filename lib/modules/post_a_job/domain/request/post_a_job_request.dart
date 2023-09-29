@@ -1,0 +1,3 @@
+class PostAJobRequest {
+  String? page;
+}

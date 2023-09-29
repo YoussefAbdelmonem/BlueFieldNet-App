@@ -7,8 +7,12 @@ import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.da
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../modules/auth/presentation/reset_password/reset_password_screen.dart';
+import '../../modules/messages/presentation/messages_screen.dart';
 import '../../modules/splash/presentation/splash.dart';
 import '../../modules/auth/presentation/login/login_screen.dart';
+import '../../modules/notifications/presentation/notifications.dart';
+import '../../modules/jobs/presentation/jobs.dart';
+import '../../modules/post_a_job/presentation/post_a_job.dart';
 
 class Routes {
   static const String SplashScreen = "/";
@@ -18,6 +22,10 @@ class Routes {
   static const String ResetPassword = "/ResetPassword";
   static const String completeRegister = "/completeRegister";
   static const String layoutScreen = "/LayoutScreen";
+  static const String messagesScreen = "/messagesScreen";
+  static const String notificationsScreen = "/notificationsScreen";
+  static const String jobsScreen = "/jobsScreen";
+  static const String post_a_jobScreen = "/postAJobScreen";
 }
 
 class RouteGenerator {
@@ -31,6 +39,24 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const SplashScreen();
+            });
+      case Routes.post_a_jobScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const PostAJobScreen();
+            });
+      case Routes.jobsScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobsScreen();
+            });
+      case Routes.notificationsScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const NotificationsScreen();
             });
       case Routes.AuthScreen:
         return CupertinoPageRoute(
@@ -50,23 +76,29 @@ class RouteGenerator {
             builder: (_) {
               return const SignUpScreen();
             });
-        case Routes.ResetPassword:
+      case Routes.ResetPassword:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const ResetPasswordScreen();
             });
-        case Routes.completeRegister:
+      case Routes.completeRegister:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
-              return  CompleteRegisterScreen();
+              return CompleteRegisterScreen();
             });
-        case Routes.layoutScreen:
+      case Routes.layoutScreen:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
-              return  LayoutScreen();
+              return LayoutScreen();
+            });
+      case Routes.messagesScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const MessagesScreen();
             });
       default:
         return unDefinedRoute();

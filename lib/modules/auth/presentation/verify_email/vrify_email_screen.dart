@@ -1,10 +1,11 @@
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
-import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
-import 'package:bluefieldnet/shared/widgets/text_widget.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../../../shared/widgets/customtext.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({Key? key}) : super(key: key);
@@ -33,9 +34,9 @@ class VerifyEmailScreen extends StatelessWidget {
               ],
             ),
             8.ph,
-            TextWidget(
+            CustomText(
               "Email Verification".tr(),
-              fontSize: 32,
+              fontsize: 32,
               color: Color(0xFF000000),
             ),
             16.ph,
@@ -43,12 +44,12 @@ class VerifyEmailScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: 32,
               ),
-              child: TextWidget(
+              child: CustomText(
                 "We have sent an email to your joxxxxx@gmail.com with a verification code!"
                     .tr(),
-                fontSize: 16,
-                textAlign: TextAlign.center,
-                maxLines: 5,
+                fontsize: 16,
+                align: TextAlign.center,
+                maxLine: 5,
                 color: Color(0xFF636363),
               ),
             ),
@@ -56,7 +57,6 @@ class VerifyEmailScreen extends StatelessWidget {
             PinCodeTextField(
               appContext: context,
               length: 4,
-
             ),
             32.ph,
             ButtonWidget(

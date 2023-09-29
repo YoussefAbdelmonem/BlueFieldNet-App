@@ -2,6 +2,7 @@ import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
+import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:bluefieldnet/shared/widgets/text_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -43,16 +44,16 @@ class _AuthScreenState extends State<AuthScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       16.ph,
-                      TextWidget(
+                      CustomText(
                         "Login".tr(),
-                        fontSize: 36,
-                        fontWeight: FontWeight.w500,
+                        fontsize: 36,
+                        weight: FontWeight.w500,
                       ),
                       16.ph,
-                      TextWidget(
+                      CustomText(
                         "Welcome please sign in".tr(),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontsize: 16,
+                        weight: FontWeight.w500,
                         color: const Color(0xFF636363),
                       ),
                       16.ph,
@@ -74,7 +75,9 @@ class _AuthScreenState extends State<AuthScreen> {
                           TextButtonWidget(
                             function: () {
                               Navigator.pushNamed(
-                                  context, Routes.ForgetPassword,);
+                                context,
+                                Routes.ForgetPassword,
+                              );
                             },
                             text: "Forgot Password?".tr(),
                             color: Color(0xFF057EE7),
@@ -86,7 +89,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         width: double.infinity,
                         radius: 8,
                         onTap: () {
-                          Navigator.pushNamedAndRemoveUntil(context, Routes.layoutScreen, (route) => false);
+                          Navigator.pushNamedAndRemoveUntil(
+                              context, Routes.layoutScreen, (route) => false);
                         },
                         title: "Login".tr(),
                         borderColor: Color(0xFF057EE7),
@@ -95,7 +99,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          TextWidget(
+                          CustomText(
                             "Don't have an account?".tr(),
                             color: Color(0xFFCBD1CE),
                           ),
@@ -117,10 +121,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           Expanded(
                             child: Divider(
                               color: Color(0xFFCBD1CE),
-
                               height: 10,
                               endIndent: 1,
-
                               thickness: 1,
                             ),
                           ),
@@ -128,18 +130,18 @@ class _AuthScreenState extends State<AuthScreen> {
                             padding: EdgeInsets.symmetric(
                               horizontal: 16,
                             ),
-                            child: TextWidget(
+                            child: CustomText(
                               "OR",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: Color(0xFFCBD1CE),),
+                              weight: FontWeight.w400,
+                              fontsize: 16,
+                              color: Color(0xFFCBD1CE),
+                            ),
                           ),
                           Expanded(
                             child: Divider(
                               color: Color(0xFFCBD1CE),
                               height: 10,
                               endIndent: 1,
-
                               thickness: 1,
                             ),
                           ),
@@ -150,71 +152,53 @@ class _AuthScreenState extends State<AuthScreen> {
                         onTap: () {},
                         buttonColor: Colors.white,
                         borderColor: Colors.white,
-
-
-                        child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "Google".svg('icons')
-                                ,
-                              ),
-                              16.pw,
-                              TextWidget(
-                                "Sign in with Google".tr(),
-                                color: Color(0xFF636363),
-                                fontSize: 16,
-                              )
-                            ]
-                        ),
+                        child: Row(children: [
+                          SvgPicture.asset(
+                            "Google".svg('icons'),
+                          ),
+                          16.pw,
+                          CustomText(
+                            "Sign in with Google".tr(),
+                            color: Color(0xFF636363),
+                            fontsize: 16,
+                          )
+                        ]),
                       ),
                       16.ph,
                       ButtonWidget(
                         onTap: () {},
                         buttonColor: Colors.white,
                         borderColor: Colors.white,
-
-
-                        child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "apple".svg('icons')
-                                ,
-                              ),
-                              16.pw,
-                              TextWidget(
-                                "Sign in with Apple".tr(),
-                                color: Color(0xFF636363),
-                                fontSize: 16,
-                              )
-                            ]
-                        ),
+                        child: Row(children: [
+                          SvgPicture.asset(
+                            "apple".svg('icons'),
+                          ),
+                          16.pw,
+                          CustomText(
+                            "Sign in with Apple".tr(),
+                            color: Color(0xFF636363),
+                            fontsize: 16,
+                          )
+                        ]),
                       ),
                       16.ph,
                       ButtonWidget(
                         onTap: () {},
-
-
                         buttonColor: Colors.white,
                         borderColor: Colors.white,
-
-
-                        child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "facebook".svg('icons')
-                                ,
-                              ),
-                              16.pw,
-                              TextWidget(
-                                "Sign in with Facebook".tr(),
-                                color: Color(0xFF636363),
-                                fontSize: 16,
-                              )
-                            ]
-                        ),
+                        child: Row(children: [
+                          SvgPicture.asset(
+                            "facebook".svg('icons'),
+                          ),
+                          16.pw,
+                          CustomText(
+                            "Sign in with Facebook".tr(),
+                            color: Color(0xFF636363),
+                            fontsize: 16,
+                          )
+                        ]),
                       ),
                       16.ph,
-
                     ],
                   ),
                 ),

@@ -6,6 +6,8 @@ import 'package:bluefieldnet/shared/widgets/text_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../shared/widgets/customtext.dart';
+
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
 
@@ -33,22 +35,22 @@ class ForgetPasswordScreen extends StatelessWidget {
               ],
             ),
             8.ph,
-            TextWidget(
+            CustomText(
               "Forgot password".tr(),
-              fontSize: 32,
+              fontsize: 32,
               color: Color(0xFF000000),
             ),
             16.ph,
-
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 32,
               ),
-              child: TextWidget(
-                "Enter your email address below and we'll send you an email with instructions on how to change your password.".tr(),
-                fontSize: 16,
-                textAlign: TextAlign.center,
-                maxLines: 5,
+              child: CustomText(
+                "Enter your email address below and we'll send you an email with instructions on how to change your password."
+                    .tr(),
+                fontsize: 16,
+                align: TextAlign.center,
+                maxLine: 5,
                 color: Color(0xFF636363),
               ),
             ),

@@ -1,0 +1,3 @@
+class MessagesRequest {
+  String? page;
+}

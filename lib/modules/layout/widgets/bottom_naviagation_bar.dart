@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/theme/dynamic_theme/colors.dart';
+import '../../../shared/widgets/customtext.dart';
 import '../cubit/layout_cubit.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -16,16 +17,15 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 85,
-
         decoration: BoxDecoration(
-
           color: AppColors.bottomNav,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             navBarItem("assets/icons/post_a_job.svg", 'post a job'.tr(), 0),
-            navBarItem("assets/icons/notifications.svg", 'notifications'.tr(), 1),
+            navBarItem(
+                "assets/icons/notifications.svg", 'notifications'.tr(), 1),
             navBarItem("assets/icons/jobs.svg", "jobs".tr(), 2),
             navBarItem("assets/icons/messages.svg", 'messages'.tr(), 3),
           ],
@@ -45,20 +45,20 @@ class CustomBottomNavBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               SvgPicture.asset(
-                      path,
-                      color: cubit.tabController.index == index
-                          ? AppColors.bottomNavActiveIcon
-                          : AppColors.bottomNavIcon,
-                    ),
+                path,
+                color: cubit.tabController.index == index
+                    ? AppColors.bottomNavActiveIcon
+                    : AppColors.bottomNavIcon,
+              ),
               SizedBox(
                 height: 8,
               ),
-              TextWidget(
+              CustomText(
                 title.tr(),
                 color: cubit.tabController.index == index
                     ? AppColors.bottomNavActiveIcon
                     : AppColors.bottomNavIcon,
-                fontSize: 12,
+                fontsize: 12,
               ),
             ],
           ),

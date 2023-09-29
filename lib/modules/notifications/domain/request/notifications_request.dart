@@ -1,0 +1,3 @@
+class NotificationsRequest {
+  String? page;
+}

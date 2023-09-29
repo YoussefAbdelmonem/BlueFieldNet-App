@@ -3,12 +3,12 @@ import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/auth/cubit/cubit.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
-import 'package:bluefieldnet/shared/widgets/text_widget.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../shared/widgets/customtext.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -35,16 +35,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     16.ph,
-                    TextWidget(
+                    CustomText(
                       "Sign Up".tr(),
-                      fontSize: 36,
-                      fontWeight: FontWeight.w500,
+                      fontsize: 36,
+                      weight: FontWeight.w500,
                     ),
                     16.ph,
-                    TextWidget(
+                    CustomText(
                       "Welcome please sign up".tr(),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                      fontsize: 16,
+                      weight: FontWeight.w500,
                       color: const Color(0xFF636363),
                     ),
                     16.ph,
@@ -100,12 +100,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         activeColor: Color(0xFF057EE7),
                       ),
-                      TextWidget(
+                      CustomText(
                         "I agree to the ".tr(),
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: TextWidget(
+                        child: CustomText(
                           "Terms of use".tr(),
                           color: Color(0xFF057EE7),
                         ),
@@ -116,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       width: double.infinity,
                       radius: 8,
                       onTap: () {
-                        Navigator.pushNamed(context,Routes.completeRegister );
+                        Navigator.pushNamed(context, Routes.completeRegister);
                       },
                       title: "Sign Up".tr(),
                       borderColor: Color(0xFF057EE7),
@@ -126,13 +126,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextWidget("Already have an account?"),
+                        CustomText("Already have an account?"),
                         TextButtonWidget(
                           function: () {
                             Navigator.pop(context);
                           },
                           text: "Log in",
-                          color:Color(0xFF057EE7) ,
+                          color: Color(0xFF057EE7),
                         )
                       ],
                     ),

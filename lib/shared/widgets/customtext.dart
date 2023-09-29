@@ -20,7 +20,7 @@ class CustomText extends StatelessWidget {
     switch (textStyleEnum) {
       case TextStyleEnum.title:
         return const TextStyle(
-                fontSize: 25, fontFamily: "candra", fontWeight: FontWeight.w500)
+                fontSize: 25, fontFamily: "Roboto", fontWeight: FontWeight.w500)
             .copyWith(
                 decoration: decoration,
                 color: color ?? AppColors.primary,
@@ -28,10 +28,10 @@ class CustomText extends StatelessWidget {
                 fontWeight: weight,
                 fontSize: fontsize,
                 overflow: overflow ?? TextOverflow.visible,
-                fontFamily: fontFamily ?? "candra");
+                fontFamily: fontFamily ?? "Roboto");
       case TextStyleEnum.caption:
         return const TextStyle(
-                fontSize: 14, fontFamily: "candra", fontWeight: FontWeight.w300)
+                fontSize: 14, fontFamily: "Roboto", fontWeight: FontWeight.w300)
             .copyWith(
                 decoration: decoration,
                 color: color ?? AppColors.primary,
@@ -39,11 +39,11 @@ class CustomText extends StatelessWidget {
                 height: height,
                 fontSize: fontsize,
                 overflow: overflow ?? TextOverflow.visible,
-                fontFamily: fontFamily ?? "candra");
+                fontFamily: fontFamily ?? "Roboto");
 
       default:
         return const TextStyle(
-                fontSize: 14, fontFamily: "candra", fontWeight: FontWeight.w400)
+                fontSize: 14, fontFamily: "Roboto", fontWeight: FontWeight.w400)
             .copyWith(
                 decoration: decoration,
                 color: color ?? AppColors.primary,
@@ -51,7 +51,7 @@ class CustomText extends StatelessWidget {
                 fontWeight: weight,
                 fontSize: fontsize,
                 overflow: overflow ?? TextOverflow.visible,
-                fontFamily: fontFamily ?? "candra");
+                fontFamily: fontFamily ?? "Roboto");
     }
   }
 
@@ -93,7 +93,7 @@ class CustomText extends StatelessWidget {
               color: color,
               height: height,
               fontsize: fontsize,
-              fontFamily: fontFamily ?? 'candra',
+              fontFamily: fontFamily ?? 'Roboto',
               overflow: overflow,
               decoration: decoration,
               weight: weight),

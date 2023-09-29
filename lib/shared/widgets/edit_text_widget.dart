@@ -46,7 +46,7 @@ class TextFormFieldWidget extends StatefulWidget {
       this.maxLengh,
       this.errorText,
       this.controller,
-      this.activeBorderColor = Colors.grey,
+      this.activeBorderColor = const Color(0xffF8F8F8),
       this.borderRadius = 8.0,
       this.borderColor = Colors.black,
       this.backgroundColor = Colors.white,
@@ -95,7 +95,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       style: TextStyle(
           color: Colors.grey,
           fontSize: 15,
-          fontFamily: 'candra',
+          fontFamily: 'Roboto',
           // fontFamily:  Utils.lang == 'ar'? "Almarai" :  'graphik',
           fontWeight: FontWeight.w300),
       decoration: widget.inputDecoration ??
@@ -133,14 +133,14 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
               labelStyle: const TextStyle(
                 color: Color(0xFF8CAAC5),
                 // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
-                fontFamily: "candra",
+                fontFamily: "Roboto",
               ),
               hintStyle: TextStyle(
                 color: widget.hintColor,
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
                 // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
-                fontFamily: "candra",
+                fontFamily: "Roboto",
               ),
               hintText: widget.hintText),
       keyboardType: widget.type,

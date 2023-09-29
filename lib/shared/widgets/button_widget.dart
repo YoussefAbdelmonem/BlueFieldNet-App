@@ -61,6 +61,7 @@ class ButtonWidget extends StatelessWidget {
                 weight: fontweight ?? FontWeight.w400,
                 title,
                 fontsize: fontSize ?? 16,
+                fontFamily: "Roboto",
                 color: textColor ?? Colors.white,
               ),
         ),

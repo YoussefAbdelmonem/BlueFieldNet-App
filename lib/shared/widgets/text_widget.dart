@@ -31,7 +31,7 @@ class TextWidget extends StatelessWidget {
 
       overflow: TextOverflow.ellipsis,
       style: TextStyle(
-        fontFamily: fontFamily ?? 'Baloo',
+        fontFamily: fontFamily ?? 'Sans',
         fontSize: fontSize ?? 16,
         fontWeight: fontWeight,
         decoration: isUnderLine ? TextDecoration.underline : null,

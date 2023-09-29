@@ -47,6 +47,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       CustomText(
                         "Login".tr(),
                         fontsize: 36,
+                        fontFamily: "Roboto",
                         weight: FontWeight.w500,
                       ),
                       16.ph,

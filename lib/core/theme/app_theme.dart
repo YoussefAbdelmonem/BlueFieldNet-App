@@ -7,7 +7,7 @@ import 'package:material_color_gen/material_color_gen.dart';
 class ThemesManger {
   static ThemeData get appTheme {
     return ThemeData(
-        fontFamily: 'candra',
+        fontFamily: 'Sans',
         primarySwatch: AppThemes().selectedSchema.primary.toMaterialColor(),
         scaffoldBackgroundColor: Colors.grey.shade100,
         appBarTheme: AppBarTheme(

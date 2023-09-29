@@ -7,8 +7,13 @@ enum AppThemeMode { primary, primaryDark, pink, blue, custom }
 class AppColors {
 
   static const primaryColor = Color(0xFF057EE7);
+  static const buttonColor = Color(0xFF074DB6);
+  static const font =  Color(0xFF20384B);
   static const Color white = Color(0xFFCBD1CE);
+  static const Color whiteBackground = Color(0xFFFFFFFF);
   static const Color grey = Color(0xFF636363);
+  static const Color buttonBorderColor = Color(0xFF5E84A3);
+  static const Color dotColor = Color(0xFF334D64);
   static const Color bottomNav = Color(0xFFF8F8F8);
   static const Color bottomNavIcon = Color(0xFFD9D9D9);
   static const Color bottomNavActiveIcon = Color(0xFF057EE7);

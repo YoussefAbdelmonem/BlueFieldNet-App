@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
 import 'package:bluefieldnet/modules/auth/presentation/join_as_freelancer/complete_register.dart';
 import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
+import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../modules/auth/presentation/reset_password/reset_password_screen.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String SignUp = "/SignUpScreen";
   static const String ResetPassword = "/ResetPassword";
   static const String completeRegister = "/completeRegister";
+  static const String layoutScreen = "/LayoutScreen";
 }
 
 class RouteGenerator {
@@ -59,6 +61,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return  CompleteRegisterScreen();
+            });
+        case Routes.layoutScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return  LayoutScreen();
             });
       default:
         return unDefinedRoute();

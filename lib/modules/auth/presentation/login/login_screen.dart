@@ -85,7 +85,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       ButtonWidget(
                         width: double.infinity,
                         radius: 8,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(context, Routes.layoutScreen, (route) => false);
+                        },
                         title: "Login".tr(),
                         borderColor: Color(0xFF057EE7),
                       ),

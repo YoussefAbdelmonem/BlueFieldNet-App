@@ -15,6 +15,7 @@ class AppColors {
   static const Color buttonBorderColor = Color(0xFF5E84A3);
   static const Color dotColor = Color(0xFF334D64);
   static const Color bottomNav = Color(0xFFF8F8F8);
+  static const Color additionalButtonColor = Color(0xFFF5F5F5);
   static const Color bottomNavIcon = Color(0xFFD9D9D9);
   static const Color bottomNavActiveIcon = Color(0xFF057EE7);
   static AppThemes selectedTheme = AppThemes();

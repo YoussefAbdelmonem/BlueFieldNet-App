@@ -18,6 +18,7 @@ class AppColors {
   static const Color additionalButtonColor = Color(0xFFF5F5F5);
   static const Color bottomNavIcon = Color(0xFFD9D9D9);
   static const Color bottomNavActiveIcon = Color(0xFF057EE7);
+  static const Color checkBoxTextColor = Color(0xFF495858);
   static AppThemes selectedTheme = AppThemes();
   static Color get primary => selectedTheme.selectedSchema.primary;
   static Color get onPrimary => selectedTheme.selectedSchema.onPrimary;

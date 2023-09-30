@@ -1,6 +1,7 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/dropdown.dart';
@@ -64,7 +65,8 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                     hintText: "Search for job",
                   ),
                   16.ph,
-                  JobDescriptionWidget()
+                  // JobDescriptionWidget()
+                  JobDetailsWidget()
                 ],
               ),
             ),

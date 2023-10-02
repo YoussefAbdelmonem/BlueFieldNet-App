@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_experties_widget.dart';
@@ -70,7 +71,8 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                   // JobDescriptionWidget()
                   // JobDetailsWidget()
                   // JobExpertiseWidget()
-                  JobVisibilityWidget()
+                  // JobVisibilityWidget()
+                  JobBudgetWidget()
                 ],
               ),
             ),

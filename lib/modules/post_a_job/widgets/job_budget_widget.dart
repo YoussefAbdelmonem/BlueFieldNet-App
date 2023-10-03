@@ -563,6 +563,112 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
                   fontFamily: "Sans",
                   weight: FontWeight.w500,
                 ),
+                16.ph,
+                TextFormFieldWidget(
+                  hintText: "Write your Budget Allocation",
+                ),
+                16.ph,
+                DropDownItem(
+                  onChanged: (e) {},
+                  options: [
+                  ],
+                  hint: "Number of payments",
+
+                ),
+                16.ph,
+                DropDownItem(
+                  onChanged: (e) {},
+                  options: [
+                    "Every week",
+                    "Every two weeks",
+                    "Monthly",
+                  ],
+                  hint: "Payment Frequency",
+
+                ),
+                16.ph,
+                Container(
+                  color: Colors.grey.shade100,
+
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 32
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const CustomText(
+                                'Payment',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+                              8.ph,
+                              const CustomText(
+                                '0.00',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const CustomText(
+                                'Amount',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+                              8.ph,
+                              const CustomText(
+                                '0.00',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: [
+                              const CustomText(
+                                'Date',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+                              8.ph,
+                              const CustomText(
+                                '20-10-2023',
+                                fontsize: 14,
+                                color: AppColors.font,
+                                fontFamily: "Sans",
+                                weight: FontWeight.w500,
+                              ),
+
+                            ],
+                          ),
+                        ),
+
+
+                      ]
+                    ),
+                  ),
+                ),
                 32.ph,
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

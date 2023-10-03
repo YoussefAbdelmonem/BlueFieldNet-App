@@ -4,6 +4,7 @@ import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_experties_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_review_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibilty_widget.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
@@ -72,7 +73,7 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                   // JobDetailsWidget()
                   // JobExpertiseWidget()
                   // JobVisibilityWidget()
-                  JobBudgetWidget()
+                  JobReviewWidget()
                 ],
               ),
             ),

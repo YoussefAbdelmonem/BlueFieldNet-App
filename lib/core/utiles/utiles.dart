@@ -47,11 +47,13 @@ class Utils {
 }
 
 extension MySLiverBox on Widget {
-  SliverToBoxAdapter get SliverBox => SliverToBoxAdapter(
-    child: this,
-  ); SliverToBoxAdapter get SliverBoxAnimation => SliverToBoxAdapter(
+  // SliverToBoxAdapter get SliverBox => SliverToBoxAdapter(
+  //   child: this,
+  // );
+  /*  SliverToBoxAdapter get SliverBoxAnimation => SliverToBoxAdapter(
     child: Padding(
       padding:  EdgeInsets.all(16),
       child: this,
     ),
-  );}
+  ); */
+}

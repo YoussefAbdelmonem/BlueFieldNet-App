@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/core/utiles/utiles.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/job_budget_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget/job_description_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget/job_details_widget.dart';
@@ -38,45 +39,47 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
             body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  16.ph,
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
-                      Spacer(),
-                      CustomText(
-                        "Post A Job",
-                        color: AppColors.font,
-                        fontFamily: "Sans",
-                        fontsize: 16,
-                        weight: FontWeight.w600,
-                      ),
-                      Spacer(),
-                    ],
-                  ),
-                  16.ph,
-                  TextFormFieldWidget(
-                    prefixIcon: SvgPicture.asset(
-                      "assets/icons/search.svg",
-                      alignment: Alignment.center,
-                      fit: BoxFit.none,
+            child: CustomScrollView(
+              slivers: [
+                16.ph.SliverBox,
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                    Spacer(),
+                    CustomText(
+                      "Post A Job",
+                      color: AppColors.font,
+                      fontFamily: "Sans",
+                      fontsize: 16,
+                      weight: FontWeight.w600,
                     ),
-                    hintText: "Search for job",
+                    Spacer(),
+                  ],
+                ).SliverBox,
+                16.ph.SliverBox,
+                TextFormFieldWidget(
+                  prefixIcon: SvgPicture.asset(
+                    "assets/icons/search.svg",
+                    alignment: Alignment.center,
+                    fit: BoxFit.none,
                   ),
-                  16.ph,
-                  // JobDescriptionWidget()
-                  // JobDetailsWidget()
-                  // JobExpertiseWidget()
-                  // JobVisibilityWidget()
-                  JobVisibilityWidget()
-                  // JobBudgetWidget()
-                ],
-              ),
+                  hintText: "Search for job",
+                ).SliverBox,
+                16.ph.SliverBox,
+                Navigator(
+                  key: Utils.app1Nav,
+                ).SliverBox
+                // JobDescriptionWidget()
+                // JobDetailsWidget()
+                // JobExpertiseWidget()
+                // JobVisibilityWidget()
+                ,
+                JobVisibilityWidget()
+                // JobBudgetWidget()
+              ],
             ),
           ),
         )));

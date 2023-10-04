@@ -15,6 +15,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../core/Router/Router.dart';
 import '../../../shared/widgets/customtext.dart';
 import '../cubit/cubit.dart';
 
@@ -71,13 +72,14 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                 16.ph.SliverBox,
                 Navigator(
                   key: Utils.app1Nav,
+                  onGenerateRoute: RouteGenerator.getRoute,
                 ).SliverBox
                 // JobDescriptionWidget()
                 // JobDetailsWidget()
                 // JobExpertiseWidget()
                 // JobVisibilityWidget()
-                ,
-                JobVisibilityWidget()
+                // ,
+                // JobVisibilityWidget()
                 // JobBudgetWidget()
               ],
             ),

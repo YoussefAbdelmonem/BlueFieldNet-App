@@ -26,6 +26,15 @@ class Routes {
   static const String notificationsScreen = "/notificationsScreen";
   static const String jobsScreen = "/jobsScreen";
   static const String post_a_jobScreen = "/postAJobScreen";
+
+/////////////////////////
+  static const String JobTitleWidget = "/JobTitleWidget";
+  static const String JobDescriptionWidget = "/JobDescriptionWidget";
+  static const String JobDetailsWidget = "/JobDetailsWidget";
+  static const String JobExpertiseWidget = "/JobExpertiseWidget";
+  static const String JobVisibilityWidget = "/JobVisibilityWidget";
+  static const String JobBudgetWidget = "/JobBudgetWidget";
+  static const String JobReviewWidget = "/JobReviewWidget";
 }
 
 class RouteGenerator {

@@ -1,8 +1,9 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/widgets/row_drop_down_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defination.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
-import 'package:bluefieldnet/shared/widgets/dropdown.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,43 +15,20 @@ class JobTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Column(
       children: [
-        Container(
-          width: 500,
-          height: 48,
-          padding:
-          const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-          decoration: ShapeDecoration(
-            color: Color(0xFF20384B),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8)),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CustomText(
-                'Title',
-                fontsize: 16,
-                color: AppColors.white,
-                fontFamily: "Sans",
-                weight: FontWeight.w500,
-              ),
-              SvgPicture.asset("assets/icons/done.svg"),
-            ],
-          ),
+
+        DefinitionRow(
+          title: "Title",
         ),
         16.ph,
         Container(
-          height: MediaQuery.of(context).size.height /1.8,
           width: MediaQuery.of(context).size.width,
           color: AppColors.whiteBackground,
           child: Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
+                const CustomText(
                   'Title and Category',
                   fontsize: 20,
                   color: AppColors.font,
@@ -62,7 +40,7 @@ class JobTitleWidget extends StatelessWidget {
                   hintText: "Enter the name of your job post",
                 ),
                 16.ph,
-                CustomText(
+                const CustomText(
                   'Enter the name of your job post',
                   fontsize: 16,
                   color: AppColors.font,
@@ -98,7 +76,7 @@ class JobTitleWidget extends StatelessWidget {
                   shrinkWrap: true,
                 ),
                 16.ph,
-                CustomText(
+                const CustomText(
                   'Enter the name of your job post',
                   fontsize: 16,
                   color: AppColors.font,
@@ -106,7 +84,7 @@ class JobTitleWidget extends StatelessWidget {
                   weight: FontWeight.w500,
                 ),
                 16.ph,
-                CustomText(
+                const CustomText(
                   'Let\'s categorize your job, which helps us personalize your job details and match your job to relevant freelancers and agencies. Here are some suggestions based on your job title',
                   fontsize: 14,
                   color: AppColors.dotColor,
@@ -114,36 +92,7 @@ class JobTitleWidget extends StatelessWidget {
                   weight: FontWeight.w400,
                 ),
                 16.ph,
-                Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                          child: DropDownItem(
-                            onChanged: (e) {},
-                            options: [
-                              "Full Time",
-                              "Part Time",
-                              "Freelance",
-                            ],
-                            hint: "choose category",
-
-                          )
-                      ),
-                      8.pw,
-                      Expanded(
-                          child: DropDownItem(
-                            onChanged: (e) {},
-                            options: [
-                              "Full Time",
-                              "Part Time",
-                              "Freelance",
-                            ],
-                            hint: "choose Subcategory",
-
-                          )
-                      ),
-                    ]
-                ),
+                const TitleRowDropDownWidget(),
                 32.ph,
                 Row(
                     children: [

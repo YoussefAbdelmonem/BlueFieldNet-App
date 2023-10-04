@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defination.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:bluefieldnet/shared/widgets/dropdown.dart';
@@ -14,30 +15,8 @@ class JobReviewWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          width: 500,
-          height: 48,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-          decoration: ShapeDecoration(
-            color: Color(0xFF20384B),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CustomText(
-                'Review',
-                fontsize: 16,
-                color: AppColors.white,
-                fontFamily: "Sans",
-                weight: FontWeight.w500,
-              ),
-              SvgPicture.asset("assets/icons/done.svg"),
-            ],
-          ),
+        const DefinitionRow(
+          title: "Review",
         ),
         16.ph,
         Container(

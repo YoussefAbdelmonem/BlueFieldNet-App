@@ -1,12 +1,12 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_experties_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_review_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibilty_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/job_budget_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget/job_description_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget/job_details_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_experties_widget/job_experties_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_review_widget/job_review_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/job_visibilty_widget.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/dropdown.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
@@ -73,7 +73,8 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                   // JobDetailsWidget()
                   // JobExpertiseWidget()
                   // JobVisibilityWidget()
-                  JobReviewWidget()
+                  JobVisibilityWidget()
+                  // JobBudgetWidget()
                 ],
               ),
             ),

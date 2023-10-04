@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/core/utiles/utiles.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_description_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../core/Router/Router.dart';
 import '../../../shared/widgets/customtext.dart';
 import '../cubit/cubit.dart';
 
@@ -69,6 +71,11 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                     hintText: "Search for job",
                   ),
                   16.ph,
+                  Navigator(
+                    key: Utils.app1Nav,
+                    onGenerateRoute: RouteGenerator.getNestedRoute,
+                  ),
+
                   // JobDescriptionWidget()
                   // JobDetailsWidget()
                   // JobExpertiseWidget()

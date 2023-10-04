@@ -8,6 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../modules/auth/presentation/reset_password/reset_password_screen.dart';
 import '../../modules/messages/presentation/messages_screen.dart';
+import '../../modules/post_a_job/widgets/job_budget_widget.dart';
+import '../../modules/post_a_job/widgets/job_description_widget.dart';
+import '../../modules/post_a_job/widgets/job_details_widget.dart';
+import '../../modules/post_a_job/widgets/job_experties_widget.dart';
+import '../../modules/post_a_job/widgets/job_review_widget.dart';
+import '../../modules/post_a_job/widgets/job_title_widget.dart';
+import '../../modules/post_a_job/widgets/job_visibilty_widget.dart';
 import '../../modules/splash/presentation/splash.dart';
 import '../../modules/auth/presentation/login/login_screen.dart';
 import '../../modules/notifications/presentation/notifications.dart';
@@ -26,6 +33,14 @@ class Routes {
   static const String notificationsScreen = "/notificationsScreen";
   static const String jobsScreen = "/jobsScreen";
   static const String post_a_jobScreen = "/postAJobScreen";
+  //////////
+  static const String JobTitleWidget = "/JobTitleWidget";
+  static const String JobDescriptionWidget = "/JobDescriptionWidget";
+  static const String JobDetailsWidget = "/JobDetailsWidget";
+  static const String JobExpertiseWidget = "/JobExpertiseWidget";
+  static const String JobVisibilityWidget = "/JobVisibilityWidget";
+  static const String JobBudgetWidget = "/JobBudgetWidget";
+  static const String JobReviewWidget = "/JobReviewWidget";
 }
 
 class RouteGenerator {
@@ -100,6 +115,55 @@ class RouteGenerator {
             builder: (_) {
               return const MessagesScreen();
             });
+      default:
+        return unDefinedRoute();
+    }
+  }
+
+  static Route<dynamic> getNestedRoute(RouteSettings routeSettings) {
+    currentRoute = routeSettings.name.toString();
+    switch (routeSettings.name) {
+      case Routes.JobTitleWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobTitleWidget();
+            });
+      case Routes.JobDescriptionWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobDescriptionWidget();
+            });
+      case Routes.JobDetailsWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobDetailsWidget();
+            });
+      case Routes.JobExpertiseWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobExpertiseWidget();
+            });
+      case Routes.JobVisibilityWidget:
+        return CupertinoPageRoute(builder: (_) {
+          return const JobVisibilityWidget();
+        });
+      case Routes.JobBudgetWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobBudgetWidget();
+            });
+      case Routes.JobReviewWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const JobReviewWidget();
+            });
+
       default:
         return unDefinedRoute();
     }

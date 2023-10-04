@@ -13,16 +13,15 @@ class JobReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const DefinitionRow(
-          title: "Review",
-        ),
-        16.ph,
-        Container(
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: EdgeInsets.all(16.0),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const DefinitionRow(
+            title: "Review",
+          ).SliverBox,
+          16.ph.SliverBox,
+          Container(
+            width: MediaQuery.of(context).size.width,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -353,9 +352,9 @@ class JobReviewWidget extends StatelessWidget {
                 32.ph,
               ],
             ),
-          ),
-        ),
-      ],
+          ).SliverBox,
+        ],
+      ),
     );
   }
 }

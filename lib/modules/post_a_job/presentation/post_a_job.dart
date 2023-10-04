@@ -37,53 +37,59 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
     return BlocProvider(
         create: (context) => PostAJobCubit(),
         child: Scaffold(
+            backgroundColor: AppColors.additionalButtonColor,
             body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: CustomScrollView(
-              slivers: [
-                16.ph.SliverBox,
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
                   children: [
-                    CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
-                    Spacer(),
-                    CustomText(
-                      "Post A Job",
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      fontsize: 16,
-                      weight: FontWeight.w600,
+                    16.ph,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                            backgroundImage: NetworkImage(
+                                "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                        Spacer(),
+                        CustomText(
+                          "Post A Job",
+                          color: AppColors.font,
+                          fontFamily: "Sans",
+                          fontsize: 16,
+                          weight: FontWeight.w600,
+                        ),
+                        Spacer(),
+                      ],
                     ),
-                    Spacer(),
+                    16.ph,
+                    TextFormFieldWidget(
+                      prefixIcon: SvgPicture.asset(
+                        "assets/icons/search.svg",
+                        alignment: Alignment.center,
+                        fit: BoxFit.none,
+                      ),
+                      hintText: "Search for job",
+                    ),
+                    16.ph,
+
+                    Expanded(
+                      child: Navigator(
+                        key: Utils.app1Nav,
+                        onGenerateRoute: RouteGenerator.getNestedRoute,
+                        initialRoute: Routes.JobTitleWidget,
+                      ),
+                    ),
+
+                    // JobDescriptionWidget()
+                    // JobDetailsWidget()
+                    // JobExpertiseWidget()
+                    // JobVisibilityWidget()
+                    // ,
+                    // JobVisibilityWidget()
+                    // JobBudgetWidget()
                   ],
-                ).SliverBox,
-                16.ph.SliverBox,
-                TextFormFieldWidget(
-                  prefixIcon: SvgPicture.asset(
-                    "assets/icons/search.svg",
-                    alignment: Alignment.center,
-                    fit: BoxFit.none,
-                  ),
-                  hintText: "Search for job",
-                ).SliverBox,
-                16.ph.SliverBox,
-                Navigator(
-                  key: Utils.app1Nav,
-                  onGenerateRoute: RouteGenerator.getRoute,
-                ).SliverBox
-                // JobDescriptionWidget()
-                // JobDetailsWidget()
-                // JobExpertiseWidget()
-                // JobVisibilityWidget()
-                // ,
-                // JobVisibilityWidget()
-                // JobBudgetWidget()
-              ],
-            ),
-          ),
-        )));
+                ),
+              ),
+            )));
   }
 }

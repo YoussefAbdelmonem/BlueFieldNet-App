@@ -13,6 +13,8 @@ import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/Router/Router.dart';
+
 class JobBudgetWidget extends StatefulWidget {
   const JobBudgetWidget({Key? key}) : super(key: key);
 
@@ -23,114 +25,122 @@ class JobBudgetWidget extends StatefulWidget {
 class _JobBudgetWidgetState extends State<JobBudgetWidget> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const DefinitionRow(
-          title: "Budget",
-        ),
-        16.ph,
-        Container(
-          // height: MediaQuery.of(context).size.height /0.1,
-          width: MediaQuery.of(context).size.width,
-          color: AppColors.whiteBackground,
-          child: Padding(
-            padding: EdgeInsets.all(24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CustomText(
-                  'Budget',
-                  fontsize: 20,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                const CustomText(
-                  'How would you like to pay your freelancer or agency?',
-                  fontsize: 14,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                BudgetFreelancerTogglePayment(),
-                16.ph,
-                const CustomText(
-                  'What level of experience should your freelancer have?',
-                  fontsize: 14,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                BudgetFreelancerExperienceToggleWidget(),
-                16.ph,
-                const CustomText(
-                  'What level of experience should your freelancer have?',
-                  fontsize: 14,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                DropDownItem(
-                  onChanged: (e) {},
-                  options: [
-                    "More than 6 months",
-                    "3 to 6 months",
-                    "1 to 3 months",
-                    "Less than 1 month",
-                  ],
-                  hint: "choose time",
-                ),
-                16.ph,
-                const CustomText(
-                  'Do you have a time requirement/week for this project?',
-                  fontsize: 14,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                BudgetFreelancerTimeToggleWidget(),
-                16.ph,
-                const CustomText(
-                  'What level of experience should your freelancer have?',
-                  fontsize: 14,
-                  color: AppColors.font,
-                  fontFamily: "Sans",
-                  weight: FontWeight.w500,
-                ),
-                16.ph,
-                PaymentDropDownWidget(),
-                SummaryWidget(),
-                32.ph,
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ButtonWidget(
-                        width: 150,
-                        height: 40,
-                        borderColor: AppColors.buttonBorderColor,
-                        withBorder: true,
-                        buttonColor: Colors.white,
-                        textColor: AppColors.buttonBorderColor,
-                        title: "Previous",
-                      ),
-                      ButtonWidget(
-                        width: 150,
-                        height: 40,
-                        onTap: () {},
-                        title: "Next",
-                        buttonColor: AppColors.buttonColor,
-                      ),
-                    ])
-              ],
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const DefinitionRow(
+            title: "Budget",
+          ).SliverBox,
+          16.ph.SliverBox,
+          Container(
+            // height: MediaQuery.of(context).size.height /0.1,
+            width: MediaQuery.of(context).size.width,
+            color: AppColors.whiteBackground,
+            child: Padding(
+              padding: EdgeInsets.all(24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomText(
+                    'Budget',
+                    fontsize: 20,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  const CustomText(
+                    'How would you like to pay your freelancer or agency?',
+                    fontsize: 14,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  BudgetFreelancerTogglePayment(),
+                  16.ph,
+                  const CustomText(
+                    'What level of experience should your freelancer have?',
+                    fontsize: 14,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  BudgetFreelancerExperienceToggleWidget(),
+                  16.ph,
+                  const CustomText(
+                    'What level of experience should your freelancer have?',
+                    fontsize: 14,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  DropDownItem(
+                    onChanged: (e) {},
+                    options: [
+                      "More than 6 months",
+                      "3 to 6 months",
+                      "1 to 3 months",
+                      "Less than 1 month",
+                    ],
+                    hint: "choose time",
+                  ),
+                  16.ph,
+                  const CustomText(
+                    'Do you have a time requirement/week for this project?',
+                    fontsize: 14,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  BudgetFreelancerTimeToggleWidget(),
+                  16.ph,
+                  const CustomText(
+                    'What level of experience should your freelancer have?',
+                    fontsize: 14,
+                    color: AppColors.font,
+                    fontFamily: "Sans",
+                    weight: FontWeight.w500,
+                  ),
+                  16.ph,
+                  PaymentDropDownWidget(),
+                  SummaryWidget(),
+                  32.ph,
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ButtonWidget(
+                          width: 150,
+                          height: 40,
+                          borderColor: AppColors.buttonBorderColor,
+                          withBorder: true,
+                          buttonColor: Colors.white,
+                          textColor: AppColors.buttonBorderColor,
+                          title: "Previous",
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        ButtonWidget(
+                          width: 150,
+                          height: 40,
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, Routes.JobReviewWidget);
+                          },
+                          title: "Next",
+                          buttonColor: AppColors.buttonColor,
+                        ),
+                      ])
+                ],
+              ),
             ),
-          ),
-        ),
-      ],
+          ).SliverBox,
+        ],
+      ),
     );
   }
 }

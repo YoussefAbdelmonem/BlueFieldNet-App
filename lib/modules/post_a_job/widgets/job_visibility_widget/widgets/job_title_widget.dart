@@ -26,10 +26,9 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
   List<String> languageSelectedItems = [];
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -39,9 +38,7 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 24
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 24),
                     child: CustomText(
                       "Job Type",
                       fontsize: 16,
@@ -51,22 +48,19 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                   ),
                   SizedBox(
                     height: 150,
-                    child:   ListView.builder(
+                    child: ListView.builder(
                       itemCount: priceItems.length,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return CheckboxListTile(
-
                           title: CustomText(
                             priceItems[index].name.toString(),
                             fontsize: 14,
                             fontFamily: "Sans",
                             weight: FontWeight.w500,
                           ),
-
-
                           value: priceSelectedItems
                               .contains(priceItems[index].id.toString()),
                           controlAffinity: ListTileControlAffinity.leading,
@@ -76,11 +70,10 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                                 priceSelectedItems
                                     .add(priceItems[index].id.toString());
                               } else {
-                                priceSelectedItems.remove(
-                                    priceItems[index].id.toString());
+                                priceSelectedItems
+                                    .remove(priceItems[index].id.toString());
                               }
                             });
-
                           },
                         );
                       },
@@ -94,9 +87,7 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 24
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 24),
                     child: CustomText(
                       "Language preference",
                       fontsize: 14,
@@ -104,12 +95,11 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                       color: AppColors.font,
                     ),
                   ),
-
                   ListView.builder(
                     itemCount: languageItems.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    // physics: const NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return CheckboxListTile(
                         title: CustomText(
@@ -118,8 +108,6 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                           fontFamily: "Sans",
                           weight: FontWeight.w500,
                         ),
-
-
                         value: languageSelectedItems
                             .contains(languageItems[index].id.toString()),
                         controlAffinity: ListTileControlAffinity.leading,
@@ -129,11 +117,10 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                               languageSelectedItems
                                   .add(languageItems[index].id.toString());
                             } else {
-                              languageSelectedItems.remove(
-                                  languageItems[index].id.toString());
+                              languageSelectedItems
+                                  .remove(languageItems[index].id.toString());
                             }
                           });
-
                         },
                       );
                     },
@@ -141,7 +128,6 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                 ],
               ),
             ),
-
           ],
         )
       ],

@@ -71,17 +71,17 @@ class _DropDownItemState<T> extends State<DropDownItem<T>> {
                       borderRadius: BorderRadius.circular(
                         10,
                       ),
-                      borderSide: BorderSide(color: AppColors.primary)),
+                      borderSide: BorderSide(color: Color(0xff8CAAC5))),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         widget.radius ?? 10,
                       ),
-                      borderSide: BorderSide(color: Colors.black)),
+                      borderSide: BorderSide(color: Color(0xff8CAAC5))),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         widget.radius ?? 10,
                       ),
-                      borderSide: BorderSide(color: Colors.black)),
+                      borderSide: BorderSide(color: Color(0xff8CAAC5))),
                 ),
                 value: widget.inistialValue,
                 items: widget.options

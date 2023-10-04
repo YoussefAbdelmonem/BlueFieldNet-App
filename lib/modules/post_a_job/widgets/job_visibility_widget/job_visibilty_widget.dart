@@ -12,6 +12,9 @@ import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+
+import '../../../../core/Router/Router.dart';
+
 class JobVisibilityWidget extends StatefulWidget {
   const JobVisibilityWidget({Key? key}) : super(key: key);
 
@@ -20,101 +23,98 @@ class JobVisibilityWidget extends StatefulWidget {
 }
 
 class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
-
-
-
   ///check box
-
 
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
-      child: Column(
-        children: [
-          DefinitionRow(title: "Visibility"),
-          16.ph,
-          Container(
-            width: MediaQuery.of(context).size.width,
-            color: AppColors.whiteBackground,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-
-                  const CustomText(
-                    'What skills and expertise are most important to you job?',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  const CustomText(
-                    'Who can see your job?',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  ProjectToggleWidget(),
-                  16.ph,
-                  const CustomText(
-                    'Talent Preferences (optional)',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  8.ph,
-                  const CustomText(
-                    'Specify the qualifications you\'re looking for in a successful proposal.',
-                    fontsize: 12,
-                    color: AppColors.checkBoxTextColor,
-                    fontFamily: "Roboto",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  TalentPreferenceWidget(),
-                  16.ph,
-                  JobTitleWidget(),
-                  16.ph,
-                  RowAmountEarnedWidget(),
-                  64.ph,
-
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ButtonWidget(
-                        width: 150,
-                        height: 40,
-                        borderColor: AppColors.buttonBorderColor,
-                        withBorder: true,
-                        buttonColor: Colors.white,
-                        textColor:AppColors.buttonBorderColor ,
-                        title: "previous",
-                      ),
-                        16.pw,
-                        ButtonWidget(
-                          width: 150,
-                          height: 40,
-                          onTap: (){},
-                          title: "Next",
-                          buttonColor:AppColors. buttonColor,
-                        ),
-
-
-                      ]
-                  ),
-                  32.ph
-                ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            DefinitionRow(title: "Visibility"),
+            16.ph,
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: AppColors.whiteBackground,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const CustomText(
+                      'What skills and expertise are most important to you job?',
+                      fontsize: 16,
+                      color: AppColors.font,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w500,
+                    ),
+                    16.ph,
+                    const CustomText(
+                      'Who can see your job?',
+                      fontsize: 16,
+                      color: AppColors.font,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w500,
+                    ),
+                    16.ph,
+                    ProjectToggleWidget(),
+                    16.ph,
+                    const CustomText(
+                      'Talent Preferences (optional)',
+                      fontsize: 16,
+                      color: AppColors.font,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w500,
+                    ),
+                    8.ph,
+                    const CustomText(
+                      'Specify the qualifications you\'re looking for in a successful proposal.',
+                      fontsize: 12,
+                      color: AppColors.checkBoxTextColor,
+                      fontFamily: "Roboto",
+                      weight: FontWeight.w500,
+                    ),
+                    16.ph,
+                    TalentPreferenceWidget(),
+                    16.ph,
+                    JobTitleWidget(),
+                    16.ph,
+                    RowAmountEarnedWidget(),
+                    64.ph,
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ButtonWidget(
+                            width: 150,
+                            height: 40,
+                            borderColor: AppColors.buttonBorderColor,
+                            withBorder: true,
+                            buttonColor: Colors.white,
+                            textColor: AppColors.buttonBorderColor,
+                            title: "previous",
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          16.pw,
+                          ButtonWidget(
+                            width: 150,
+                            height: 40,
+                            onTap: () {
+                              Navigator.pushNamed(
+                                  context, Routes.JobBudgetWidget);
+                            },
+                            title: "Next",
+                            buttonColor: AppColors.buttonColor,
+                          ),
+                        ]),
+                    32.ph
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

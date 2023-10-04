@@ -37,8 +37,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     16.ph,
                     CustomText(
                       "Sign Up".tr(),
-                      fontsize: 36,
+                      fontsize: 23,
                       weight: FontWeight.w500,
+                      fontFamily: "Sans",
+                      color: Colors.black,
                     ),
                     16.ph,
                     CustomText(
@@ -102,12 +104,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       CustomText(
                         "I agree to the ".tr(),
+                        color: Color(0xff979797),
                       ),
                       GestureDetector(
                         onTap: () {},
                         child: CustomText(
                           "Terms of use".tr(),
-                          color: Color(0xFF057EE7),
                         ),
                       )
                     ]),
@@ -126,13 +128,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CustomText("Already have an account?"),
+                        CustomText(
+                          "Already have an account?",
+                          color: Color(0xff979797),
+                        ),
                         TextButtonWidget(
                           function: () {
                             Navigator.pop(context);
                           },
                           text: "Log in",
-                          color: Color(0xFF057EE7),
                         )
                       ],
                     ),

@@ -22,7 +22,7 @@ class AppThemes {
 
   AppColorScheme selectedSchema = const AppColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xff312783),
+    primary: Color(0xFF057EE7),
     onPrimary: Color(0xffF3953F),
     secondary: Color(0xffBEBBFF),
     error: Color(0xffb00020),

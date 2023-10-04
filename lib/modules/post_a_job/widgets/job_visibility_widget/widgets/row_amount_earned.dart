@@ -1,4 +1,3 @@
-
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/post_a_job/domain/model/check_box_models.dart';
@@ -30,10 +29,9 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
   List<String> amountSelectedItems = [];
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -43,9 +41,7 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 24
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 24),
                     child: CustomText(
                       "Amount Earned",
                       fontsize: 16,
@@ -54,20 +50,18 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                     ),
                   ),
                   ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: amountItems.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
                       return CheckboxListTile(
-
                         title: CustomText(
                           amountItems[index].name.toString(),
                           fontsize: 14,
                           fontFamily: "Sans",
                           weight: FontWeight.w500,
                         ),
-
-
                         value: amountSelectedItems
                             .contains(amountItems[index].id.toString()),
                         controlAffinity: ListTileControlAffinity.leading,
@@ -77,11 +71,10 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                               amountSelectedItems
                                   .add(amountItems[index].id.toString());
                             } else {
-                              amountSelectedItems.remove(
-                                  amountItems[index].id.toString());
+                              amountSelectedItems
+                                  .remove(amountItems[index].id.toString());
                             }
                           });
-
                         },
                       );
                     },
@@ -93,9 +86,7 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
               child: Column(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 8
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: 8),
                     child: CustomText(
                       "Other Languages",
                       fontsize: 16,
@@ -114,7 +105,6 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                         color: AppColors.font,
                         fontFamily: "Sans",
                         weight: FontWeight.w500,
-
                       ),
                       items: items.map((item) {
                         return DropdownMenuItem(
@@ -127,7 +117,9 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                               final isSelected = selectedItems.contains(item);
                               return InkWell(
                                 onTap: () {
-                                  isSelected ? selectedItems.remove(item) : selectedItems.add(item);
+                                  isSelected
+                                      ? selectedItems.remove(item)
+                                      : selectedItems.add(item);
                                   //This rebuilds the StatefulWidget to update the button's text
                                   setState(() {});
                                   //This rebuilds the dropdownMenu Widget to update the check mark
@@ -135,13 +127,15 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                                 },
                                 child: Container(
                                   height: double.infinity,
-                                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0),
                                   child: Row(
                                     children: [
                                       if (isSelected)
                                         const Icon(Icons.check_box_outlined)
                                       else
-                                        const Icon(Icons.check_box_outline_blank),
+                                        const Icon(
+                                            Icons.check_box_outline_blank),
                                       const SizedBox(width: 16),
                                       Expanded(
                                         child: Text(
@@ -164,7 +158,7 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                       onChanged: (value) {},
                       selectedItemBuilder: (context) {
                         return items.map(
-                              (item) {
+                          (item) {
                             return Container(
                               alignment: AlignmentDirectional.center,
                               child: Text(

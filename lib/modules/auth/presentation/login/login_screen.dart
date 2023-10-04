@@ -47,8 +47,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       CustomText(
                         "Login".tr(),
                         fontsize: 36,
-                        fontFamily: "Roboto",
+                        fontFamily: "Sans",
                         weight: FontWeight.w500,
+                        color: Colors.black,
                       ),
                       16.ph,
                       CustomText(
@@ -94,7 +95,6 @@ class _AuthScreenState extends State<AuthScreen> {
                               context, Routes.layoutScreen, (route) => false);
                         },
                         title: "Login".tr(),
-                        borderColor: Color(0xFF057EE7),
                       ),
                       16.ph,
                       Row(
@@ -135,7 +135,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               "OR",
                               weight: FontWeight.w400,
                               fontsize: 16,
-                              color: Color(0xFFCBD1CE),
+                              color: Color(0xFF606763),
                             ),
                           ),
                           Expanded(

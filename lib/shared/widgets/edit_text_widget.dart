@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../core/theme/dynamic_theme/colors.dart';
-import '../../core/utiles/utiles.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
   final String? hintText, label, errorText;
@@ -18,7 +17,7 @@ class TextFormFieldWidget extends StatefulWidget {
   TextDirection? textdirection;
   EdgeInsetsDirectional? contentPadding;
   double borderRadius;
-  Widget? prefixIcon, suffixIcon, suffixWidget,prefixWidget;
+  Widget? prefixIcon, suffixIcon, suffixWidget, prefixWidget;
   TextEditingController? controller;
   InputDecoration? inputDecoration;
   ValueChanged<String>? onChanged;
@@ -46,7 +45,7 @@ class TextFormFieldWidget extends StatefulWidget {
       this.maxLengh,
       this.errorText,
       this.controller,
-      this.activeBorderColor = const Color(0xffF8F8F8),
+      this.activeBorderColor = const Color(0xff8CAAC5),
       this.borderRadius = 8.0,
       this.borderColor = Colors.black,
       this.backgroundColor = Colors.white,
@@ -119,7 +118,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
                             widget.password
                                 ? Icons.remove_red_eye_outlined
                                 : Icons.visibility_off,
-                            color: Colors.black,
+                            color: Color(0xff8CAAC5),
                           ),
                         )
                       : widget.suffixIcon),

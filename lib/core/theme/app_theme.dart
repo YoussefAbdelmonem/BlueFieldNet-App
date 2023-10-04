@@ -9,7 +9,8 @@ class ThemesManger {
     return ThemeData(
         fontFamily: 'Sans',
         primarySwatch: AppThemes().selectedSchema.primary.toMaterialColor(),
-        scaffoldBackgroundColor: Colors.grey.shade100,
+        scaffoldBackgroundColor:
+            AppColors.additionalButtonColor, //Colors.grey.shade100,
         appBarTheme: AppBarTheme(
             surfaceTintColor: Colors.transparent,
             backgroundColor: AppColors.primary,

@@ -46,7 +46,7 @@ class CustomText extends StatelessWidget {
                 fontSize: 14, fontFamily: "Roboto", fontWeight: FontWeight.w400)
             .copyWith(
                 decoration: decoration,
-                color: color ?? AppColors.primary,
+                color: color ?? AppColors.font,
                 height: height,
                 fontWeight: weight,
                 fontSize: fontsize,

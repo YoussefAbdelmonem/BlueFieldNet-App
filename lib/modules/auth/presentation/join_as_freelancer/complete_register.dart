@@ -31,7 +31,7 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
           children: [
             16.ph,
             CustomText("Join as a client or freelancer",
-                fontsize: 24, color: Color(0xFF000000)),
+                fontFamily: 'Sans', fontsize: 24, color: Color(0xFF000000)),
             32.ph,
             Row(
               children: [
@@ -58,9 +58,18 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
                                     : Colors.grey,
                               ),
                               16.ph,
-                              CustomText(
-                                "I’m a client, hiring for a project",
-                                align: TextAlign.center,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
+                                child: CustomText(
+                                  "I’m a client, hiring for a project",
+                                  align: TextAlign.center,
+                                  weight: FontWeight.w500,
+                                  fontFamily: "Sans",
+                                  color: clientChoose == true
+                                      ? selectColor
+                                      : Colors.grey,
+                                ),
                               )
                             ]),
                       ),
@@ -92,9 +101,16 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
                                     : Colors.grey,
                               ),
                               16.ph,
-                              CustomText(
-                                "I’m an freelancer,looking for work",
-                                align: TextAlign.center,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
+                                child: CustomText(
+                                    "I’m an freelancer,looking for work",
+                                    align: TextAlign.center,
+                                    fontFamily: "Sans",
+                                    color: freelanceChoose == true
+                                        ? selectColor
+                                        : Colors.grey),
                               )
                             ]),
                       ),
@@ -107,7 +123,7 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
             32.ph,
             ButtonWidget(
               onTap: () {},
-              title: clientChoose == false && freelanceChoose == true
+              title: freelanceChoose == true
                   ? "Join as a freelancer"
                   : "Join as a client",
             ),

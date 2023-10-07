@@ -1,6 +1,13 @@
+import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
+import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/current_jobs_Tab.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/find_jobs/find_jobs_tab.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/saved_jobs/saved_jobs_tab.dart';
+import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../shared/widgets/customtext.dart';
 import '../cubit/cubit.dart';
 
@@ -11,23 +18,136 @@ class JobsScreen extends StatefulWidget {
   State<JobsScreen> createState() => _JobsScreenState();
 }
 
-class _JobsScreenState extends State<JobsScreen> {
+class _JobsScreenState extends State<JobsScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController controller;
+
   @override
   void initState() {
     super.initState();
+    controller = TabController(length: (3), vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
         create: (context) => JobsCubit(),
         child: Scaffold(
-            body: SafeArea(
-          child: Center(
-            child: Column(
-              children: [CustomText("JobsScreen")],
+          backgroundColor: Color(0xFFF5F5F5),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  16.ph,
+                  const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                    CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                    Spacer(),
+                    CustomText(
+                      "Jobs",
+                      color: AppColors.font,
+                      fontFamily: "Sans",
+                      fontsize: 16,
+                      weight: FontWeight.w600,
+                    ),
+                    Spacer(),
+                  ]),
+                  16.ph,
+                  TextFormFieldWidget(
+                    prefixIcon: SvgPicture.asset(
+                      "assets/icons/search.svg",
+                      alignment: Alignment.center,
+                      fit: BoxFit.none,
+                    ),
+                    hintText: "Search for job",
+                    suffixWidget: const VerticalDivider(
+                      color: Colors.black,
+                      width: 3,
+                      thickness: 10,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset("assets/icons/Filter.svg"),
+                    ),
+                  ),
+                  16.ph,
+                  TabBar(
+                      padding: EdgeInsets.zero,
+                      labelPadding: EdgeInsets.zero,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicatorPadding: EdgeInsets.only(
+                        bottom: 6,
+                        top: 6,
+                        left: 1,
+                        right: 1,
+                      ),
+                      unselectedLabelColor: Colors.grey,
+                      indicatorColor: Colors.red ,
+                      onTap: (index) {
+
+                        print(controller.index);
+                        setState(() {
+                          controller.animateTo(index);
+                        });
+                      },
+                      indicator: BoxDecoration(
+                        color: AppColors.tabBarColor,
+                        border: Border.all(
+                            color: AppColors.tabBarColor,
+
+                            width: 1.5),
+
+                        borderRadius: BorderRadius.circular(4),
+
+
+                      ),
+                      controller: controller,
+                      tabs: [
+                        Tab(
+                          child: CustomText(
+                            'Find Jobs',
+                            fontsize: 12,
+                            fontFamily: "Sans",
+                            color: controller.index == 0? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          ),
+                        ),
+                         Tab(
+                          child: CustomText(
+                            'Current Jobs',
+                            fontsize: 12,
+                            fontFamily: "Sans",
+
+                            color: controller.index == 1? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          ),
+                        ),
+                         Tab(
+                          child: CustomText(
+                            'Saved Jobs',
+                            fontsize: 12,
+                            fontFamily: "Sans",
+
+                            color: controller.index == 2? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          ),
+                        ),
+                      ]),
+                  Expanded(
+                    child: TabBarView(
+                      controller: controller,
+                      children: const [
+                        FindJobsTab(),
+                        CurrentJobsTab(),
+                        SavedJobsTab(),
+
+                      ],
+                    )
+                  )
+                ],
+              ),
             ),
           ),
-        )));
+        ));
   }
 }

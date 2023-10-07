@@ -13,12 +13,16 @@ class AppColors {
   static const Color whiteBackground = Color(0xFFFFFFFF);
   static const Color grey = Color(0xFF636363);
   static const Color buttonBorderColor = Color(0xFF5E84A3);
+  static const Color tabBarColor = Color(0xFF20384B);
+  static const Color tabBarColorUnSelected = Color(0xFF8CAAC5);
   static const Color dotColor = Color(0xFF334D64);
   static const Color bottomNav = Color(0xFFF8F8F8);
   static const Color additionalButtonColor = Color(0xFFF5F5F5);
   static const Color bottomNavIcon = Color(0xFFD9D9D9);
   static const Color bottomNavActiveIcon = Color(0xFF057EE7);
   static const Color checkBoxTextColor = Color(0xFF495858);
+  static const Color subTitleBlackColor= Color(0xB2000000);
+  static const Color black= Color(0xFF000000);
   static AppThemes selectedTheme = AppThemes();
   static Color get primary => selectedTheme.selectedSchema.primary;
   static Color get onPrimary => selectedTheme.selectedSchema.onPrimary;

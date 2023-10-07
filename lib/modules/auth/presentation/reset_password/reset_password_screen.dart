@@ -67,6 +67,7 @@ class ResetPasswordScreen extends StatelessWidget {
             ButtonWidget(
               width: double.infinity,
               radius: 8,
+              fontSize: 20,
               onTap: () {},
               title: "Reset password".tr(),
               borderColor: Color(0xFF057EE7),

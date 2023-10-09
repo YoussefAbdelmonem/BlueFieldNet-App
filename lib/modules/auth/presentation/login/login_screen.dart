@@ -58,7 +58,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         weight: FontWeight.w500,
                         color: const Color(0xFF636363),
                       ),
-                      16.ph,
+                      38.ph,
                       TextFormFieldWidget(
                         onTap: () {},
                         label: "Email Address".tr(),
@@ -90,6 +90,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       ButtonWidget(
                         width: double.infinity,
                         radius: 8,
+                        fontSize: 20,
                         onTap: () {
                           Navigator.pushNamedAndRemoveUntil(
                               context, Routes.layoutScreen, (route) => false);
@@ -104,7 +105,6 @@ class _AuthScreenState extends State<AuthScreen> {
                             "Don't have an account?".tr(),
                             color: Color(0xFFCBD1CE),
                           ),
-                          8.pw,
                           TextButtonWidget(
                             function: () {
                               Navigator.pushNamed(context, Routes.SignUp);
@@ -162,6 +162,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             "Sign in with Google".tr(),
                             color: Color(0xFF636363),
                             fontsize: 16,
+                            fontFamily: "Sans",
                           )
                         ]),
                       ),
@@ -179,6 +180,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             "Sign in with Apple".tr(),
                             color: Color(0xFF636363),
                             fontsize: 16,
+                            fontFamily: "Sans",
                           )
                         ]),
                       ),
@@ -196,6 +198,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             "Sign in with Facebook".tr(),
                             color: Color(0xFF636363),
                             fontsize: 16,
+                            fontFamily: "Sans",
                           )
                         ]),
                       ),

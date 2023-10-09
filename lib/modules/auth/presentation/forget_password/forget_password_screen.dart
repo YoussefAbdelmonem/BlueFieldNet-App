@@ -67,6 +67,7 @@ class ForgetPasswordScreen extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, Routes.ResetPassword);
               },
+              fontSize: 20,
               title: "Reset password".tr(),
               borderColor: Color(0xFF057EE7),
             ),

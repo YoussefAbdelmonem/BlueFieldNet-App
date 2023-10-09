@@ -63,6 +63,7 @@ class VerifyEmailScreen extends StatelessWidget {
               width: double.infinity,
               radius: 8,
               onTap: () {},
+              fontSize: 20,
               title: "verify".tr(),
               borderColor: Color(0xFF057EE7),
             ),

@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     16.ph,
                     CustomText(
                       "Sign Up".tr(),
-                      fontsize: 23,
+                      fontsize: 32,
                       weight: FontWeight.w500,
                       fontFamily: "Sans",
                       color: Colors.black,
@@ -49,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       weight: FontWeight.w500,
                       color: const Color(0xFF636363),
                     ),
-                    16.ph,
+                    38.ph,
                     TextFormFieldWidget(
                       onTap: () {},
                       label: "name".tr(),
@@ -92,24 +92,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                     16.ph,
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Checkbox(
-                        value: checkValue,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            checkValue = value!;
-                            print(value);
-                          });
-                        },
-                        activeColor: Color(0xFF057EE7),
+                      Transform.scale(
+                        scale: .8,
+                        child: Checkbox(
+                          value: checkValue,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              checkValue = value!;
+                              print(value);
+                            });
+                          },
+                          activeColor: Color(0xFF057EE7),
+                        ),
                       ),
                       CustomText(
                         "I agree to the ".tr(),
                         color: Color(0xff979797),
+                        fontsize: 10,
                       ),
                       GestureDetector(
                         onTap: () {},
                         child: CustomText(
                           "Terms of use".tr(),
+                          color: Color(0xFF057EE7),
+                          fontsize: 10,
                         ),
                       )
                     ]),
@@ -122,8 +128,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       },
                       title: "Sign Up".tr(),
                       borderColor: Color(0xFF057EE7),
+                      // fontFamily: "Sans",
                     ),
-                    16.ph,
+                    24.ph,
                     Row(
                       // crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -131,12 +138,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         CustomText(
                           "Already have an account?",
                           color: Color(0xff979797),
+                          fontsize: 14,
                         ),
-                        TextButtonWidget(
-                          function: () {
+                        6.pw,
+                        GestureDetector(
+                          onTap: () {
                             Navigator.pop(context);
                           },
-                          text: "Log in",
+                          child: CustomText(
+                            "Log in",
+                            color: Color(0xFF057EE7),
+                            fontsize: 14,
+                            weight: FontWeight.w400,
+                            fontFamily: "Roboto",
+                          ),
                         )
                       ],
                     ),

@@ -123,16 +123,20 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
             32.ph,
             ButtonWidget(
               onTap: () {},
+              fontSize: 20,
               title: freelanceChoose == true
                   ? "Join as a freelancer"
                   : "Join as a client",
+              fontweight: FontWeight.w500,
             ),
             16.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText("Already have an account?",
-                    color: Color(0xFFCBD1CE)),
+                CustomText(
+                  "Already have an account?",
+                  color: Color(0xFFCBD1CE),
+                ),
                 TextButton(
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(

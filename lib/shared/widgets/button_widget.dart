@@ -5,6 +5,7 @@ import 'customtext.dart';
 
 class ButtonWidget extends StatelessWidget {
   final String title;
+  final String? fontFamily;
   final double width, height, radius;
   final Widget? child;
   final Gradient? gradient;
@@ -22,6 +23,7 @@ class ButtonWidget extends StatelessWidget {
       this.width = double.infinity,
       this.height = 60.0,
       this.onTap,
+      this.fontFamily,
       this.child,
       this.fontSize,
       this.fontweight,
@@ -62,7 +64,7 @@ class ButtonWidget extends StatelessWidget {
                 weight: fontweight ?? FontWeight.w400,
                 title,
                 fontsize: fontSize ?? 16,
-                fontFamily: "Roboto",
+                fontFamily: fontFamily ?? "Roboto",
                 color: textColor ?? Colors.white,
               ),
         ),
@@ -96,7 +98,7 @@ class TextButtonWidget extends StatelessWidget {
       },
       child: CustomText(
         text,
-        weight: fontweight ?? FontWeight.w400,
+        weight: fontweight ?? FontWeight.w500,
         fontFamily: fontFamily ?? "Sans",
         fontsize: size ?? 16,
         color: color ?? AppColors.primary,

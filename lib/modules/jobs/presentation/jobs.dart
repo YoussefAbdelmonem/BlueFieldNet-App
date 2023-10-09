@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/current_jobs_Tab.dart';
@@ -69,7 +70,9 @@ class _JobsScreenState extends State<JobsScreen>
                       thickness: 10,
                     ),
                     suffixIcon: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, Routes.Filter);
+                      },
                       icon: SvgPicture.asset("assets/icons/Filter.svg"),
                     ),
                   ),

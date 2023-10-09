@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SearchItemCardWidget extends StatelessWidget {
-  const SearchItemCardWidget({Key? key}) : super(key: key);
+class AppliedItemCardWidget extends StatelessWidget {
+  const AppliedItemCardWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,27 +26,30 @@ class SearchItemCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               10.ph,
-              Row(
+               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SvgPicture.asset("assets/icons/again.svg"),
-                  8.pw,
-                  SvgPicture.asset("assets/icons/question.svg"),
-                  8.pw,
-                  SvgPicture.asset("assets/icons/carbon_favorite.svg"),
-                  8.pw,
+
                   CustomText(
                     "tax export",
                     fontFamily: "Sans",
                     fontsize: 16,
                     color: AppColors.font,
                   ),
-                  Spacer(),
-                  CustomText(
-                    "Applied for",
-                    color: AppColors.primaryColor,
-                    fontsize: 14,
-                    weight: FontWeight.w600,
-                    fontFamily: "Sans",
+
+                  Row(
+                    children: [
+                      CustomText(
+                        "Applied for",
+                        color: AppColors.primaryColor,
+                        fontsize: 14,
+                        weight: FontWeight.w600,
+                        fontFamily: "Sans",
+                      ),
+                      4.pw,
+                      Icon(Icons.favorite_border)
+                      // IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border))
+                    ],
                   )
                 ],
               ),
@@ -85,8 +88,16 @@ class SearchItemCardWidget extends StatelessWidget {
               16.ph,
               Row(
                 children: [
+                  const CustomText(
+                    "unverified",
+                    color: AppColors.black,
+                    fontFamily: "Roboto",
+                    fontsize: 14,
+                    weight: FontWeight.w600,
+                  ),
+                  8.pw,
                   RatingBar.builder(
-                    initialRating: 3,
+                    initialRating: 5,
                     minRating: 1,
                     direction: Axis.horizontal,
                     allowHalfRating: true,
@@ -103,7 +114,7 @@ class SearchItemCardWidget extends StatelessWidget {
                   ),
                   16.pw,
                   CustomText(
-                    "0\$+ Spent",
+                    "0\$+ Spent Global",
                     fontsize: 16,
                     weight: FontWeight.w600,
                     fontFamily: "Sans",

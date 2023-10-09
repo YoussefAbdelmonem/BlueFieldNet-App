@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
 import 'package:bluefieldnet/modules/auth/presentation/join_as_freelancer/complete_register.dart';
 import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/screens/filter/filter_screen.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class Routes {
   static const String notificationsScreen = "/notificationsScreen";
   static const String jobsScreen = "/jobsScreen";
   static const String post_a_jobScreen = "/postAJobScreen";
+  static const String Filter = "/filter";
 
 /////////////////////////
   static const String JobTitleWidget = "/JobTitleWidget";
@@ -109,6 +111,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return LayoutScreen();
+            });
+        case Routes.Filter:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return FilterScreen();
             });
       case Routes.messagesScreen:
         return CupertinoPageRoute(

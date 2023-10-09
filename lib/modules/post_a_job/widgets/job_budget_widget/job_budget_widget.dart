@@ -9,9 +9,7 @@ import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defi
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:bluefieldnet/shared/widgets/dropdown.dart';
-import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/Router/Router.dart';
 

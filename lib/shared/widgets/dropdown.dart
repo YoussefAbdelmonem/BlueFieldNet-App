@@ -13,6 +13,8 @@ class DropDownItem<T> extends StatefulWidget {
       this.validator,
       this.radius,
       this.hint,
+      this.color,
+      this.hintColor,
       this.itemAsString})
       : super(key: key);
   List<T> options;
@@ -22,6 +24,8 @@ class DropDownItem<T> extends StatefulWidget {
   final String? Function(T?)? validator;
   final String? title;
   final double? radius;
+  final Color? hintColor;
+  final Color? color;
   Function(T) onChanged;
 
   @override
@@ -55,18 +59,21 @@ class _DropDownItemState<T> extends State<DropDownItem<T>> {
                 color: Color(0xffA1A7AD),
               ),
             ),
-          SizedBox(
+          Container(
             height: 60,
+            color: widget.color?? Colors.white,
             child: DropdownButtonFormField<T>(
                 itemHeight: 50,
                 validator: widget.validator,
                 hint: CustomText(
                   widget.hint ?? '',
                   fontsize: 14,
-                  color: Colors.grey,
-                  fontFamily: 'candra',
+                  color: widget.hintColor??Colors.grey,
+                  fontFamily: 'Roboto',
+
                 ),
                 decoration: InputDecoration(
+
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         10,
@@ -84,6 +91,7 @@ class _DropDownItemState<T> extends State<DropDownItem<T>> {
                       borderSide: BorderSide(color: Color(0xff8CAAC5))),
                 ),
                 value: widget.inistialValue,
+
                 items: widget.options
                     .map((e) => DropdownMenuItem(
                           value: e,

@@ -17,6 +17,7 @@ class TextFormFieldWidget extends StatefulWidget {
   TextDirection? textdirection;
   EdgeInsetsDirectional? contentPadding;
   double borderRadius;
+  double ?hintSize;
   Widget? prefixIcon, suffixIcon, suffixWidget, prefixWidget;
   TextEditingController? controller;
   InputDecoration? inputDecoration;
@@ -31,6 +32,7 @@ class TextFormFieldWidget extends StatefulWidget {
       this.onSaved,
       this.isOutline,
       this.readOnly,
+      this.hintSize,
       this.enable,
       this.validator,
       this.onTap,
@@ -75,80 +77,83 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      cursorColor: AppColors.primary,
-      readOnly: widget.readOnly ?? false,
-      enabled: widget.enable ?? true,
-      validator: widget.validator,
+    return Container(
 
-      maxLength: widget.maxLengh,
-      focusNode: widget.focusNode,
+      child: TextFormField(
+        cursorColor: AppColors.primary,
+        readOnly: widget.readOnly ?? false,
+        enabled: widget.enable ?? true,
+        validator: widget.validator,
 
-      controller: widget.controller,
-      maxLines: widget.maxLines ?? 1,
-      minLines: widget.minLines,
-      // autofocus: false,
-      // expands: widget.expanded,
-      textAlign: widget.textalign,
-      textDirection: widget.textdirection,
-      style: TextStyle(
-          color: Colors.grey,
-          fontSize: 15,
-          fontFamily: 'Roboto',
-          // fontFamily:  Utils.lang == 'ar'? "Almarai" :  'graphik',
-          fontWeight: FontWeight.w300),
-      decoration: widget.inputDecoration ??
-          InputDecoration(
-              // isDense: true,
-              contentPadding: widget.contentPadding,
-              filled: true,
-              fillColor: widget.backgroundColor,
-              prefixIcon: widget.prefixIcon,
-              prefix: widget.prefixWidget,
-              suffix: widget.suffixWidget,
-              suffixIcon: widget.suffixIcon ??
-                  (isPass!
-                      ? IconButton(
-                          onPressed: () {
-                            setState(() {
-                              widget.password = !widget.password;
-                            });
-                          },
-                          icon: Icon(
-                            widget.password
-                                ? Icons.remove_red_eye_outlined
-                                : Icons.visibility_off,
-                            color: Color(0xff8CAAC5),
-                          ),
-                        )
-                      : widget.suffixIcon),
-              errorText: widget.errorText,
-              labelText: widget.label,
-              //label: TextWidget(widget.label),
-              border: borderType(isOutline: widget.isOutline),
-              focusedBorder: borderType(isOutline: widget.isOutline),
-              enabledBorder: borderType(isOutline: widget.isOutline),
-              errorBorder: borderType(isOutline: widget.isOutline),
-              labelStyle: const TextStyle(
-                color: Color(0xFF8CAAC5),
-                // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
-                fontFamily: "Roboto",
-              ),
-              hintStyle: TextStyle(
-                color: widget.hintColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
-                fontFamily: "Roboto",
-              ),
-              hintText: widget.hintText),
-      keyboardType: widget.type,
-      obscureText: widget.password,
-      onChanged: widget.onChanged,
-      onSaved: widget.onSaved,
-      onTap: () {
-        widget.onTap?.call();
-      },
+        maxLength: widget.maxLengh,
+        focusNode: widget.focusNode,
+
+        controller: widget.controller,
+        maxLines: widget.maxLines ?? 1,
+        minLines: widget.minLines,
+        // autofocus: false,
+        // expands: widget.expanded,
+        textAlign: widget.textalign,
+        textDirection: widget.textdirection,
+        style: TextStyle(
+            color: Colors.grey,
+            fontSize: 15,
+            fontFamily: 'Roboto',
+            // fontFamily:  Utils.lang == 'ar'? "Almarai" :  'graphik',
+            fontWeight: FontWeight.w300),
+        decoration: widget.inputDecoration ??
+            InputDecoration(
+                // isDense: true,
+                contentPadding: widget.contentPadding,
+                filled: true,
+                fillColor: widget.backgroundColor,
+                prefixIcon: widget.prefixIcon,
+                prefix: widget.prefixWidget,
+                suffix: widget.suffixWidget,
+                suffixIcon: widget.suffixIcon ??
+                    (isPass!
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                widget.password = !widget.password;
+                              });
+                            },
+                            icon: Icon(
+                              widget.password
+                                  ? Icons.remove_red_eye_outlined
+                                  : Icons.visibility_off,
+                              color: Color(0xff8CAAC5),
+                            ),
+                          )
+                        : widget.suffixIcon),
+                errorText: widget.errorText,
+                labelText: widget.label,
+                //label: TextWidget(widget.label),
+                border: borderType(isOutline: widget.isOutline),
+                focusedBorder: borderType(isOutline: widget.isOutline),
+                enabledBorder: borderType(isOutline: widget.isOutline),
+                errorBorder: borderType(isOutline: widget.isOutline),
+                labelStyle: const TextStyle(
+                  color: Color(0xFF8CAAC5),
+                  // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
+                  fontFamily: "Roboto",
+                ),
+                hintStyle: TextStyle(
+                  color: widget.hintColor,
+                  fontSize:widget.hintSize?? 14,
+                  fontWeight: FontWeight.w400,
+                  // fontFamily: Utils.lang == 'ar' ? "Almarai" : 'graphik',
+                  fontFamily: "Roboto",
+                ),
+                hintText: widget.hintText),
+        keyboardType: widget.type,
+        obscureText: widget.password,
+        onChanged: widget.onChanged,
+        onSaved: widget.onSaved,
+        onTap: () {
+          widget.onTap?.call();
+        },
+      ),
     );
   }
 

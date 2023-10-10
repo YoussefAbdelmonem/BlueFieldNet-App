@@ -3,6 +3,11 @@ import 'dart:io';
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
 import 'package:bluefieldnet/modules/auth/presentation/join_as_freelancer/complete_register.dart';
 import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/screens/filter/filter_screen.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/applied_for_jobs/applied_for_jobs_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/completed_contracts/completed_contracts_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/my_active_jobs/my_active_job_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +38,7 @@ class Routes {
   static const String notificationsScreen = "/notificationsScreen";
   static const String jobsScreen = "/jobsScreen";
   static const String post_a_jobScreen = "/postAJobScreen";
+  static const String Filter = "/filter";
 
 /////////////////////////
   static const String JobTitleWidget = "/JobTitleWidget";
@@ -42,6 +48,11 @@ class Routes {
   static const String JobVisibilityWidget = "/JobVisibilityWidget";
   static const String JobBudgetWidget = "/JobBudgetWidget";
   static const String JobReviewWidget = "/JobReviewWidget";
+  ///////////////
+  static const String MyActiveJobWidget = "/MyActiveJobWidget";
+  static const String AppliedForJobWidget = "/AppliedForJobWidget";
+  static const String CompleteContactWidget = "/CompleteContactWidget";
+  static const String ReportsWidget = "/ReportsWidget";
 }
 
 class RouteGenerator {
@@ -110,6 +121,12 @@ class RouteGenerator {
             builder: (_) {
               return LayoutScreen();
             });
+        case Routes.Filter:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return FilterScreen();
+            });
       case Routes.messagesScreen:
         return CupertinoPageRoute(
             settings: routeSettings,
@@ -164,6 +181,39 @@ class RouteGenerator {
             builder: (_) {
               return const JobReviewWidget();
             });
+
+      default:
+        return unDefinedRoute();
+    }
+  }
+  static Route<dynamic> getJobsNestedRoute(RouteSettings routeSettings) {
+    currentRoute = routeSettings.name.toString();
+    switch (routeSettings.name) {
+      case Routes.MyActiveJobWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const MyActiveJobWidget();
+            });
+        case Routes.AppliedForJobWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const AppliedForJobWidget();
+            });
+        case Routes.CompleteContactWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const CompleteContactWidget();
+            });
+        case Routes.ReportsWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ReportsWidget();
+            });
+
 
       default:
         return unDefinedRoute();

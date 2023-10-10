@@ -19,6 +19,7 @@ class Utils {
       locator<GlobalKey<NavigatorState>>();
   static Media get myMedia => locator<Media>();
   static GlobalKey<NavigatorState> app1Nav = GlobalKey();
+  static GlobalKey<NavigatorState> app2Nav = GlobalKey();
   static Validation get valid => locator<Validation>();
   static DataManager get dataManager => locator<DataManager>();
   static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();

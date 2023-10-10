@@ -11,7 +11,7 @@ class SearchFindJobTabWidget extends StatelessWidget {
       children: [
         ListView.builder(
           itemBuilder: (context, index) {
-            return ItemCardWidget();
+            return SearchItemCardWidget();
           },
           itemCount: 1,
           shrinkWrap: true,

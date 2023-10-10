@@ -1,13 +1,10 @@
-import 'package:bluefieldnet/core/Router/Router.dart';
-import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
-import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/widgets/add_education_button_widget.dart';
-import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/widgets/remove_education_button.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/employment/widgets/add_employment_text_button.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/employment/widgets/remove_employment_icon.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/widgets/jobs_defination_row.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
-import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -38,14 +35,14 @@ class EmploymentDashboardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
-                          "education",
+                          "Employment",
                           fontsize: 16,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
                           weight: FontWeight.w700,
                         ),
                         CustomText(
-                          "3/11",
+                          "4/11",
                           fontsize: 16,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
@@ -55,7 +52,7 @@ class EmploymentDashboardWidget extends StatelessWidget {
                     ),
                     8.ph,
                     CustomText(
-                      'Add the schools you attend , areas of study , and degrees earned. ',
+                      'Add your past work experience',
                       fontsize: 11,
                       color: Colors.black.withOpacity(0.6),
                       fontFamily: "Sans",
@@ -66,7 +63,7 @@ class EmploymentDashboardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const CustomText(
-                          "CFA Institute",
+                          "CEO/bluefiled net",
                           fontsize: 14,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
@@ -78,21 +75,21 @@ class EmploymentDashboardWidget extends StatelessWidget {
                                 onPressed: () {},
                                 icon:
                                 SvgPicture.asset("assets/icons/Edit.svg")),
-                            // RemoveEmploymentButton(),
+                            RemoveEmploymentButton(),
                           ],
                         ),
                       ],
                     ),
                     8.ph,
                     CustomText(
-                      "in financial analysis ",
+                      "January 2023 , present",
                       fontsize: 14,
                       color: Colors.black.withOpacity(0.8),
                       fontFamily: "Sans",
                       weight: FontWeight.w400,
                     ),
                     8.ph,
-                    // AddEducationButtonWidget(),
+                    AddEmploymentButtonWidget(),
                     32.ph,
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

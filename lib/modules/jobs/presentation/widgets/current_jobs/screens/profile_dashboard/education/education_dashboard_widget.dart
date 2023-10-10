@@ -113,8 +113,8 @@ class EducationDashboardWidget extends StatelessWidget {
                             width: 150,
                             height: 40,
                             onTap: () {
-                              // Navigator.pushNamed(
-                              //     context, Routes.ExpertiseLevelProfileDashboardWidget);
+                              Navigator.pushNamed(
+                                  context, Routes.EmploymentDashboardWidget);
                             },
                             title: "Next",
                             buttonColor: AppColors.buttonColor,

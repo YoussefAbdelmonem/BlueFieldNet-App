@@ -10,6 +10,7 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/my_active_jobs/my_active_job_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/notifications/notifications_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/education_dashboard_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/employment/empolyment_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/experties_level/experties_level_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/expertise/profile_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
@@ -63,6 +64,7 @@ class Routes {
   static const String ProfileDashboardWidget = "/ProfileDashboardWidget";
   static const String ExpertiseLevelProfileDashboardWidget = "/ExpertiseLevelProfileDashboardWidget";
   static const String EducationDashboardWidget = "/EducationDashboardWidget";
+  static const String EmploymentDashboardWidget = "/EmploymentDashboardWidget";
 }
 
 class RouteGenerator {
@@ -252,6 +254,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const EducationDashboardWidget();
+            });
+        case Routes.EmploymentDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const EmploymentDashboardWidget();
             });
 
 

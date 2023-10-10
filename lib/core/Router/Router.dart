@@ -6,7 +6,10 @@ import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.da
 import 'package:bluefieldnet/modules/jobs/presentation/screens/filter/filter_screen.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/applied_for_jobs/applied_for_jobs_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/completed_contracts/completed_contracts_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/inbox/inbox_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/my_active_jobs/my_active_job_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/notifications/notifications_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/profile_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
@@ -53,6 +56,9 @@ class Routes {
   static const String AppliedForJobWidget = "/AppliedForJobWidget";
   static const String CompleteContactWidget = "/CompleteContactWidget";
   static const String ReportsWidget = "/ReportsWidget";
+  static const String NotificationsFindJobWidget = "/NotificationsFindJobWidgeet";
+  static const String InboxFindJobWidget = "/InboxFindJobWidget";
+  static const String ProfileDashboardWidget = "/ProfileDashboardWidget";
 }
 
 class RouteGenerator {
@@ -212,6 +218,24 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const ReportsWidget();
+            });
+        case Routes.NotificationsFindJobWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const NotificationsFindJobWidget();
+            });
+        case Routes.InboxFindJobWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const InboxFindJobWidget();
+            });
+  case Routes.ProfileDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ProfileDashboardWidget();
             });
 
 

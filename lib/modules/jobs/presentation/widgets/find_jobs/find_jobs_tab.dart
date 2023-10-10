@@ -1,4 +1,5 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
+import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/find_jobs/widgets/apply_for_jobs/apply_for_job_tab_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/find_jobs/widgets/saved/saved_find_job_tab_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/find_jobs/widgets/search/search_tab_widget.dart';
@@ -25,10 +26,10 @@ class _FindJobsTabState extends State<FindJobsTab>with SingleTickerProviderState
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
+      child: CustomScrollView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        slivers: [
           TabBar(
               isScrollable: true,
               indicator: BoxDecoration(
@@ -89,18 +90,19 @@ class _FindJobsTabState extends State<FindJobsTab>with SingleTickerProviderState
                     color: controller.index == 2? AppColors.primaryColor : AppColors.tabBarColorUnSelected,
                   ),
                 ),
-              ]),
-          Expanded(
-              child: TabBarView(
-                controller: controller,
-                children: const [
-                  SearchFindJobTabWidget(),
-                  ApplyForJobsFindJobTabWidget(),
-                  SavedFindJobTabWidget(),
+              ]).SliverBox,
+          SizedBox(
+            height: 500,
+            child: TabBarView(
+              controller: controller,
+              children: const [
+                SearchFindJobTabWidget(),
+                ApplyForJobsFindJobTabWidget(),
+                SavedFindJobTabWidget(),
 
-                ],
-              )
-          ),
+              ],
+            ),
+          ).SliverBox,
 
 
         ],

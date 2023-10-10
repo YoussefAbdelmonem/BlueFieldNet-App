@@ -13,7 +13,7 @@ class JobDefinitionRow extends StatelessWidget {
     return Container(
       width: 500,
       height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: ShapeDecoration(
         color: Color(0xFF20384B),
         shape:

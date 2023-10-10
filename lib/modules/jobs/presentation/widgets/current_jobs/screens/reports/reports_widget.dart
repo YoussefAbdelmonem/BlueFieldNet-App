@@ -130,8 +130,8 @@ class _ReportsWidgetState extends State<ReportsWidget>
                 width: 150,
                 height: 40,
                 onTap: () {
-                  // Navigator.pushNamed(
-                  //     context, Routes.CompleteContactWidget);
+                  Navigator.pushNamed(
+                      context, Routes.NotificationsFindJobWidget);
                 },
                 title: "Next",
                 buttonColor: AppColors.buttonColor,

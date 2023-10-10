@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class AppConfig {
-  static const baseUrl = "https://api.pertoot.com/";
+  static const baseUrl = "http://bluefieldnet.techunits.net/api/";
 }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {

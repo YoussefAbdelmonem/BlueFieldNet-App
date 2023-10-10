@@ -1,6 +1,7 @@
 import 'package:bluefieldnet/core/utiles/validations.dart';
 import 'package:flutter/material.dart';
 
+import '../../modules/auth/domain/model/auth_model.dart';
 import '../data_source/PrefService.dart';
 import '../data_source/local_hive.dart';
 import '../helpers/media.dart';
@@ -12,7 +13,7 @@ class Utils {
   static String token = '';
   static String lang = '';
   static String FCMToken = '';
-  // static UserModel userModel = UserModel();
+  static UserModel userModel = UserModel();
 
   static GlobalKey<NavigatorState> navigatorKey() =>
       locator<GlobalKey<NavigatorState>>();
@@ -21,6 +22,11 @@ class Utils {
   static Validation get valid => locator<Validation>();
   static DataManager get dataManager => locator<DataManager>();
   static GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  static saveUserInHive(Map<String, dynamic> response) async {
+    userModel = UserModel.fromJson(response);
+    token = userModel.token ?? '';
+    await Utils.dataManager.saveUser(Map<String, dynamic>.from(response));
+  }
 
   static setToken(String token) {
     Utils.token = token;

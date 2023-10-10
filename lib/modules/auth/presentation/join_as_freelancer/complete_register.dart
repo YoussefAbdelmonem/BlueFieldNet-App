@@ -9,8 +9,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../shared/widgets/customtext.dart';
 
 class CompleteRegisterScreen extends StatefulWidget {
-  CompleteRegisterScreen({Key? key}) : super(key: key);
-
+  CompleteRegisterScreen({Key? key, required this.onPressed}) : super(key: key);
+  final void Function(String s)? onPressed;
   @override
   State<CompleteRegisterScreen> createState() => _CompleteRegisterScreenState();
 }
@@ -122,7 +122,10 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
             ),
             32.ph,
             ButtonWidget(
-              onTap: () {},
+              onTap: () {
+                widget.onPressed
+                    ?.call(freelanceChoose == true ? "freelancer" : "client");
+              },
               fontSize: 20,
               title: freelanceChoose == true
                   ? "Join as a freelancer"

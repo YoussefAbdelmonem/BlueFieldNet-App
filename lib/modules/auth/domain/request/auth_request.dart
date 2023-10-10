@@ -5,6 +5,7 @@ class AuthRequest {
   String? name;
   String? email;
   String? phone;
+  String? code;
   String? type;
   String? createdAt;
   String? token;
@@ -29,9 +30,8 @@ class AuthRequest {
     return <String, dynamic>{
       'name': name,
       'email': email,
-      'phone': phone,
+      'phone': "${code}${phone}",
       'type': type,
-      'createdAt': createdAt,
       'password': password,
       'agree': agree,
       'password_confirmation': password_confirmation,

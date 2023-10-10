@@ -19,7 +19,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
     if (response != null) {
       emit(RegisterSucces());
-
+      await Utils.saveUserInHive(response);
       return true;
     } else {
       emit(RegisterError());

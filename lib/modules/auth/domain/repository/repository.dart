@@ -14,7 +14,7 @@ class AuthRepository {
     final response = await dioService.postData(
         url: AuthEndPoints.login, body: user.login(), loading: true);
     if (response.isError == false) {
-      return UserModel.fromJson(response.response?.data['data']);
+      return response.response?.data['data'];
     } else {
       return null;
     }
@@ -24,7 +24,7 @@ class AuthRepository {
     final response = await dioService.postData(
         url: AuthEndPoints.register, body: user.register(), loading: true);
     if (response.isError == false) {
-      return UserModel.fromJson(response.response?.data['data']);
+      return response.response?.data['data'];
     } else {
       return null;
     }

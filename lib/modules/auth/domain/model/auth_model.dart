@@ -33,13 +33,4 @@ class UserModel {
     data['token'] = this.token;
     return data;
   }
-
-  Map<String, dynamic> login() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['email'] = this.email;
-
-    data['password'] = this.password;
-    data['fcm_token'] = this.fcm_token;
-    return data;
-  }
 }

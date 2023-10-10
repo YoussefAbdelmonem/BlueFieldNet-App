@@ -15,6 +15,7 @@ import 'dart:developer';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../modules/auth/domain/model/auth_model.dart';
 import '../utiles/utiles.dart';
 
 class DataManager {
@@ -25,6 +26,8 @@ class DataManager {
 
   Future initHive() async {
     await Hive.initFlutter();
+    userData = await Hive.openBox('dataUser');
+
     // final directory = await getApplicationDocumentsDirectory();
     // collection = await BoxCollection.open(
     //   'dataManager', // Name of your database
@@ -42,7 +45,7 @@ class DataManager {
 
   saveUser(Map<String, dynamic> value) async {
     // await Hive.initFlutter();
-    final userData = await Hive.openBox('dataUser');
+    // final userData = await Hive.openBox('dataUser');
     await userData.put(USER, value);
     userData.close();
   }
@@ -55,15 +58,15 @@ class DataManager {
   }
 
   getUserData() async {
-    final userData = await Hive.openBox('dataUser');
+    // final userData = await Hive.openBox('dataUser');
 
     try {
       final user = (Map<String, dynamic>.from(userData.get(USER)));
 
-      Utils.token = user['access_token'];
+      Utils.token = user['token'];
       log(Utils.token);
 
-      //Uncomment this    Utils.userModel = UserModel.fromHive(Map<String, dynamic>.from(user));
+      Utils.userModel = UserModel.fromJson(Map<String, dynamic>.from(user));
 
       return userData.get(USER);
     } catch (e) {
@@ -73,7 +76,7 @@ class DataManager {
   }
 
   deleteUserData() async {
-    final userData = await Hive.openBox('dataUser');
+    // final userData = await Hive.openBox('dataUser');
 
     return userData.delete(USER);
   }

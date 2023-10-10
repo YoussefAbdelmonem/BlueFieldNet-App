@@ -59,10 +59,12 @@ class Routes {
   static const String AppliedForJobWidget = "/AppliedForJobWidget";
   static const String CompleteContactWidget = "/CompleteContactWidget";
   static const String ReportsWidget = "/ReportsWidget";
-  static const String NotificationsFindJobWidget = "/NotificationsFindJobWidgeet";
+  static const String NotificationsFindJobWidget =
+      "/NotificationsFindJobWidgeet";
   static const String InboxFindJobWidget = "/InboxFindJobWidget";
   static const String ProfileDashboardWidget = "/ProfileDashboardWidget";
-  static const String ExpertiseLevelProfileDashboardWidget = "/ExpertiseLevelProfileDashboardWidget";
+  static const String ExpertiseLevelProfileDashboardWidget =
+      "/ExpertiseLevelProfileDashboardWidget";
   static const String EducationDashboardWidget = "/EducationDashboardWidget";
   static const String EmploymentDashboardWidget = "/EmploymentDashboardWidget";
 }
@@ -125,7 +127,9 @@ class RouteGenerator {
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
-              return CompleteRegisterScreen();
+              return CompleteRegisterScreen(
+                onPressed: routeSettings.arguments as void Function(String),
+              );
             });
       case Routes.layoutScreen:
         return CupertinoPageRoute(
@@ -133,7 +137,7 @@ class RouteGenerator {
             builder: (_) {
               return LayoutScreen();
             });
-        case Routes.Filter:
+      case Routes.Filter:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
@@ -198,6 +202,7 @@ class RouteGenerator {
         return unDefinedRoute();
     }
   }
+
   static Route<dynamic> getJobsNestedRoute(RouteSettings routeSettings) {
     currentRoute = routeSettings.name.toString();
     switch (routeSettings.name) {
@@ -207,61 +212,60 @@ class RouteGenerator {
             builder: (_) {
               return const MyActiveJobWidget();
             });
-        case Routes.AppliedForJobWidget:
+      case Routes.AppliedForJobWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const AppliedForJobWidget();
             });
-        case Routes.CompleteContactWidget:
+      case Routes.CompleteContactWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const CompleteContactWidget();
             });
-        case Routes.ReportsWidget:
+      case Routes.ReportsWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const ReportsWidget();
             });
-        case Routes.NotificationsFindJobWidget:
+      case Routes.NotificationsFindJobWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const NotificationsFindJobWidget();
             });
-        case Routes.InboxFindJobWidget:
+      case Routes.InboxFindJobWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const InboxFindJobWidget();
             });
-  case Routes.ProfileDashboardWidget:
+      case Routes.ProfileDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const ProfileDashboardWidget();
             });
-        case Routes.ExpertiseLevelProfileDashboardWidget:
+      case Routes.ExpertiseLevelProfileDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const ExpertiseLevelProfileDashboardWidget();
             });
-        case Routes.EducationDashboardWidget:
+      case Routes.EducationDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const EducationDashboardWidget();
             });
-        case Routes.EmploymentDashboardWidget:
+      case Routes.EmploymentDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const EmploymentDashboardWidget();
             });
-
 
       default:
         return unDefinedRoute();

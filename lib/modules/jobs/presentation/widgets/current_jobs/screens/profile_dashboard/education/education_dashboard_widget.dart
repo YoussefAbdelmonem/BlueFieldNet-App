@@ -1,14 +1,18 @@
 import 'package:bluefieldnet/core/Router/Router.dart';
+import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/widgets/add_education_button_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/widgets/remove_education_button.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/widgets/jobs_defination_row.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class ProfileDashboardWidget extends StatelessWidget {
-  const ProfileDashboardWidget({Key? key}) : super(key: key);
+class EducationDashboardWidget extends StatelessWidget {
+  const EducationDashboardWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +38,14 @@ class ProfileDashboardWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomText(
-                          "expertise",
+                          "education",
                           fontsize: 16,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
                           weight: FontWeight.w700,
                         ),
                         CustomText(
-                          "1/11",
+                          "3/11",
                           fontsize: 16,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
@@ -51,77 +55,44 @@ class ProfileDashboardWidget extends StatelessWidget {
                     ),
                     8.ph,
                     CustomText(
-                      'Tell us about the work you do',
-                      fontsize: 15,
+                      'Add the schools you attend , areas of study , and degrees earned. ',
+                      fontsize: 11,
                       color: Colors.black.withOpacity(0.6),
                       fontFamily: "Sans",
-                      weight: FontWeight.w600,
+                      weight: FontWeight.w400,
                     ),
                     16.ph,
-                    const CustomText(
-                      'What is the main services you offer ?',
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CustomText(
+                          "CFA Institute",
+                          fontsize: 14,
+                          color: Color(0xFF20384B),
+                          fontFamily: "Sans",
+                          weight: FontWeight.w500,
+                        ),
+                        Row(
+                          children: [
+                            IconButton(
+                                onPressed: () {},
+                                icon:
+                                    SvgPicture.asset("assets/icons/Edit.svg")),
+                            RemoveEducationButton(),
+                          ],
+                        ),
+                      ],
+                    ),
+                    8.ph,
+                    CustomText(
+                      "in financial analysis ",
                       fontsize: 14,
-                      color: Colors.black,
+                      color: Colors.black.withOpacity(0.8),
                       fontFamily: "Sans",
-                      weight: FontWeight.w500,
+                      weight: FontWeight.w400,
                     ),
                     8.ph,
-                    TextFormFieldWidget(
-                      hintText: "Accounting & Bookkeeping",
-                      backgroundColor: AppColors.additionalButtonColor,
-                      // borderColor: Colors.white,
-                      activeBorderColor: Colors.white,
-
-                      hintSize: 12,
-                    ),
-                    16.ph,
-                    const CustomText(
-                      'Select up to 5 types of work.',
-                      fontsize: 14,
-                      color: AppColors.primaryColor,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    8.ph,
-                    CheckboxListTile(
-                      value: true,
-                      onChanged: (e) {},
-                      title: const CustomText(
-                        '1.Accounting & Bookkeeping',
-                        fontsize: 14,
-                        color: Colors.black,
-                        fontFamily: "Sans",
-                        weight: FontWeight.w500,
-                      ),
-                      dense: true,
-                      activeColor: Colors.black.withOpacity(0.6),
-
-                      controlAffinity: ListTileControlAffinity.leading,
-                    ),
-                    8.ph,
-                    const CustomText(
-                      'What is the main services you offer ?',
-                      fontsize: 14,
-                      color: Colors.black,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    8.ph,
-                    const CustomText(
-                      'Enter up to 8 more skills',
-                      fontsize: 12,
-                      color: AppColors.primaryColor,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    TextFormFieldWidget(
-                      maxLines: 6,
-                      minLines: 5,
-                      hintText: "Choose some options.....",
-                      backgroundColor: AppColors.additionalButtonColor,
-                      activeBorderColor: Colors.white,
-                    ),
+                    AddEducationButtonWidget(),
                     32.ph,
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,8 +113,8 @@ class ProfileDashboardWidget extends StatelessWidget {
                             width: 150,
                             height: 40,
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, Routes.CompleteContactWidget);
+                              // Navigator.pushNamed(
+                              //     context, Routes.ExpertiseLevelProfileDashboardWidget);
                             },
                             title: "Next",
                             buttonColor: AppColors.buttonColor,

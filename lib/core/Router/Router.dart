@@ -9,7 +9,9 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/inbox/inbox_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/my_active_jobs/my_active_job_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/notifications/notifications_widget.dart';
-import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/profile_dashboard_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/education_dashboard_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/experties_level/experties_level_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/expertise/profile_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
@@ -59,6 +61,8 @@ class Routes {
   static const String NotificationsFindJobWidget = "/NotificationsFindJobWidgeet";
   static const String InboxFindJobWidget = "/InboxFindJobWidget";
   static const String ProfileDashboardWidget = "/ProfileDashboardWidget";
+  static const String ExpertiseLevelProfileDashboardWidget = "/ExpertiseLevelProfileDashboardWidget";
+  static const String EducationDashboardWidget = "/EducationDashboardWidget";
 }
 
 class RouteGenerator {
@@ -237,6 +241,18 @@ class RouteGenerator {
             builder: (_) {
               return const ProfileDashboardWidget();
             });
+        case Routes.ExpertiseLevelProfileDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ExpertiseLevelProfileDashboardWidget();
+            });
+        case Routes.EducationDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const EducationDashboardWidget();
+            });
 
 
       default:
@@ -255,26 +271,26 @@ class RouteGenerator {
   }
 }
 
-class PostsArgs {
-  final String title;
-  final String? categoryKey;
-  PostsArgs({required this.title, this.categoryKey});
-}
-
-class ShowingImagesArgs {
-  final String title;
-  final List<File> images;
-  ShowingImagesArgs({required this.title, required this.images});
-}
-
-class OtpArguments {
-  final String sendTo;
-  final dynamic Function(String) onSubmit;
-  final void Function() onReSend;
-
-  OtpArguments({
-    required this.sendTo,
-    required this.onSubmit,
-    required this.onReSend,
-  });
-}
+// class PostsArgs {
+//   final String title;
+//   final String? categoryKey;
+//   PostsArgs({required this.title, this.categoryKey});
+// }
+//
+// class ShowingImagesArgs {
+//   final String title;
+//   final List<File> images;
+//   ShowingImagesArgs({required this.title, required this.images});
+// }
+//
+// class OtpArguments {
+//   final String sendTo;
+//   final dynamic Function(String) onSubmit;
+//   final void Function() onReSend;
+//
+//   OtpArguments({
+//     required this.sendTo,
+//     required this.onSubmit,
+//     required this.onReSend,
+//   });
+// }

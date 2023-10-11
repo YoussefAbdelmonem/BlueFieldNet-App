@@ -3,6 +3,9 @@ import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../cubit/cubit.dart';
+
 enum Item { one, two, three }
 
 class ProjectToggleWidget extends StatefulWidget {
@@ -21,7 +24,6 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
 
   Color getIconColor(Item item) {
     return selectedItem == item ? AppColors.primaryColor : AppColors.grey;
-
   }
 
   void selectItem(Item item) {
@@ -30,26 +32,23 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
       print(selectedItem);
     });
   }
+
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    final cubit = PostAJobCubit.get(context);
+
+    return Row(
       children: [
         Expanded(
-
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
+              cubit.postAJobRequest.visibility = "One-time project";
               selectedItem = Item.one;
-              setState(() {
-
-              });
+              setState(() {});
             },
             child: Container(
-
               height: 120,
-              padding: EdgeInsets.symmetric(
-                  horizontal: 12
-              ),
-
+              padding: EdgeInsets.symmetric(horizontal: 12),
               decoration: ShapeDecoration(
                 color: Color(0xFFF5F5F5),
                 shape: RoundedRectangleBorder(
@@ -61,7 +60,10 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset("assets/icons/time.svg",color: getIconColor(Item.one),),
+                  SvgPicture.asset(
+                    "assets/icons/time.svg",
+                    color: getIconColor(Item.one),
+                  ),
                   8.ph,
                   CustomText(
                     'One-time project',
@@ -86,21 +88,14 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
         ),
         8.pw,
         Expanded(
-
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               selectedItem = Item.two;
-              setState(() {
-
-              });
+              setState(() {});
             },
             child: Container(
-
               height: 120,
-              padding: EdgeInsets.symmetric(
-                  horizontal: 12
-              ),
-
+              padding: EdgeInsets.symmetric(horizontal: 12),
               decoration: ShapeDecoration(
                 color: Color(0xFFF5F5F5),
                 shape: RoundedRectangleBorder(
@@ -112,7 +107,10 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset("assets/icons/ongoing.svg",color: getIconColor(Item.two),),
+                  SvgPicture.asset(
+                    "assets/icons/ongoing.svg",
+                    color: getIconColor(Item.two),
+                  ),
                   8.ph,
                   CustomText(
                     'Ongoing project',
@@ -136,23 +134,15 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
           ),
         ),
         8.pw,
-
         Expanded(
-
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               selectedItem = Item.three;
-              setState(() {
-
-              });
+              setState(() {});
             },
             child: Container(
-
               height: 120,
-              padding: EdgeInsets.symmetric(
-                  horizontal: 12
-              ),
-
+              padding: EdgeInsets.symmetric(horizontal: 12),
               decoration: ShapeDecoration(
                 color: Color(0xFFF5F5F5),
                 shape: RoundedRectangleBorder(
@@ -164,7 +154,10 @@ class _ProjectToggleWidgetState extends State<ProjectToggleWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset("assets/icons/complex.svg",color:  getIconColor(Item.three),),
+                  SvgPicture.asset(
+                    "assets/icons/complex.svg",
+                    color: getIconColor(Item.three),
+                  ),
                   8.ph,
                   CustomText(
                     'Complex projec',

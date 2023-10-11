@@ -14,6 +14,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import '../../../../core/Router/Router.dart';
+import '../../cubit/cubit.dart';
 
 class JobVisibilityWidget extends StatefulWidget {
   const JobVisibilityWidget({Key? key}) : super(key: key);
@@ -27,6 +28,7 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(

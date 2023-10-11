@@ -1,5 +1,4 @@
 import 'package:bluefieldnet/core/Router/Router.dart';
-import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/education/widgets/add_education_button_widget.dart';
@@ -7,7 +6,6 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/widgets/jobs_defination_row.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
-import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

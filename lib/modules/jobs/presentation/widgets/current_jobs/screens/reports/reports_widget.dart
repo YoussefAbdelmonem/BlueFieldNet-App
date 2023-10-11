@@ -37,7 +37,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-             JobDefinitionRow(title: "Reports"),
+            JobDefinitionRow(title: "Reports"),
             16.ph,
             Expanded(
               child: Container(
@@ -48,13 +48,10 @@ class _ReportsWidgetState extends State<ReportsWidget>
                   children: [
                     TabBar(
                         isScrollable: true,
-
                         labelPadding: EdgeInsets.only(
                           left: 16,
                         ),
                         indicator: BoxDecoration(),
-
-
                         unselectedLabelColor: Colors.grey,
                         onTap: (index) {
                           print(tabController.index);
@@ -106,7 +103,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                         ClearnessIsRequestedWidget(),
                         PaidAndClearedWidget(),
                       ],
-                          controller: tabController,
+                      controller: tabController,
                     )),
                   ],
                 ),

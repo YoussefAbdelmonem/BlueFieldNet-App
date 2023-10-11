@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/employment/widgets/add_employment_text_button.dart';
@@ -110,8 +111,8 @@ class EmploymentDashboardWidget extends StatelessWidget {
                             width: 150,
                             height: 40,
                             onTap: () {
-                              // Navigator.pushNamed(
-                              //     context, Routes.ExpertiseLevelProfileDashboardWidget);
+                              Navigator.pushNamed(
+                                  context, Routes.LanguageDashboardWidget);
                             },
                             title: "Next",
                             buttonColor: AppColors.buttonColor,

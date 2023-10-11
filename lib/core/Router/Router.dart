@@ -13,6 +13,8 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/employment/empolyment_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/experties_level/experties_level_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/expertise/profile_dashboard_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/horly_rate/horly_rate_wiget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/language/language_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
@@ -67,6 +69,8 @@ class Routes {
       "/ExpertiseLevelProfileDashboardWidget";
   static const String EducationDashboardWidget = "/EducationDashboardWidget";
   static const String EmploymentDashboardWidget = "/EmploymentDashboardWidget";
+  static const String LanguageDashboardWidget = "/LanguageDashboardWidget";
+  static const String HourlyRateDashboardWidget = "/HourlyRateDashboardWidget";
 }
 
 class RouteGenerator {
@@ -265,6 +269,18 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const EmploymentDashboardWidget();
+            });
+        case Routes.LanguageDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const LanguageDashboardWidget();
+            });
+        case Routes.HourlyRateDashboardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const HourlyRateDashboardWidget();
             });
 
       default:

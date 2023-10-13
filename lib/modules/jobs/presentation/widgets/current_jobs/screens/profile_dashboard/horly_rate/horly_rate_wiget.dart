@@ -60,96 +60,205 @@ class HourlyRateDashboardWidget extends StatelessWidget {
                     ),
                     16.ph,
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText(
+                        const CustomText(
                           "Hourly Rate",
                           fontsize: 16,
                           color: Color(0xFF20384B),
                           fontFamily: "Sans",
                           weight: FontWeight.w700,
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.black
+                        Row(
+                          children: [
+                            Container(
+
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.black
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
+                              margin: const EdgeInsets.only(right: 8),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomText(
+                                    "\$",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                  // Spacer(),
+                                  CustomText(
+                                    "1",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(4),
-
-                          ),
-                          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              CustomText(
-                                "\$",
-                                fontsize: 14,
-                                color: AppColors.primaryColor,
-                                fontFamily: "Sans",
-                                weight: FontWeight.w500,
-                              ),
-
-                              CustomText(
-                                "1",
-                                fontsize: 14,
-                                color: AppColors.primaryColor,
-                                fontFamily: "Sans",
-                                weight: FontWeight.w500,
-                              ),
-                            ],
-                          ),
+                            4.pw,
+                            const CustomText(
+                              "/hr",
+                              fontsize: 16,
+                              color: Colors.black,
+                              fontFamily: "Sans",
+                              weight: FontWeight.w500,
+                            ),
+                          ],
                         )
                       ],
                     ),
-
                     8.ph,
-
+                    const CustomText(
+                      'Total amount the client will see ',
+                      fontsize: 16,
+                      color: Colors.black,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w400,
+                    ),
                     16.ph,
+                    ////////////Secind/////////////////
                     Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black
-                              ),
-                              borderRadius: BorderRadius.circular(4),
+                        const CustomText(
+                          "Uplance services fee  ",
+                          fontsize: 16,
+                          color: Color(0xFF20384B),
+                          fontFamily: "Sans",
+                          weight: FontWeight.w700,
+                        ),
+                        Row(
+                          children: [
+                            Container(
 
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.black
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
+                              margin: const EdgeInsets.only(right: 8),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomText(
+                                    "\$",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                  // Spacer(),
+                                  CustomText(
+                                    "0.10",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                            child: CustomText(
-                              "+ English",
+                            4.pw,
+                            const CustomText(
+                              "/hr",
                               fontsize: 16,
                               color: Colors.black,
                               fontFamily: "Sans",
-                              weight: FontWeight.w700,
+                              weight: FontWeight.w500,
                             ),
-                          ),
-                        ),
-                        8.pw,
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black
-                              ),
-                              borderRadius: BorderRadius.circular(4),
-
-                            ),
-                            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 4),
-                            child: CustomText(
-                              "+ English",
-                              fontsize: 16,
-                              color: Colors.black,
-                              fontFamily: "Sans",
-                              weight: FontWeight.w700,
-                            ),
-                          ),
-                        ),
-                        8.pw,
-                        IconButton(onPressed: (){}, icon: SvgPicture.asset("assets/icons/Delete.svg"))
+                          ],
+                        )
                       ],
                     ),
+                    8.ph,
+                    const CustomText(
+                      'our services fee is 10%',
+                      fontsize: 16,
+                      color: Colors.black,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w400,
+                    ),
+
+                    16.ph,
+                    //////////////
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CustomText(
+                          "You will receive ",
+                          fontsize: 16,
+                          color: Color(0xFF20384B),
+                          fontFamily: "Sans",
+                          weight: FontWeight.w700,
+                        ),
+                        Row(
+                          children: [
+                            Container(
+
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Colors.black
+                                ),
+                                borderRadius: BorderRadius.circular(4),
+
+                              ),
+                              padding: const EdgeInsets.symmetric(horizontal: 70, vertical: 4),
+                              margin: const EdgeInsets.only(right: 8),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  CustomText(
+                                    "\$",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                  // Spacer(),
+                                  CustomText(
+                                    "0.90",
+                                    fontsize: 14,
+                                    color: AppColors.primaryColor,
+                                    fontFamily: "Sans",
+                                    weight: FontWeight.w500,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            4.pw,
+                            const CustomText(
+                              "/hr",
+                              fontsize: 16,
+                              color: Colors.black,
+                              fontFamily: "Sans",
+                              weight: FontWeight.w500,
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    8.ph,
+                    const CustomText(
+                      'The estimated amount you will receive after services fee',
+                      fontsize: 13,
+                      color: Colors.black,
+                      fontFamily: "Sans",
+                      weight: FontWeight.w400,
+                    ),
+
+
+
                     32.ph,
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,8 +279,8 @@ class HourlyRateDashboardWidget extends StatelessWidget {
                             width: 150,
                             height: 40,
                             onTap: () {
-                              // Navigator.pushNamed(
-                              //     context, Routes.EmploymentDashboardWidget);
+                              Navigator.pushNamed(
+                                  context, Routes.TitleDashBoardWidget);
                             },
                             title: "Next",
                             buttonColor: AppColors.buttonColor,

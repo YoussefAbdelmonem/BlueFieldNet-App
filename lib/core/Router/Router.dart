@@ -15,6 +15,11 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/expertise/profile_dashboard_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/horly_rate/horly_rate_wiget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/language/language_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/location/location_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/phone/phone_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/profile_photo/profile_photo_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/stripe/stripe_widget.dart';
+import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/profile_dashboard/title/title_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
@@ -71,6 +76,11 @@ class Routes {
   static const String EmploymentDashboardWidget = "/EmploymentDashboardWidget";
   static const String LanguageDashboardWidget = "/LanguageDashboardWidget";
   static const String HourlyRateDashboardWidget = "/HourlyRateDashboardWidget";
+  static const String TitleDashBoardWidget = "/TitleDashBoardWidget";
+  static const String ProfilePhotoDashBoardWidget = "/ProfilePhotoDashBoardWidget";
+  static const String PhoneDashBoardWidget = "/PhoneDashBoardWidget";
+  static const String LocationDashBoardWidget = "/LocationDashBoardWidget";
+  static const String StripDashBoardWidget = "/StripDashBoardWidget";
 }
 
 class RouteGenerator {
@@ -281,6 +291,36 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const HourlyRateDashboardWidget();
+            });
+        case Routes.TitleDashBoardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const TitleDashBoardWidget();
+            });
+        case Routes.ProfilePhotoDashBoardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ProfilePhotoDashBoardWidget();
+            });
+        case Routes.PhoneDashBoardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const PhoneDashBoardWidget();
+            });
+        case Routes.LocationDashBoardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const LocationDashBoardWidget();
+            });
+        case Routes.StripDashBoardWidget:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const StripDashBoardWidget();
             });
 
       default:

@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../shared/widgets/myLoading.dart';
 import '../config/config.dart';
@@ -135,7 +137,7 @@ class DioService {
 
   getDioException({
     required DioException e,
-  }) {
+  }) async {
     log("---------------autherrr");
     MyLoading.dismis();
 
@@ -155,8 +157,17 @@ class DioService {
       if (e.response?.data["info"]?.contains("Unauthenticated") ?? false) {
         // Utils.removeToken();
       }
-      if (e.response!.statusCode == 401) {
-        // Utils.removeToken();
+      if (e.response?.statusCode == 401) {
+        await Utils.dataManager.deleteUserData();
+        Navigator.of(Utils.navigatorKey().currentContext!)
+            .pushNamedAndRemoveUntil(
+          Routes.AuthScreen,
+          (route) => false,
+        );
+        // Utils.navKey.currentState!.pushNamedAndRemoveUntil(
+        //   "/login",
+        //   (route) => false,
+        // );
       }
     } else if (DioExceptionType.connectionError == e.type) {
       if (e.message!.contains('SocketException')) {

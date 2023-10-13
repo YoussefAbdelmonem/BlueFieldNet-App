@@ -9,6 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
+import '../../../../shared/widgets/multi_choise_dropdown.dart';
+import '../../cubit/cubit.dart';
+import '../../domain/model/post_a_job_model.dart';
+
 class JobExpertiseWidget extends StatefulWidget {
   const JobExpertiseWidget({Key? key}) : super(key: key);
 
@@ -17,15 +21,17 @@ class JobExpertiseWidget extends StatefulWidget {
 }
 
 class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-  ];
-  List<String> selectedItems = [];
+  // final List<String> items = [
+  //   'Item1',
+  //   'Item2',
+  //   'Item3',
+  //   'Item4',
+  // ];
+  // List<String> selectedItems = [];
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -62,8 +68,17 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton2<String>(
+                        child: MultiSelectDropDown<Skills>(
+                          items: () => cubit.postJobData?.skills ?? [],
+                          onChange: (s) {
+                            cubit.postAJobRequest.skill_id = s
+                                .map((e) => e.id.toString())
+                                .toList(growable: false);
+                          },
+                          itemAsString: (p0) => p0.title ?? '',
+                        ),
+                        /*      child: DropdownButtonHideUnderline(
+                          child: DropdownButton2<Skills>(
                             // isExpanded: true,
 
                             hint: CustomText(
@@ -73,7 +88,7 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                               fontFamily: "Sans",
                               weight: FontWeight.w500,
                             ),
-                            items: items.map((item) {
+                            items: cubit.postJobData?.skills?.map((item) {
                               return DropdownMenuItem(
                                 value: item,
                                 //disable default onTap to avoid closing menu when selecting an item
@@ -81,13 +96,16 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
 
                                 child: StatefulBuilder(
                                   builder: (context, menuSetState) {
-                                    final isSelected =
-                                        selectedItems.contains(item);
+                                    final isSelected = cubit
+                                        .postAJobRequest.skill_id
+                                        ?.contains(item.id.toString());
                                     return InkWell(
                                       onTap: () {
-                                        isSelected
-                                            ? selectedItems.remove(item)
-                                            : selectedItems.add(item);
+                                        isSelected == true
+                                            ? cubit.postAJobRequest.skill_id
+                                                ?.remove(item.id.toString())
+                                            : cubit.postAJobRequest.skill_id
+                                                ?.add(item.id.toString());
                                         //This rebuilds the StatefulWidget to update the button's text
                                         setState(() {});
                                         //This rebuilds the dropdownMenu Widget to update the check mark
@@ -99,7 +117,7 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                                             horizontal: 16.0),
                                         child: Row(
                                           children: [
-                                            if (isSelected)
+                                            if (isSelected == true)
                                               const Icon(
                                                   Icons.check_box_outlined)
                                             else
@@ -108,7 +126,7 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                                             const SizedBox(width: 16),
                                             Expanded(
                                               child: Text(
-                                                item,
+                                                item.title ?? '',
                                                 style: const TextStyle(
                                                   fontSize: 14,
                                                 ),
@@ -124,9 +142,9 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                             }).toList(),
                             isDense: true,
                             //Use last selected item as the current value so if we've limited menu height, it scroll to last item.
-                            value: selectedItems.isEmpty
+                            value: cubit.postJobData?.skills?.isEmpty == true
                                 ? null
-                                : selectedItems.last,
+                                : cubit.postJobData?.skills?.last,
                             onChanged: (value) {},
                             selectedItemBuilder: (context) {
                               return items.map(
@@ -156,6 +174,7 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
                             ),
                           ),
                         ),
+                     */
                       ),
                     ],
                   ),

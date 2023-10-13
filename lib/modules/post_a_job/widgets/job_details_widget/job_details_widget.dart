@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/Router/Router.dart';
+import '../../cubit/cubit.dart';
 
 class JobDetailsWidget extends StatefulWidget {
   const JobDetailsWidget({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -58,16 +61,23 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Row(children: [
-                        Checkbox(
-                            value: checkVal,
+                        Checkbox.adaptive(
+                            value:
+                                cubit.postAJobRequest.screening_question_id ==
+                                    cubit.postJobData?.questions?[index].id
+                                        .toString(),
                             onChanged: (bool? v) {
                               setState(() {
-                                checkVal = v!;
+                                cubit.postAJobRequest.screening_question_id =
+                                    cubit.postJobData?.questions?[index].id
+                                        .toString();
+                                print(cubit
+                                    .postAJobRequest.screening_question_id);
                               });
                             }),
                         8.pw,
-                        const CustomText(
-                          'Do you have any questions about the job description?',
+                        CustomText(
+                          cubit.postJobData?.questions?[index].question ?? '',
                           fontsize: 10,
                           color: AppColors.font,
                           fontFamily: "Sans",
@@ -75,7 +85,7 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
                         ),
                       ]);
                     },
-                    itemCount: 4,
+                    itemCount: cubit.postJobData?.questions?.length ?? 0,
                     shrinkWrap: true,
                   ),
                   16.ph,
@@ -88,12 +98,12 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
                   ),
                   16.ph,
                   Row(children: [
-                    Checkbox(
-                        value: checkVal,
+                    Checkbox.adaptive(
+                        value: cubit.postAJobRequest.cover_letter == "1",
                         onChanged: (bool? v) {
-                          setState(() {
-                            checkVal = v!;
-                          });
+                          setState(() {});
+                          cubit.postAJobRequest.cover_letter =
+                              v == true ? "1" : null;
                         }),
                     8.pw,
                     const CustomText(

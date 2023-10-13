@@ -1,1 +1,3 @@
-// class SplashEndPoints {}
+class ProfileEndPoints {
+  
+}

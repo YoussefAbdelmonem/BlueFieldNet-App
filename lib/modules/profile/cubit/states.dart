@@ -1,3 +1,4 @@
 abstract class ProfileStates {}
 
-class SplashInitial extends ProfileStates {}
+class ProfileInitial extends ProfileStates {}
+

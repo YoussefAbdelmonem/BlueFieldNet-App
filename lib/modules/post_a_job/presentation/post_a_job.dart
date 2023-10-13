@@ -80,14 +80,6 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                               initialRoute: Routes.JobTitleWidget,
                             ),
                           ),
-
-                          // JobDescriptionWidget()
-                          // JobDetailsWidget()
-                          // JobExpertiseWidget()
-                          // JobVisibilityWidget()
-                          // ,
-                          // JobVisibilityWidget()
-                          // JobBudgetWidget()
                         ],
                       ),
                     );

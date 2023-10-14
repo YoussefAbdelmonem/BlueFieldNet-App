@@ -1,0 +1,3 @@
+class ProfileRequest {
+  String? page;
+}

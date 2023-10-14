@@ -35,6 +35,11 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
       body: CustomScrollView(
         slivers: [
           DefinitionRow(title: "Visibility").SliverBox,
+          Container(
+            color: AppColors.additionalButtonColor,
+            height: 16,
+            width: double.infinity,
+          ).SliverBox,
           16.ph.SliverBox,
           const CustomText(
             'What skills and expertise are most important to you job?',

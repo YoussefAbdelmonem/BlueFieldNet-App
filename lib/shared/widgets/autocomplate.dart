@@ -455,7 +455,7 @@ class _CutomAutoCompleteTextFeildState<T>
   Widget build(BuildContext context) {
     return Padding(
         padding: widget.padding ??
-            const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -557,19 +557,19 @@ class _CutomAutoCompleteTextFeildState<T>
                                     //     ),
                                     border: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(
-                                          10,
+                                          8,
                                         ),
                                         borderSide: BorderSide(
                                             color: Color(0xff8CAAC5))),
                                     focusedBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(
-                                          10,
+                                          8,
                                         ),
                                         borderSide: BorderSide(
                                             color: Color(0xff8CAAC5))),
                                     enabledBorder: OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(
-                                          10,
+                                          8,
                                         ),
                                         borderSide: BorderSide(
                                             color: Color(0xff8CAAC5))),

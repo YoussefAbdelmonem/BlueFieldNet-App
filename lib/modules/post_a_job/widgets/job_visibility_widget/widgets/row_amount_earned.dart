@@ -111,7 +111,7 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                       color: AppColors.font,
                     ),
                   ),
-                  16.ph,
+                  // 16.ph,
                   MultiSelectDropDown<Languages>(
                     label: "",
                     selectedItems: cubit.postAJobRequest.languages

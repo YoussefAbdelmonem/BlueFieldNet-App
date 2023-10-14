@@ -63,7 +63,70 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                       weight: FontWeight.w500,
                     ),
                     16.ph,
-                    ListView.builder(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'Type of freelancer or agency you are looking for',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'Type of freelancer or agency you\'re looking for',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'Anything unique about the project, team, or your company',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    /*    ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Padding(
@@ -91,6 +154,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                       itemCount: 3,
                       shrinkWrap: true,
                     ),
+                     */
                     16.ph,
                     TextFormFieldWidget(
                       hintText: 'Type Here',

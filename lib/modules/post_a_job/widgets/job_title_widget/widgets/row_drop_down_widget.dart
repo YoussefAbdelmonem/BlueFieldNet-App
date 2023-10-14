@@ -19,7 +19,7 @@ class _TitleRowDropDownWidgetState extends State<TitleRowDropDownWidget> {
   @override
   Widget build(BuildContext context) {
     final cubit = PostAJobCubit.get(context);
-    return Row(mainAxisSize: MainAxisSize.min, children: [
+    return Row(children: [
       Expanded(
         child: CustomAutoCompleteTextField<Categories>(
           onChanged: (e) {

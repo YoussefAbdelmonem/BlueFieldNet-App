@@ -39,6 +39,11 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
           DefinitionRow(
             title: "Expertise",
           ).SliverBox,
+          Container(
+            color: AppColors.additionalButtonColor,
+            height: 16,
+            width: double.infinity,
+          ).SliverBox,
           16.ph.SliverBox,
           const CustomText(
             'What skills and expertise are most important to you job?',

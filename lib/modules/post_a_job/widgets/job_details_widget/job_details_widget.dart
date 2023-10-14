@@ -32,6 +32,11 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
           DefinitionRow(
             title: "Details",
           ).SliverBox,
+          Container(
+            color: AppColors.additionalButtonColor,
+            height: 16,
+            width: double.infinity,
+          ).SliverBox,
           16.ph.SliverBox,
           const CustomText(
             'What type of project do you have?',

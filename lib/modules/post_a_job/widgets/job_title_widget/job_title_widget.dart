@@ -65,7 +65,70 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                       weight: FontWeight.w500,
                     ),
                     16.ph,
-                    ListView.builder(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'Developer needed for creating a responsive WordPress Theme',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'Need a design for a new company logo',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 4),
+                      child: Row(children: [
+                        Container(
+                          width: 5,
+                          height: 5,
+                          decoration: BoxDecoration(
+                              color: AppColors.dotColor,
+                              borderRadius: BorderRadius.circular(20)),
+                        ),
+                        8.pw,
+                        CustomText(
+                          'CAD designer to create a 3D model of a residential building',
+                          fontsize: 12,
+                          color: AppColors.dotColor,
+                          fontFamily: "Roboto",
+                          weight: FontWeight.w400,
+                        ),
+                      ]),
+                    ),
+                    /*  ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Padding(
@@ -93,6 +156,7 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                       itemCount: 3,
                       shrinkWrap: true,
                     ),
+                    */
                     16.ph,
                     const CustomText(
                       'Enter the name of your job post',

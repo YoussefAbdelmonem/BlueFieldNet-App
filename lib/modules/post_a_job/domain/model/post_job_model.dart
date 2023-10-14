@@ -136,18 +136,18 @@ class PostJob {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    data['id'] = id;
     data['user_id'] = this.userId;
     data['username'] = this.username;
     data['title'] = this.title;
     data['description'] = this.description;
     data['budget'] = this.budget;
-    data['category_id'] = this.categoryId;
-    data['category'] = this.category;
-    data['project_type_id'] = this.projectTypeId;
-    data['project_type'] = this.projectType;
-    data['sub_category_id'] = this.subCategoryId;
-    data['sub_category'] = this.subCategory;
+    data['category_id'] = categoryId;
+    data['category'] = category;
+    data['project_type_id'] = projectTypeId;
+    data['project_type'] = projectType;
+    data['sub_category_id'] = subCategoryId;
+    data['sub_category'] = subCategory;
     data['question_id'] = this.questionId;
     data['question'] = this.question;
     data['cover_letter'] = this.coverLetter;

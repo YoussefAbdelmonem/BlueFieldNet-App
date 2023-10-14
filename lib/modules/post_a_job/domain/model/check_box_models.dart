@@ -1,6 +1,6 @@
 class PriceModel {
   String? name;
-  int? id;
+  String? id;
 
-  PriceModel({required this.name,required this.id});
+  PriceModel({required this.name, required this.id});
 }

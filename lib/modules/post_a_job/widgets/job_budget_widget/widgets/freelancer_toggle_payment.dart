@@ -3,48 +3,53 @@ import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-enum BudgetItem { one, two }
+
+import '../../../cubit/cubit.dart';
+
+enum BudgetItem { Pay_by_the_hour, Pay_a_fixed_price }
+
 class BudgetFreelancerTogglePayment extends StatefulWidget {
   const BudgetFreelancerTogglePayment({super.key});
 
   @override
-  State<BudgetFreelancerTogglePayment> createState() => _BudgetFreelancerTogglePaymentState();
+  State<BudgetFreelancerTogglePayment> createState() =>
+      _BudgetFreelancerTogglePaymentState();
 }
 
-class _BudgetFreelancerTogglePaymentState extends State<BudgetFreelancerTogglePayment> {
-  BudgetItem selectedBudgetItem = BudgetItem.one;
+class _BudgetFreelancerTogglePaymentState
+    extends State<BudgetFreelancerTogglePayment> {
+  BudgetItem selectedBudgetItem = BudgetItem.Pay_by_the_hour;
   void selectBudgetItem(BudgetItem item) {
     setState(() {
       selectedBudgetItem = item;
     });
   }
+
   Color getBudgetTextColor(BudgetItem item) {
     return selectedBudgetItem == item ? Colors.blue : Colors.black;
   }
 
   Color getBudgetIconColor(BudgetItem item) {
     return selectedBudgetItem == item ? AppColors.primaryColor : AppColors.grey;
-
   }
+
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
+
     return Row(
       children: [
         GestureDetector(
-          onTap: (){
-
+          onTap: () {
+            cubit.postAJobRequest.pay_type = "1";
             setState(() {
-              selectedBudgetItem = BudgetItem.one;
+              selectedBudgetItem = BudgetItem.Pay_by_the_hour;
             });
           },
           child: Container(
-
             height: 120,
             width: 140,
-            padding: EdgeInsets.symmetric(
-                horizontal: 12
-            ),
-
+            padding: EdgeInsets.symmetric(horizontal: 12),
             decoration: ShapeDecoration(
               color: Color(0xFFF5F5F5),
               shape: RoundedRectangleBorder(
@@ -56,12 +61,15 @@ class _BudgetFreelancerTogglePaymentState extends State<BudgetFreelancerTogglePa
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/icons/time.svg",color: getBudgetIconColor(BudgetItem.one),),
+                SvgPicture.asset(
+                  "assets/icons/time.svg",
+                  color: getBudgetIconColor(BudgetItem.Pay_by_the_hour),
+                ),
                 8.ph,
                 CustomText(
                   'Pay by the hour',
                   fontsize: 10,
-                  color: getBudgetTextColor(BudgetItem.one),
+                  color: getBudgetTextColor(BudgetItem.Pay_by_the_hour),
                   fontFamily: "Sans",
                   weight: FontWeight.w500,
                 ),
@@ -80,20 +88,15 @@ class _BudgetFreelancerTogglePaymentState extends State<BudgetFreelancerTogglePa
         ),
         8.pw,
         GestureDetector(
-          onTap: (){
-            selectedBudgetItem = BudgetItem.two;
-            setState(() {
-
-            });
+          onTap: () {
+            cubit.postAJobRequest.pay_type = "2";
+            selectedBudgetItem = BudgetItem.Pay_a_fixed_price;
+            setState(() {});
           },
           child: Container(
-
             height: 120,
             width: 140,
-            padding: EdgeInsets.symmetric(
-                horizontal: 12
-            ),
-
+            padding: EdgeInsets.symmetric(horizontal: 12),
             decoration: ShapeDecoration(
               color: Color(0xFFF5F5F5),
               shape: RoundedRectangleBorder(
@@ -105,12 +108,15 @@ class _BudgetFreelancerTogglePaymentState extends State<BudgetFreelancerTogglePa
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset("assets/icons/fixed.svg",color: getBudgetIconColor(BudgetItem.two),),
+                SvgPicture.asset(
+                  "assets/icons/fixed.svg",
+                  color: getBudgetIconColor(BudgetItem.Pay_a_fixed_price),
+                ),
                 8.ph,
                 CustomText(
                   'Pay a fixed price',
                   fontsize: 10,
-                  color: getBudgetTextColor(BudgetItem.two),
+                  color: getBudgetTextColor(BudgetItem.Pay_a_fixed_price),
                   fontFamily: "Sans",
                   weight: FontWeight.w500,
                 ),
@@ -127,9 +133,7 @@ class _BudgetFreelancerTogglePaymentState extends State<BudgetFreelancerTogglePa
             ),
           ),
         ),
-
       ],
     );
-
   }
 }

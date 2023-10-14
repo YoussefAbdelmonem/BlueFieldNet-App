@@ -28,4 +28,15 @@ class PostAJobCubit extends Cubit<PostAJobStates> {
       return null;
     }
   }
+
+  postAnewJob() async {
+    final response =
+        await post_a_jobRepository.postAJobRequest(postAJobRequest);
+
+    if (response != null) {
+      return true;
+    } else {
+      return null;
+    }
+  }
 }

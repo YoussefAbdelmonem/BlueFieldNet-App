@@ -5,6 +5,11 @@ import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../shared/widgets/autocomplate.dart';
+import '../../../../../shared/widgets/multi_choise_dropdown.dart';
+import '../../../cubit/cubit.dart';
+import '../../../domain/model/post_a_job_model.dart';
+
 class RowAmountEarnedWidget extends StatefulWidget {
   const RowAmountEarnedWidget({super.key});
 
@@ -21,14 +26,15 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
   ];
   List<String> selectedItems = [];
   List<PriceModel> amountItems = [
-    PriceModel(name: 'Any amount earned', id: 0),
-    PriceModel(name: '100+ earned', id: 1),
-    PriceModel(name: '1k+ earned', id: 2),
-    PriceModel(name: '10k+ earned', id: 3),
+    PriceModel(name: 'Any amount earned', id: '0'),
+    PriceModel(name: '100+ earned', id: '100'),
+    PriceModel(name: '1k+ earned', id: '1k'),
+    PriceModel(name: '10k+ earned', id: '10k'),
   ];
   List<String> amountSelectedItems = [];
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -56,16 +62,27 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context, index) {
                       return CheckboxListTile(
+                        // fillColor: MaterialStateProperty.all(
+                        //     Colors.white), //AppColors.primary,
+                        // side: BorderSide(
+                        //   color: AppColors.checkBoxTextColor,
+                        // ),
+                        // checkColor: AppColors.checkBoxTextColor,
+                        // activeColor: AppColors.primary,
                         title: CustomText(
                           amountItems[index].name.toString(),
                           fontsize: 14,
                           fontFamily: "Sans",
                           weight: FontWeight.w500,
                         ),
-                        value: amountSelectedItems
-                            .contains(amountItems[index].id.toString()),
+                        value: cubit.postAJobRequest.earned ==
+                            amountItems[index]
+                                .id /* amountSelectedItems
+                            .contains(amountItems[index].id.toString()) */
+                        ,
                         controlAffinity: ListTileControlAffinity.leading,
                         onChanged: (value) {
+                          cubit.postAJobRequest.earned = amountItems[index].id;
                           setState(() {
                             if (value ?? false) {
                               amountSelectedItems
@@ -95,7 +112,20 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                     ),
                   ),
                   16.ph,
-                  DropdownButtonHideUnderline(
+                  MultiSelectDropDown<Languages>(
+                    label: "",
+                    selectedItems: cubit.postAJobRequest.languages
+                        ?.map((e) => Languages(id: int.parse(e)))
+                        .toList(growable: false),
+                    items: () => cubit.postJobData?.languages ?? [],
+                    onChange: (s) {
+                      cubit.postAJobRequest.languages =
+                          s.map((e) => e.id.toString()).toList(growable: false);
+                    },
+                    itemAsString: (p0) => p0.title ?? '',
+                  ),
+
+                  /*     DropdownButtonHideUnderline(
                     child: DropdownButton2<String>(
                       isExpanded: true,
 
@@ -184,6 +214,7 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                       ),
                     ),
                   ),
+                */
                 ],
               ),
             )

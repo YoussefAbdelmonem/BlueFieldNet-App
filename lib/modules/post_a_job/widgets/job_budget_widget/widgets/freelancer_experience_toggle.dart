@@ -3,7 +3,11 @@ import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../cubit/cubit.dart';
+
 enum Item { one, two, three }
+
 class BudgetFreelancerExperienceToggleWidget extends StatefulWidget {
   const BudgetFreelancerExperienceToggleWidget({super.key});
 
@@ -22,7 +26,6 @@ class _BudgetFreelancerExperienceToggleWidgetState
 
   Color getIconColor(Item item) {
     return selectedItem == item ? AppColors.primaryColor : AppColors.grey;
-
   }
 
   void selectItem(Item item) {
@@ -31,13 +34,16 @@ class _BudgetFreelancerExperienceToggleWidgetState
       print(selectedItem);
     });
   }
+
   @override
   Widget build(BuildContext context) {
+    final cubit = PostAJobCubit.get(context);
     return Row(
       children: [
         Expanded(
           child: GestureDetector(
             onTap: () {
+              cubit.postAJobRequest.level_experince = "Entry";
               selectedItem = Item.one;
               setState(() {});
             },
@@ -85,6 +91,8 @@ class _BudgetFreelancerExperienceToggleWidgetState
         Expanded(
           child: GestureDetector(
             onTap: () {
+              cubit.postAJobRequest.level_experince = "Intermediate";
+
               selectedItem = Item.two;
               setState(() {});
             },
@@ -132,6 +140,8 @@ class _BudgetFreelancerExperienceToggleWidgetState
         Expanded(
           child: GestureDetector(
             onTap: () {
+              cubit.postAJobRequest.level_experince = "Expert";
+
               selectedItem = Item.three;
               setState(() {});
             },

@@ -39,12 +39,21 @@ extension MySLiverBox on Widget {
   SliverToBoxAdapter get SliverBox => SliverToBoxAdapter(
         child: this,
       );
-  SliverToBoxAdapter get SliverBoxAnimation => SliverToBoxAdapter(
+  SliverToBoxAdapter get SliverPadding => SliverToBoxAdapter(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: EdgeInsets.symmetric(horizontal: 24),
           child: this,
         ),
       );
+}
+
+extension StringCasingExtension on String {
+  String toCapitalized() =>
+      length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
+  String toTitleCase() => replaceAll(RegExp(' +'), ' ')
+      .split(' ')
+      .map((str) => str.toCapitalized())
+      .join(' ');
 }
 
 extension dateTimeParsing on String {

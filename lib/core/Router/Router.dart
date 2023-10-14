@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
 import 'package:bluefieldnet/modules/auth/presentation/join_as_freelancer/complete_register.dart';
 import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
@@ -270,13 +268,13 @@ class RouteGenerator {
             builder: (_) {
               return const EmploymentDashboardWidget();
             });
-        case Routes.LanguageDashboardWidget:
+      case Routes.LanguageDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {
               return const LanguageDashboardWidget();
             });
-        case Routes.HourlyRateDashboardWidget:
+      case Routes.HourlyRateDashboardWidget:
         return CupertinoPageRoute(
             settings: routeSettings,
             builder: (_) {

@@ -53,7 +53,7 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                       hintText: "Enter the name of your job post",
                       validator: Validation.defaultValidation,
                       onSaved: (e) {
-                        cubit.postAJobRequest?.title = e;
+                        cubit.postAJobRequest.title = e;
                       },
                     ),
                     16.ph,

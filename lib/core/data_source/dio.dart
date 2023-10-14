@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:bluefieldnet/core/Router/Router.dart';
@@ -135,7 +136,7 @@ class DioService {
     }
   }
 
-  getDioException({
+  FutureOr<ApiResponse> getDioException({
     required DioException e,
   }) async {
     log("---------------autherrr");
@@ -150,12 +151,17 @@ class DioService {
       log('case 2');
       log('Server reachable. Error in resposne');
       Alerts.snack(
-          text: e.response?.data["error"] ?? "لا يمكن الوصول للسيرفير",
+          text: e.response?.data["message"] ?? "لا يمكن الوصول للسيرفير",
           state: SnackState.failed);
 
       log("hello im errroe");
-      if (e.response?.data["info"]?.contains("Unauthenticated") ?? false) {
-        // Utils.removeToken();
+      if (e.response?.data["message"]?.contains("Unauthenticated") ?? false) {
+        await Utils.dataManager.deleteUserData();
+        Navigator.of(Utils.navigatorKey().currentContext!)
+            .pushNamedAndRemoveUntil(
+          Routes.AuthScreen,
+          (route) => false,
+        );
       }
       if (e.response?.statusCode == 401) {
         await Utils.dataManager.deleteUserData();

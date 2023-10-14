@@ -42,6 +42,9 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                     return LoadingAndError(
                       isLoading: state is PostAJobLoading,
                       isError: state is PostAJobError,
+                      function: () async {
+                        await cubit.getPostAJob();
+                      },
                       child: Column(
                         children: [
                           16.ph,

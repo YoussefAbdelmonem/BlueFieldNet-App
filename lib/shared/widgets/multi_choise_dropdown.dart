@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/theme/dynamic_theme/colors.dart';
@@ -201,7 +202,7 @@ class _MultiSelectDropDownState<T> extends State<MultiSelectDropDown<T>> {
                 child: CompositedTransformFollower(
                   link: _layerLink,
                   showWhenUnlinked: false,
-                  offset: Offset(0.0, size.height + 5.0),
+                  offset: Offset(0, size.height + 5.0),
                   child: TapRegion(
                     onTapOutside: (s) {
                       closeOverlay();
@@ -236,43 +237,95 @@ class _MultiSelectDropDownState<T> extends State<MultiSelectDropDown<T>> {
                                                 shrinkWrap: true,
                                                 padding: EdgeInsets.zero,
                                                 itemCount: items.data?.length,
-                                                itemBuilder: ((context,
-                                                        index) =>
-                                                    ListTile(
-                                                      shape: const UnderlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: Colors
-                                                                  .black26)),
-                                                      onTap: () {
-                                                        addOrRemoveItem(
-                                                            items.data![index]);
-                                                        setState(() {});
-                                                        set(() {});
-                                                      },
-                                                      title: CustomText(widget
-                                                          .itemAsString
-                                                          .call(items
-                                                              .data![index])),
-                                                      tileColor: selectedItems
-                                                              .any((element) =>
-                                                                  element ==
-                                                                  items.data![
-                                                                      index])
-                                                          ? AppColors.primary
-                                                          : Colors.transparent,
-                                                      trailing: Icon(
-                                                        selectedItems.any(
-                                                                (element) =>
-                                                                    element ==
-                                                                    items.data![
-                                                                        index])
-                                                            ? Icons.check_box
-                                                            : Icons
-                                                                .check_box_outline_blank,
-                                                        color:
-                                                            AppColors.primary,
-                                                      ),
-                                                    )),
+                                                itemBuilder:
+                                                    ((context, index) =>
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            addOrRemoveItem(
+                                                                items.data![
+                                                                    index]);
+                                                            setState(() {});
+                                                            set(() {});
+                                                          },
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        8,
+                                                                    vertical:
+                                                                        12),
+                                                            width:
+                                                                double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border: Border(
+                                                                  bottom: BorderSide(
+                                                                      color: Colors
+                                                                          .black26)),
+                                                            ),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  selectedItems.any((element) =>
+                                                                          element ==
+                                                                          items.data![
+                                                                              index])
+                                                                      ? Icons
+                                                                          .check_box
+                                                                      : Icons
+                                                                          .check_box_outline_blank,
+                                                                  color: AppColors
+                                                                      .primary,
+                                                                ),
+                                                                8.pw,
+                                                                CustomText(
+                                                                  widget
+                                                                      .itemAsString
+                                                                      .call(items
+                                                                              .data![
+                                                                          index]),
+                                                                  fontsize: 16,
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                    // ListTile(
+                                                    //   shape: const UnderlineInputBorder(
+                                                    //       borderSide: BorderSide(
+                                                    //           color: Colors
+                                                    //               .black26)),
+                                                    //   onTap: () {
+                                                    //     addOrRemoveItem(
+                                                    //         items.data![index]);
+                                                    //     setState(() {});
+                                                    //     set(() {});
+                                                    //   },
+                                                    //   title: CustomText(widget
+                                                    //       .itemAsString
+                                                    //       .call(items
+                                                    //           .data![index])),
+                                                    //   tileColor: selectedItems
+                                                    //           .any((element) =>
+                                                    //               element ==
+                                                    //               items.data![
+                                                    //                   index])
+                                                    //       ? AppColors.primary
+                                                    //       : Colors.transparent,
+                                                    //   trailing: Icon(
+                                                    //     selectedItems.any(
+                                                    //             (element) =>
+                                                    //                 element ==
+                                                    //                 items.data![
+                                                    //                     index])
+                                                    //         ? Icons.check_box
+                                                    //         : Icons
+                                                    //             .check_box_outline_blank,
+                                                    //     color:
+                                                    //         AppColors.primary,
+                                                    //   ),
+                                                    // )
+                                                    ),
                                               );
                                   }));
                         }),

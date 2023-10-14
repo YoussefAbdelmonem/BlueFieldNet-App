@@ -29,7 +29,7 @@ class PostAJobRequest {
   List<Skills>? skills;
   List<String>? qualifications;
   List<String>? languages;
-  List<File>? images;
+  List<File>? images = [];
   PostAJobRequest({
     this.title,
     this.category_id,
@@ -78,16 +78,16 @@ class PostAJobRequest {
       'english_level': english_level,
       'success_score': success_score,
       'talent_type': talent_type,
-      'skill_id':
+      'skill_id[]':
           skill_id /* skills?.isNotEmpty == true
           ? skills?.map((x) => x.id.toString()).toList()
           : null */
       ,
-      'qualifications': qualifications,
-      'languages': languages,
-      'images': [
+      'qualifications[]': qualifications,
+      'languages[]': languages,
+      'images[]': [
         for (int i = 0; i < (this.images ?? []).length; i++)
-          await MultipartFile.fromFile((this.images ?? [])[i].path)
+          await MultipartFile.fromFile((this.images ?? [])[i].path),
       ],
     };
   }

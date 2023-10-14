@@ -97,7 +97,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                       maxLines: 7,
                       minLines: 4,
                       onSaved: (value) {
-                        cubit.postAJobRequest?.description = value;
+                        cubit.postAJobRequest.description = value;
                       },
                       validator: Validation.defaultValidation,
                       // decoration: InputDecoration(
@@ -138,14 +138,25 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                       ),
                       16.pw,
                       IconButton(
-                          onPressed: () {
-                            Utils.myMedia.pickImages().then((value) {
-                              setState(() {
-                                value?.map((e) {
-                                  File(e.path);
-                                }).toList();
-                              });
+                          onPressed: () async {
+//                             FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true);
+
+// if (result != null) {
+//   List<File> files = result.paths.map((path) => File(path)).toList();
+// } else {
+//   // User canceled the picker
+// }
+                            await Utils.myMedia.pickImages().then((value) {
+                              if (value != null) {
+                                setState(() {
+                                  cubit.postAJobRequest.images = value;
+                                  // value.map((e) {
+                                  //   return File(e.path);
+                                  // }).toList();
+                                });
+                              }
                             });
+                            print(cubit.postAJobRequest.images?.length);
                           },
                           icon: Container(
                             width: 40,
@@ -180,12 +191,11 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                             height: 40,
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-                                if (/* file == null */ false) {
+                                if (cubit.postAJobRequest.images == null) {
                                   Alerts.snack(
                                       text: "You have to choose file",
                                       state: SnackState.failed);
                                 } else {
-                                  cubit.postAJobRequest?.images = file;
                                   formKey.currentState!.save();
                                   Navigator.pushNamed(
                                       context, Routes.JobDetailsWidget);

@@ -1,3 +1,5 @@
+import 'package:bluefieldnet/core/utiles/utiles.dart';
+import 'package:bluefieldnet/modules/client_jobs/presentation/client_jobs.dart';
 import 'package:bluefieldnet/modules/layout/cubit/layout_cubit.dart';
 import 'package:bluefieldnet/modules/layout/widgets/bottom_naviagation_bar.dart';
 import 'package:bluefieldnet/modules/messages/presentation/messages_screen.dart';
@@ -34,7 +36,7 @@ class _LayoutScreenState extends State<LayoutScreen>
                   children: [
                     PostAJobScreen(),
                     NotificationsScreen(),
-                    JobsScreen(),
+                    Utils.userModel.type =="freelancer"? JobsScreen():ClientJobsScreen(),
                     MessagesScreen()
                   ]),
               bottomNavigationBar: CustomBottomNavBar(cubit: cubit));

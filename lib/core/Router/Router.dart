@@ -1,6 +1,7 @@
 import 'package:bluefieldnet/modules/auth/presentation/forget_password/forget_password_screen.dart';
 import 'package:bluefieldnet/modules/auth/presentation/join_as_freelancer/complete_register.dart';
 import 'package:bluefieldnet/modules/auth/presentation/sign_up/sign_up_screen.dart';
+import 'package:bluefieldnet/modules/client_jobs/presentation/client_jobs.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/screens/filter/filter_screen.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/applied_for_jobs/applied_for_jobs_widget.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/completed_contracts/completed_contracts_widget.dart';
@@ -50,7 +51,7 @@ class Routes {
   static const String jobsScreen = "/jobsScreen";
   static const String post_a_jobScreen = "/postAJobScreen";
   static const String Filter = "/filter";
-
+  static const String client_jobsScreen = "/clientJobsScreen";
 /////////////////////////
   static const String JobTitleWidget = "/JobTitleWidget";
   static const String JobDescriptionWidget = "/JobDescriptionWidget";
@@ -104,6 +105,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const JobsScreen();
+            });
+      case Routes.client_jobsScreen:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ClientJobsScreen();
             });
       case Routes.notificationsScreen:
         return CupertinoPageRoute(

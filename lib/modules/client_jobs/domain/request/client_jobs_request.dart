@@ -1,0 +1,3 @@
+class ClientJobsRequest {
+  String? page;
+}

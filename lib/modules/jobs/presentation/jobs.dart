@@ -1,6 +1,7 @@
 import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/core/utiles/utiles.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/current_jobs_Tab.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/find_jobs/find_jobs_tab.dart';
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/saved_jobs/saved_jobs_tab.dart';
@@ -89,9 +90,7 @@ class _JobsScreenState extends State<JobsScreen>
                       ),
                       unselectedLabelColor: Colors.grey,
                       indicatorColor: Colors.red ,
-                      onTap: (index) {
-
-                        print(controller.index);
+                      onTap: (index)  {
                         setState(() {
                           controller.animateTo(index);
                         });
@@ -109,6 +108,8 @@ class _JobsScreenState extends State<JobsScreen>
                       ),
                       controller: controller,
                       tabs: [
+
+
                         Tab(
                           child: CustomText(
                             'Find Jobs',

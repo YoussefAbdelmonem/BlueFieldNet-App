@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/utiles/validations.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../../modules/auth/domain/model/auth_model.dart';
 import '../data_source/PrefService.dart';
@@ -13,8 +14,8 @@ class Utils {
   static String token = '';
   static String lang = '';
   static String FCMToken = '';
+  static String userType = "";
   static UserModel userModel = UserModel();
-
   static GlobalKey<NavigatorState> navigatorKey() =>
       locator<GlobalKey<NavigatorState>>();
   static Media get myMedia => locator<Media>();

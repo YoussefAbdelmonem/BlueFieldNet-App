@@ -86,8 +86,8 @@ class PostAJobRequest {
       'qualifications[]': qualifications,
       'languages[]': languages,
       'images[]': [
-        for (int i = 0; i < (this.images ?? []).length; i++)
-          await MultipartFile.fromFile((this.images ?? [])[i].path),
+        for (int i = 0; i < (images ?? []).length; i++)
+          await MultipartFile.fromFile((images ?? [])[i].path),
       ],
     };
   }

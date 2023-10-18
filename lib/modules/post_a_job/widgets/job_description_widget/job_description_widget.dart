@@ -255,9 +255,9 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                             height: 40,
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-                                if (/* cubit.postAJobRequest.images == null */ false) {
+                                if ( cubit.postAJobRequest.images == null  ) {
                                   Alerts.snack(
-                                      text: "You have to choose file",
+                                      text: "You have to choose image",
                                       state: SnackState.failed);
                                 } else {
                                   formKey.currentState!.save();

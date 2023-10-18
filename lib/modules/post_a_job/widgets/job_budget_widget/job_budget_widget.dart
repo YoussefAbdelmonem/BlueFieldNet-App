@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/core/utiles/validations.dart';
@@ -145,121 +146,30 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
                 width: 150,
                 height: 40,
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.JobReviewWidget);
+                  formKey.currentState!.save();
+                  if(cubit.postAJobRequest.pay_type ==null){
+                    Alerts.snack(text: "Pay Type is Required", state: SnackState.failed);
+                  } else if(cubit.postAJobRequest.level_experince  ==null){
+                    Alerts.snack(text: "Level Experience is Required", state: SnackState.failed);
+                  } else if(cubit.postAJobRequest.expected_time  ==null){
+                    Alerts.snack(text: "Expected Time is Required", state: SnackState.failed);
+                  }else if(cubit.postAJobRequest.budget   ==null){
+                    Alerts.snack(text: "Budget is Required", state: SnackState.failed);
+                  }else if(cubit.postAJobRequest.number_payment  ==null){
+                    Alerts.snack(text: "Number of Payment is Required", state: SnackState.failed);
+                  }else if( cubit.postAJobRequest.payment_frequency ==null){
+                    Alerts.snack(text: "payment frequency is Required", state: SnackState.failed);
+                  }else{
+                     Navigator.pushNamed(context, Routes.JobReviewWidget);
+                  }
+
                 },
                 title: "Next",
                 buttonColor: AppColors.buttonColor,
               ),
             ]).SliverPadding
 
-            /*    Container(
-              // height: MediaQuery.of(context).size.height /0.1,
-              width: MediaQuery.of(context).size.width,
-              color: AppColors.whiteBackground,
-              child: Padding(
-                padding: EdgeInsets.all(24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CustomText(
-                      'Budget',
-                      fontsize: 20,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    const CustomText(
-                      'How would you like to pay your freelancer or agency?',
-                      fontsize: 14,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    BudgetFreelancerTogglePayment(),
-                    16.ph,
-                    const CustomText(
-                      'What level of experience should your freelancer have?',
-                      fontsize: 14,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    BudgetFreelancerExperienceToggleWidget(),
-                    16.ph,
-                    const CustomText(
-                      'What level of experience should your freelancer have?',
-                      fontsize: 14,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    DropDownItem(
-                      onChanged: (e) {},
-                      options: [
-                        "More than 6 months",
-                        "3 to 6 months",
-                        "1 to 3 months",
-                        "Less than 1 month",
-                      ],
-                      hint: "choose time",
-                    ),
-                    16.ph,
-                    const CustomText(
-                      'Do you have a time requirement/week for this project?',
-                      fontsize: 14,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    BudgetFreelancerTimeToggleWidget(),
-                    16.ph,
-                    const CustomText(
-                      'What level of experience should your freelancer have?',
-                      fontsize: 14,
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      weight: FontWeight.w500,
-                    ),
-                    16.ph,
-                    PaymentDropDownWidget(),
-                    SummaryWidget(),
-                    32.ph,
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          ButtonWidget(
-                            width: 150,
-                            height: 40,
-                            borderColor: AppColors.buttonBorderColor,
-                            withBorder: true,
-                            buttonColor: Colors.white,
-                            textColor: AppColors.buttonBorderColor,
-                            title: "Previous",
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                          ButtonWidget(
-                            width: 150,
-                            height: 40,
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, Routes.JobReviewWidget);
-                            },
-                            title: "Next",
-                            buttonColor: AppColors.buttonColor,
-                          ),
-                        ])
-                  ],
-                ),
-              ),
-            ).SliverBox,
-          */
+
           ],
         ),
       ),

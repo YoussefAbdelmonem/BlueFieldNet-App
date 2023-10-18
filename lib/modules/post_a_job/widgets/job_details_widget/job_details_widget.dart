@@ -112,8 +112,8 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
             8.pw,
             const CustomText(
               'Yes, require a cover letter',
-              fontsize: 16,
-              color: AppColors.checkBoxTextColor,
+              fontsize: 14,
+              color: Color(0xFF495858),
               fontFamily: "Roboto",
               weight: FontWeight.w500,
             ),

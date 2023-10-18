@@ -588,7 +588,7 @@ class _CutomAutoCompleteTextFeildState<T>
                                           )
                                         : null,
                                     suffixIcon: widget.showSufix
-                                        ? const Row(
+                                        ?  Row(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,

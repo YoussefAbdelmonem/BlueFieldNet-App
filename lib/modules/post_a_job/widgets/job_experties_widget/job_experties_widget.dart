@@ -21,13 +21,7 @@ class JobExpertiseWidget extends StatefulWidget {
 }
 
 class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
-  // final List<String> items = [
-  //   'Item1',
-  //   'Item2',
-  //   'Item3',
-  //   'Item4',
-  // ];
-  // List<String> selectedItems = [];
+
   @override
   Widget build(BuildContext context) {
     final cubit = PostAJobCubit.get(context);
@@ -75,7 +69,21 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
           ).SliverPadding,
           64.ph.SliverPadding,
           64.ph.SliverPadding,
-          Row(children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+            ButtonWidget(
+            width: 150,
+            height: 40,
+            borderColor: AppColors.buttonBorderColor,
+            withBorder: true,
+            buttonColor: Colors.white,
+            textColor: AppColors.buttonBorderColor,
+            title: "Cancel",
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+
             ButtonWidget(
               width: 150,
               height: 40,
@@ -85,93 +93,10 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
               title: "Next",
               buttonColor: AppColors.buttonColor,
             ),
-            16.pw,
-            ButtonWidget(
-              width: 150,
-              height: 40,
-              borderColor: AppColors.buttonBorderColor,
-              withBorder: true,
-              buttonColor: Colors.white,
-              textColor: AppColors.buttonBorderColor,
-              title: "Cancel",
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+
+
           ]).SliverPadding,
           32.ph.SliverPadding
-          /*    Container(
-            width: MediaQuery.of(context).size.width,
-            color: AppColors.whiteBackground,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText(
-                    'What skills and expertise are most important to you job?',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  const CustomText(
-                    'Job Skills (optional)',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      MultiSelectDropDown<Skills>(
-                        items: () => cubit.postJobData?.skills ?? [],
-                        onChange: (s) {
-                          cubit.postAJobRequest.skill_id = s
-                              .map((e) => e.id.toString())
-                              .toList(growable: false);
-                        },
-                        itemAsString: (p0) => p0.title ?? '',
-                      ),
-                    ],
-                  ),
-                  64.ph,
-                  64.ph,
-                  Row(children: [
-                    ButtonWidget(
-                      width: 150,
-                      height: 40,
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, Routes.JobVisibilityWidget);
-                      },
-                      title: "Next",
-                      buttonColor: AppColors.buttonColor,
-                    ),
-                    16.pw,
-                    ButtonWidget(
-                      width: 150,
-                      height: 40,
-                      borderColor: AppColors.buttonBorderColor,
-                      withBorder: true,
-                      buttonColor: Colors.white,
-                      textColor: AppColors.buttonBorderColor,
-                      title: "Cancel",
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ]),
-                  32.ph
-                ],
-              ),
-            ),
-          ).SliverBox,
-        */
         ],
       ),
     );

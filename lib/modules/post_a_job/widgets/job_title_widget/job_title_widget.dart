@@ -7,6 +7,7 @@ import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defi
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
+import 'package:bluefieldnet/shared/widgets/myLoading.dart';
 import 'package:flutter/material.dart';
 
 import '../../cubit/cubit.dart';
@@ -186,8 +187,8 @@ class _JobTitleWidgetState extends State<JobTitleWidget> {
                             Navigator.pushNamed(
                                 context, Routes.JobDescriptionWidget);
                           }
-                          // Navigator.pushNamed(
-                          //     context, Routes.JobDescriptionWidget);
+
+
                         },
                         title: "Next",
                         buttonColor: AppColors.buttonColor,

@@ -14,6 +14,8 @@ class PostAJobCubit extends Cubit<PostAJobStates> {
   PostAJobRepository post_a_jobRepository =
       PostAJobRepository(locator<DioService>());
   PostJobData? postJobData;
+
+
   PostAJobRequest postAJobRequest = PostAJobRequest();
   getPostAJob() async {
     emit(PostAJobLoading());

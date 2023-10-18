@@ -24,6 +24,7 @@ class PaymentDropDownWidget extends StatelessWidget {
           hintText: "Write your Budget Allocation",
           onSaved: (e) {
             cubit.postAJobRequest.budget = e;
+
           },
           validator: Validation.defaultValidation,
           type: TextInputType.number,

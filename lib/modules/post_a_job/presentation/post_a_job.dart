@@ -48,7 +48,7 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                       child: Column(
                         children: [
                           16.ph,
-                          const Row(
+                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               CircleAvatar(

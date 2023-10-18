@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/job_seen_toggle.dart';
@@ -45,12 +46,17 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
             weight: FontWeight.w500,
           ).SliverPadding,
           16.ph.SliverBox,
-          const CustomText(
-            'Who can see your job?',
-            fontsize: 16,
-            color: AppColors.font,
-            fontFamily: "Sans",
-            weight: FontWeight.w500,
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal:24
+            ),
+            child: const CustomText(
+              'Who can see your job?',
+              fontsize: 16,
+              color: AppColors.font,
+              fontFamily: "Sans",
+              weight: FontWeight.w500,
+            ),
           ).SliverBox,
           16.ph.SliverPadding,
           JobSeenToggleWidget().SliverPadding,
@@ -95,94 +101,35 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
               width: 150,
               height: 40,
               onTap: () {
-                Navigator.pushNamed(context, Routes.JobBudgetWidget);
+                if(cubit.postAJobRequest.visibility==null
+                ){
+                  Alerts.snack(text: "Who can see your job is required", state: SnackState.failed);
+                }  else if(cubit.postAJobRequest.talent_type==null
+                ){
+                  Alerts.snack(text: "Talent Type is required", state: SnackState.failed);
+                } else if(cubit.postAJobRequest.english_level==null
+                ){
+                  Alerts.snack(text: "English Level is required", state: SnackState.failed);
+                }else if(cubit.postAJobRequest.success_score==null
+                ){
+                  Alerts.snack(text: "Job Success is required", state: SnackState.failed);
+                }else if(cubit.postAJobRequest.earned==null
+                ){
+                  Alerts.snack(text: "Amount Earned is required", state: SnackState.failed);
+                }else if(cubit.postAJobRequest.languages==null
+                ){
+                  Alerts.snack(text: "Language is required", state: SnackState.failed);
+                }
+                else{
+                   Navigator.pushNamed(context, Routes.JobBudgetWidget);
+                }
+
               },
               title: "Next",
               buttonColor: AppColors.buttonColor,
             ),
           ]).SliverPadding,
           32.ph.SliverPadding
-          /*    Container(
-            width: MediaQuery.of(context).size.width,
-            color: AppColors.whiteBackground,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const CustomText(
-                    'What skills and expertise are most important to you job?',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  const CustomText(
-                    'Who can see your job?',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  ProjectToggleWidget(),
-                  16.ph,
-                  const CustomText(
-                    'Talent Preferences (optional)',
-                    fontsize: 16,
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    weight: FontWeight.w500,
-                  ),
-                  8.ph,
-                  const CustomText(
-                    'Specify the qualifications you\'re looking for in a successful proposal.',
-                    fontsize: 12,
-                    color: AppColors.checkBoxTextColor,
-                    fontFamily: "Roboto",
-                    weight: FontWeight.w500,
-                  ),
-                  16.ph,
-                  TalentPreferenceWidget(),
-                  16.ph,
-                  JobTitleWidget(),
-                  16.ph,
-                  RowAmountEarnedWidget(),
-                  64.ph,
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ButtonWidget(
-                          width: 150,
-                          height: 40,
-                          borderColor: AppColors.buttonBorderColor,
-                          withBorder: true,
-                          buttonColor: Colors.white,
-                          textColor: AppColors.buttonBorderColor,
-                          title: "previous",
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                        16.pw,
-                        ButtonWidget(
-                          width: 150,
-                          height: 40,
-                          onTap: () {
-                            Navigator.pushNamed(
-                                context, Routes.JobBudgetWidget);
-                          },
-                          title: "Next",
-                          buttonColor: AppColors.buttonColor,
-                        ),
-                      ]),
-                  32.ph
-                ],
-              ),
-            ),
-          ),
-        */
         ],
       ),
     );

@@ -1,12 +1,11 @@
-import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/core/utiles/validations.dart';
-import 'package:bluefieldnet/shared/widgets/customtext.dart';
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/visability_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../../../shared/widgets/autocomplate.dart';
+import '../../../../../shared/widgets/multi_choise_dropdown.dart';
 import '../../../cubit/cubit.dart';
 
 class TalentPreferenceWidget extends StatefulWidget {
@@ -17,6 +16,15 @@ class TalentPreferenceWidget extends StatefulWidget {
 }
 
 class _TalentPreferenceWidgetState extends State<TalentPreferenceWidget> {
+  List<CountryCode> elements =
+      (jsonList.map((json) => CountryCode.fromJson(json)).toList());
+
+  @override
+  void initState() {
+    super.initState();
+    //  elements = elements.map((element) => element.localize()).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<String> items = [
@@ -26,23 +34,22 @@ class _TalentPreferenceWidgetState extends State<TalentPreferenceWidget> {
     ];
     List<String> selectedItems = [];
     final cubit = PostAJobCubit.get(context);
-
+    // elements = elements.map((element) => element.localize()).toList();
     return Column(
       children: [
-        CountryCodePicker(
-          onChanged: (s) {
-            //  cubit.postAJobRequest.qualifications = s. name;
+        MultiSelectDropDown<CountryCode>(
+          label: "",
+          selectedItems: cubit.postAJobRequest.qualifications
+              ?.map((e) => CountryCode(name: e))
+              .toList(growable: false),
+          items: () => elements,
+          onChange: (s) {
+            cubit.postAJobRequest.qualifications =
+                s.map((e) => e.name.toString()).toList(growable: false);
           },
-          // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
-          initialSelection: 'IT',
-          favorite: ['+39', 'FR'],
-          // optional. Shows only country name and flag
-          showCountryOnly: false,
-          // optional. Shows only country name and flag when popup is closed.
-          showOnlyCountryWhenClosed: false,
-          // optional. aligns the flag and the Text left
-          alignLeft: false,
+          itemAsString: (p0) => p0.code?.tr() ?? '',
         ),
+
         // Row(
         //   children: [
         //     Expanded(

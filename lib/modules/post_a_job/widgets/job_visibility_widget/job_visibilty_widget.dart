@@ -1,7 +1,5 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
-import 'package:bluefieldnet/modules/post_a_job/domain/model/check_box_models.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_details_widget/widget/project_type_toggle.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/job_seen_toggle.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/job_title_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/row_amount_earned.dart';
@@ -11,8 +9,6 @@ import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 
 import '../../../../core/Router/Router.dart';
 import '../../cubit/cubit.dart';

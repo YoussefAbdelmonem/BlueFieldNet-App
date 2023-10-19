@@ -11,7 +11,7 @@ class PostAJobRepository {
   final DioService dioService;
   PostAJobRepository(this.dioService);
   getPostAJobRequest() async {
-    final response = await dioService.getData(url: PostAJobEndPoints.postAJob);
+    final response = await dioService.getData(url: PostAJobEndPoints.postAJob,);
 
     if (response.isError == false) {
       return PostJobData.fromJson(response.response?.data['data']);

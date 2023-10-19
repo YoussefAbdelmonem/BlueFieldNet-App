@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/config/pdf/button.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: RouteGenerator.getRoute,
       theme: ThemesManger.appTheme,
       initialRoute: Routes.SplashScreen,
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
+
     );
   }
 }

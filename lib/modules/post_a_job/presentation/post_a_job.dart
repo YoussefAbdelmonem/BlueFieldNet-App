@@ -48,12 +48,17 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                       child: Column(
                         children: [
                           16.ph,
-                           Row(
+                            Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                      "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.pushNamed(context, Routes.profile);
+                                },
+                                child: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                        "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                              ),
                               Spacer(),
                               CustomText(
                                 "Post A Job",

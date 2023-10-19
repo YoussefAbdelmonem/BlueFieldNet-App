@@ -47,6 +47,8 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   file_picker: ^6.0.0
   country_picker: ^2.0.21
+  pdf:
+  printing:
 
 dev_dependencies:
   flutter_test:

@@ -43,7 +43,7 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
         key: formKey,
         child: CustomScrollView(
           slivers: [
-            const DefinitionRow(
+             DefinitionRow(
               title: "Budget",
             ).SliverBox,
             16.ph.SliverBox,

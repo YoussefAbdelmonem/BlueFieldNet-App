@@ -3,8 +3,9 @@ import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 class DefinitionRow extends StatelessWidget {
-  const DefinitionRow({super.key, required this.title});
+   DefinitionRow({super.key, required this.title, this.isDone});
 final String title;
+bool? isDone;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +29,7 @@ final String title;
             fontFamily: "Sans",
             weight: FontWeight.w500,
           ),
-          SvgPicture.asset("assets/icons/done.svg"),
+          isDone==true?  SvgPicture.asset("assets/icons/done.svg"):const SizedBox(),
         ],
       ),
     );

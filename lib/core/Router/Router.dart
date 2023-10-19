@@ -22,6 +22,7 @@ import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/scre
 import 'package:bluefieldnet/modules/jobs/presentation/widgets/current_jobs/screens/reports/reports_widget.dart';
 import 'package:bluefieldnet/modules/layout/presentaions/layout/layout_screen.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_title_widget/job_title_widget.dart';
+import 'package:bluefieldnet/modules/profile/presentation/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import '../../modules/auth/presentation/reset_password/reset_password_screen.dart';
@@ -52,6 +53,7 @@ class Routes {
   static const String post_a_jobScreen = "/postAJobScreen";
   static const String Filter = "/filter";
   static const String client_jobsScreen = "/clientJobsScreen";
+  static const String profile = "/profile";
 /////////////////////////
   static const String JobTitleWidget = "/JobTitleWidget";
   static const String JobDescriptionWidget = "/JobDescriptionWidget";
@@ -105,6 +107,12 @@ class RouteGenerator {
             settings: routeSettings,
             builder: (_) {
               return const JobsScreen();
+            });
+      case Routes.profile:
+        return CupertinoPageRoute(
+            settings: routeSettings,
+            builder: (_) {
+              return const ProfileScreen();
             });
       case Routes.client_jobsScreen:
         return CupertinoPageRoute(

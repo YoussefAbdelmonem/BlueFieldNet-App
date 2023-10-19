@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-
 class PrefService {
   static late SharedPreferences _preferences;
   static late PrefService _instance;

@@ -38,7 +38,7 @@ class JobReviewWidget extends StatelessWidget {
       backgroundColor: AppColors.whiteBackground,
       body: CustomScrollView(
         slivers: [
-          const DefinitionRow(
+           DefinitionRow(
             title: "Review",
           ).SliverBox,
           16.ph.SliverBox,

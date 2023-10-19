@@ -33,7 +33,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const DefinitionRow(
+           DefinitionRow(
             title: "Description",
           ).SliverBox,
           16.ph.SliverBox,

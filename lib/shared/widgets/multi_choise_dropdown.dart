@@ -74,7 +74,7 @@ class _MultiSelectDropDownState<T> extends State<MultiSelectDropDown<T>> {
         validator: widget.isRequired
             ? (value) {
                 if (value == null || value.isEmpty) {
-                  return "من فضلك اختر ${widget.label}";
+                  return "please Choose ${widget.label}";
                 }
                 return null;
               }
@@ -195,152 +195,148 @@ class _MultiSelectDropDownState<T> extends State<MultiSelectDropDown<T>> {
 
     _overlayEntry = OverlayEntry(
         maintainState: true,
-        builder: (context) => AnimationAppearanceOpacity(
-              duration: const Duration(milliseconds: 300),
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Positioned(
-                    left: offset.dx,
-                    top: offset.dy + size.height,
-                    width: size.width,
-                    child: CompositedTransformFollower(
-                      link: _layerLink,
-                      showWhenUnlinked: false,
-                      offset: Offset(0, size.height + 5.0),
-                      child: TapRegion(
-                        onTapOutside: (s) {
-                          closeOverlay();
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0),
-                          child: SizedBox(
-                            child: StatefulBuilder(builder: (context, set) {
-                              return Card(
-                                  clipBehavior: Clip.hardEdge,
-                                  elevation: 0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4.0),
-                                      side: const BorderSide(
-                                        color: Color(0xff939393),
-                                        width: 1,
-                                      )),
-                                  child: FutureBuilder(
-                                      future: _future,
-                                      builder: (context, items) {
-                                        return items.connectionState ==
-                                                ConnectionState.waiting
-                                            ? const Padding(
-                                                padding: EdgeInsets.all(15.0),
-                                                child: Center(
-                                                    child:
-                                                        CircularProgressIndicator()),
-                                              )
-                                            : items.data == null
-                                                ? const SizedBox()
-                                                : ListView.builder(
-                                                    shrinkWrap: true,
-                                                    padding: EdgeInsets.zero,
-                                                    itemCount:
-                                                        items.data?.length,
-                                                    itemBuilder:
-                                                        ((context, index) =>
-                                                            GestureDetector(
-                                                              onTap: () {
-                                                                addOrRemoveItem(
-                                                                    items.data![
-                                                                        index]);
-                                                                setState(() {});
-                                                                set(() {});
-                                                              },
-                                                              child: Container(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                        horizontal:
-                                                                            8,
-                                                                        vertical:
-                                                                            12),
-                                                                width: double
-                                                                    .infinity,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  border: Border(
-                                                                      bottom: BorderSide(
-                                                                          color:
-                                                                              Colors.black26)),
+        builder: (context) => Positioned(
+              left: offset.dx,
+              top: offset.dy + size.height,
+              width: size.width,
+              // bottom: -offset.dy,
+              child: CompositedTransformFollower(
+                link: _layerLink,
+                showWhenUnlinked: false,
+                offset: Offset(0, size.height + 5.0),
+                child: TapRegion(
+                  onTapOutside: (s) {
+                    closeOverlay();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 0),
+                    child: SizedBox(
+                      height: 200 - MediaQuery.of(context).viewInsets.bottom,
+                      child: AnimationAppearanceOpacity(
+                        duration: const Duration(milliseconds: 300),
+                        child: StatefulBuilder(builder: (context, set) {
+                          return Card(
+                              clipBehavior: Clip.hardEdge,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.0),
+                                  side: const BorderSide(
+                                    color: Color(0xff939393),
+                                    width: 1,
+                                  )),
+                              child: FutureBuilder(
+                                  future: _future,
+                                  builder: (context, items) {
+                                    return items.connectionState ==
+                                            ConnectionState.waiting
+                                        ? const Padding(
+                                            padding: EdgeInsets.all(15.0),
+                                            child: Center(
+                                                child:
+                                                    CircularProgressIndicator()),
+                                          )
+                                        : items.data == null
+                                            ? const SizedBox()
+                                            : ListView.builder(
+                                                shrinkWrap: true,
+                                                padding: EdgeInsets.zero,
+                                                itemCount: items.data?.length,
+                                                itemBuilder:
+                                                    ((context, index) =>
+                                                        GestureDetector(
+                                                          onTap: () {
+                                                            addOrRemoveItem(
+                                                                items.data![
+                                                                    index]);
+                                                            setState(() {});
+                                                            set(() {});
+                                                          },
+                                                          child: Container(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                                    horizontal:
+                                                                        8,
+                                                                    vertical:
+                                                                        12),
+                                                            width:
+                                                                double.infinity,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border: Border(
+                                                                  bottom: BorderSide(
+                                                                      color: Colors
+                                                                          .black26)),
+                                                            ),
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(
+                                                                  selectedItems.any((element) =>
+                                                                          element ==
+                                                                          items.data![
+                                                                              index])
+                                                                      ? Icons
+                                                                          .check_box
+                                                                      : Icons
+                                                                          .check_box_outline_blank,
+                                                                  color: AppColors
+                                                                      .primary,
                                                                 ),
-                                                                child: Row(
-                                                                  children: [
-                                                                    Icon(
-                                                                      selectedItems.any((element) =>
-                                                                              element ==
-                                                                              items.data![
-                                                                                  index])
-                                                                          ? Icons
-                                                                              .check_box
-                                                                          : Icons
-                                                                              .check_box_outline_blank,
-                                                                      color: AppColors
-                                                                          .primary,
-                                                                    ),
-                                                                    8.pw,
-                                                                    CustomText(
-                                                                      widget
-                                                                          .itemAsString
-                                                                          .call(
-                                                                              items.data![index]),
-                                                                      fontsize:
-                                                                          16,
-                                                                    ),
-                                                                  ],
+                                                                8.pw,
+                                                                CustomText(
+                                                                  widget
+                                                                      .itemAsString
+                                                                      .call(items
+                                                                              .data![
+                                                                          index]),
+                                                                  fontsize: 16,
                                                                 ),
-                                                              ),
-                                                            )
-                                                        // ListTile(
-                                                        //   shape: const UnderlineInputBorder(
-                                                        //       borderSide: BorderSide(
-                                                        //           color: Colors
-                                                        //               .black26)),
-                                                        //   onTap: () {
-                                                        //     addOrRemoveItem(
-                                                        //         items.data![index]);
-                                                        //     setState(() {});
-                                                        //     set(() {});
-                                                        //   },
-                                                        //   title: CustomText(widget
-                                                        //       .itemAsString
-                                                        //       .call(items
-                                                        //           .data![index])),
-                                                        //   tileColor: selectedItems
-                                                        //           .any((element) =>
-                                                        //               element ==
-                                                        //               items.data![
-                                                        //                   index])
-                                                        //       ? AppColors.primary
-                                                        //       : Colors.transparent,
-                                                        //   trailing: Icon(
-                                                        //     selectedItems.any(
-                                                        //             (element) =>
-                                                        //                 element ==
-                                                        //                 items.data![
-                                                        //                     index])
-                                                        //         ? Icons.check_box
-                                                        //         : Icons
-                                                        //             .check_box_outline_blank,
-                                                        //     color:
-                                                        //         AppColors.primary,
-                                                        //   ),
-                                                        // )
-                                                        ),
-                                                  );
-                                      }));
-                            }),
-                          ),
-                        ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        )
+                                                    // ListTile(
+                                                    //   shape: const UnderlineInputBorder(
+                                                    //       borderSide: BorderSide(
+                                                    //           color: Colors
+                                                    //               .black26)),
+                                                    //   onTap: () {
+                                                    //     addOrRemoveItem(
+                                                    //         items.data![index]);
+                                                    //     setState(() {});
+                                                    //     set(() {});
+                                                    //   },
+                                                    //   title: CustomText(widget
+                                                    //       .itemAsString
+                                                    //       .call(items
+                                                    //           .data![index])),
+                                                    //   tileColor: selectedItems
+                                                    //           .any((element) =>
+                                                    //               element ==
+                                                    //               items.data![
+                                                    //                   index])
+                                                    //       ? AppColors.primary
+                                                    //       : Colors.transparent,
+                                                    //   trailing: Icon(
+                                                    //     selectedItems.any(
+                                                    //             (element) =>
+                                                    //                 element ==
+                                                    //                 items.data![
+                                                    //                     index])
+                                                    //         ? Icons.check_box
+                                                    //         : Icons
+                                                    //             .check_box_outline_blank,
+                                                    //     color:
+                                                    //         AppColors.primary,
+                                                    //   ),
+                                                    // )
+                                                    ),
+                                              );
+                                  }));
+                        }),
                       ),
                     ),
                   ),
-                ],
+                ),
               ),
             ));
     // }

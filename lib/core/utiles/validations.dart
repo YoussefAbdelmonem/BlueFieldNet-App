@@ -7,12 +7,12 @@ class Validation {
   static String? emailValidation(String? value, {bool isRequired = true}) {
     if (value!.trim().isEmpty) {
       if (isRequired) {
-        return ('requiredEmail'.tr());
+        return ('Required Email'.tr());
       } else {
         return null;
       }
     } else if (!emailReg.hasMatch(value.trim())) {
-      return ('invalidEmail'.tr());
+      return ('Invalid Email'.tr());
     } else {
       return null;
     }
@@ -20,10 +20,10 @@ class Validation {
 
   static String? validatePassword(String? value) {
     if (value!.trim().isEmpty) {
-      return 'passwordRequired'.tr();
+      return 'Password Required'.tr();
     } else {
       if (value.trim().length < 6) {
-        return "shortPassword".tr();
+        return "Short Password".tr();
       } else {
         return null;
       }
@@ -47,7 +47,7 @@ class Validation {
     if (value!.isEmpty) {
       return 'requiredField'.tr(args: ["confirmPassword".tr()]);
     } else if (password != value) {
-      return ('passwordNotMatch'.tr());
+      return ('Password Not Match'.tr());
     } else {
       return null;
     }
@@ -55,7 +55,7 @@ class Validation {
 
   static String? defaultValidation(value, [String field = "", String? error]) {
     if (value!.isEmpty) {
-      return error ?? ("requiredField".tr(args: [field]));
+      return error ?? ("Required Field".tr(args: [field]));
     } else {
       return null;
     }

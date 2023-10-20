@@ -18,7 +18,7 @@ class Utils {
   static UserModel userModel = UserModel();
   static GlobalKey<NavigatorState> navigatorKey() =>
       locator<GlobalKey<NavigatorState>>();
-  static Media get myMedia => locator<Media>();
+  static MyMedia get myMedia => locator<MyMedia>();
   static GlobalKey<NavigatorState> app1Nav = GlobalKey();
   static GlobalKey<NavigatorState> app2Nav = GlobalKey();
   static Validation get valid => locator<Validation>();

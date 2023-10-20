@@ -1,136 +1,57 @@
 import 'dart:io';
-import 'package:image_cropper/image_cropper.dart';
-
+import 'package:bluefieldnet/shared/widgets/customtext.dart';
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:device_info_plus/device_info_plus.dart';
-
+import '../../shared/widgets/button_widget.dart';
 import '../theme/dynamic_theme/colors.dart';
-
-class Media {
-  final ImagePicker _picker = ImagePicker();
-  Future<List<File>?> pickImages() async {
-    List<XFile>? images = [];
-    Platform.isAndroid
-        ? await Permission.storage
-        : await Permission.photos.request();
-    // await Permission.camera.request();
-    // images = await _picker.pickMultiImage();
-    var status = Platform.isAndroid
-        ? await Permission.storage.status
-        : await Permission.photos.status;
-    if (status.isDenied || status.isPermanentlyDenied) {
-      // await Permission.photos.request();
-      openAppSettings(/* type: AppSettingsType.internalStorage */);
-    } else {
-      images = await _picker.pickMultiImage();
-    }
-    List<File>? imageFiles =
-        images.map<File>((xfile) => File(xfile.path)).toList();
-    return imageFiles.isNotEmpty ? imageFiles : null;
-  }
-
-  Future<File?> croppeImage(XFile image) async {
-    CroppedFile? croppedFile;
-    croppedFile = await ImageCropper().cropImage(
-      sourcePath: image.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9
-      ],
-      uiSettings: [
-        AndroidUiSettings(
-            toolbarTitle: 'Cropper',
-            toolbarColor: AppColors.primary,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false),
-        IOSUiSettings(
-          title: 'Cropper',
-        ),
-      ],
-    );
-    return croppedFile != null ? File(croppedFile.path) : null;
-  }
-
-  Future<XFile?> pickImage(bool isGallery) async {
-    XFile? image;
-    final PermissionStatus? status;
-
-    try {
-      if (isGallery) {
-        if (Platform.isAndroid) {
-          final androidInfo = await DeviceInfoPlugin().androidInfo;
-          if (androidInfo.version.sdkInt <= 32) {
-            /// use [Permissions.storage.status]
-            await Permission.storage.request();
-            status = await Permission.storage.status;
-          } else {
-            await Permission.photos.request();
-            status = await Permission.photos.status;
-
-            /// use [Permissions.photos.status]
-          }
-        } else {
-          await Permission.photos.request();
-          status = await Permission.photos.status;
-        }
-
-        // Platform.isAndroid
-        //     ? [await Permission.photos, await Permission.storage].request()
-        //     : await Permission.photos.request();
-        // status = /*  Platform.isAndroid
-        // ? await Permission.photos.status
-        // : */
-        // await Permission.photos.status;
-        debugPrint("Gallery ${status.toString()}");
-        // if (Platform.isAndroid) {
-        //   if (status.isDenied) {
-        //     await Permission.photos.request();
-        //     image = await _picker.pickImage(
-        //         source: ImageSource.gallery, imageQuality: 20);
-        //   }
-        // }
-        if (status.isDenied || status.isPermanentlyDenied) {
-          debugPrint("eeeeeee");
-          // image = await _picker.pickImage(
-          //     source: ImageSource.gallery, imageQuality: 20);
-          // await Permission.photos.request();
-          openAppSettings();
-          // await AppSettings.openAppSettings();
-        } /*  else if (status.isPermanentlyDenied) {
-          await AppSettings.openAppSettings();
-        } */
-
-        //
-        else {
-          image = await _picker.pickImage(
-              source: ImageSource.gallery, imageQuality: 20);
-        }
-      } else {
-        await Permission.camera.request();
-        status = await Permission.camera.status;
-        debugPrint("camera ${status.toString()}");
-        if (status.isDenied || status.isPermanentlyDenied) {
-          openAppSettings();
-          // await AppSettings.openAppSettings();
-        } else {
-          image = await _picker.pickImage(
-              source: ImageSource.camera, imageQuality: 20);
-        }
-      }
-    } catch (e) {}
-    return image != null ? image : null;
-  }
-}
+import '../utiles/utiles.dart';
 
 class MyMedia {
   static final ImagePicker _picker = ImagePicker();
-  static Future<File?> croppeImage(XFile image) async {
+
+  Future<List<File>?> pickImages({bool isMultiple = true}) async {
+    List<XFile?>? images = [];
+    final check = await handelPemission();
+    if (check != true) return null;
+    if (isMultiple) {
+      images = await _picker.pickMultiImage();
+    } else {
+      images = [
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 100)
+      ];
+    }
+    List<File>? imageFiles =
+        images.map<File>((xfile) => File(xfile?.path ?? "")).toList();
+    return imageFiles.isNotEmpty ? imageFiles : null;
+  }
+
+  Future<File?> pickImageFromGallery() async {
+    final check = await handelPemission();
+    if (check != true) return null;
+    final image =
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 100);
+    return image != null ? File(image.path) : null;
+  }
+
+  Future<File?> pickImageFromCamera() async {
+    final check = await handelCameraPermission();
+    if (check != true) return null;
+    final image =
+        await _picker.pickImage(source: ImageSource.camera, imageQuality: 100);
+    return image != null ? File(image.path) : null;
+  }
+
+  // static Future<File?> pickImage(bool isGallery) async {
+  //   final image =
+  //       isGallery ? await pickImageFromGallery() : await pickImageFromCamera();
+  //   return image;
+  // }
+
+  Future<File?> croppeImage(File image) async {
     CroppedFile? croppedFile;
     croppedFile = await ImageCropper().cropImage(
       sourcePath: image.path,
@@ -155,74 +76,65 @@ class MyMedia {
     );
     return croppedFile != null ? File(croppedFile.path) : null;
   }
+  /////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////
 
-  static Future<XFile?> pickImage(bool isGallery) async {
-    XFile? image;
-    final PermissionStatus? status;
+  handelPemission() async {
+    late PermissionStatus status;
+    late AndroidDeviceInfo androidInfo;
+    if (Platform.isAndroid) {
+      androidInfo = await DeviceInfoPlugin().androidInfo;
+    }
 
-    try {
-      if (isGallery) {
-        if (Platform.isAndroid) {
-          final androidInfo = await DeviceInfoPlugin().androidInfo;
-          if (androidInfo.version.sdkInt <= 32) {
-            /// use [Permissions.storage.status]
-            await Permission.storage.request();
-            status = await Permission.storage.status;
-          } else {
-            await Permission.photos.request();
-            status = await Permission.photos.status;
-
-            /// use [Permissions.photos.status]
-          }
-        } else {
-          await Permission.photos.request();
-          status = await Permission.photos.status;
-        }
-
-        // Platform.isAndroid
-        //     ? [await Permission.photos, await Permission.storage].request()
-        //     : await Permission.photos.request();
-        // status = /*  Platform.isAndroid
-        // ? await Permission.photos.status
-        // : */
-        // await Permission.photos.status;
-        debugPrint("Gallery ${status.toString()}");
-        // if (Platform.isAndroid) {
-        //   if (status.isDenied) {
-        //     await Permission.photos.request();
-        //     image = await _picker.pickImage(
-        //         source: ImageSource.gallery, imageQuality: 20);
-        //   }
-        // }
-        if (status.isDenied || status.isPermanentlyDenied) {
-          debugPrint("eeeeeee");
-          // image = await _picker.pickImage(
-          //     source: ImageSource.gallery, imageQuality: 20);
-          // await Permission.photos.request();
-          openAppSettings();
-          // await AppSettings.openAppSettings();
-        } /*  else if (status.isPermanentlyDenied) {
-          await AppSettings.openAppSettings();
-        } */
-
-        //
-        else {
-          image = await _picker.pickImage(
-              source: ImageSource.gallery, imageQuality: 20);
-        }
-      } else {
-        await Permission.camera.request();
-        status = await Permission.camera.status;
-        debugPrint("camera ${status.toString()}");
-        if (status.isDenied || status.isPermanentlyDenied) {
-          openAppSettings();
-          // await AppSettings.openAppSettings();
-        } else {
-          image = await _picker.pickImage(
-              source: ImageSource.camera, imageQuality: 20);
-        }
-      }
-    } catch (e) {}
-    return image != null ? image : null;
+    if (Platform.isAndroid && androidInfo.version.sdkInt <= 32) {
+      /// use [Permissions.storage.status]
+      status = await Permission.storage.request();
+    } else {
+      status = await Permission.photos.request();
+    }
+    if (status.isDenied || status.isPermanentlyDenied) {
+      await openSettingPermissionDialog();
+    } else {
+      return true;
+    }
   }
+
+  handelCameraPermission() async {
+    late PermissionStatus status;
+
+    status = await Permission.camera.request();
+
+    if (status.isDenied || status.isPermanentlyDenied) {
+      await openSettingPermissionDialog();
+    } else {
+      return true;
+    }
+  }
+
+  Future<dynamic> openSettingPermissionDialog() {
+    return showDialog(
+        context: Utils.navigatorKey().currentContext!,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: CustomText('Permission'.tr()),
+            content: CustomText(
+                'Please enable camera permission from app settings'.tr()),
+            actions: [
+              TextButtonWidget(
+                function: () => Navigator.of(context).pop(),
+                text: 'Cancel'.tr(),
+              ),
+              TextButtonWidget(
+                function: () => openAppSettings()
+                    .then((value) => Navigator.of(context).pop()),
+                text: 'Settings'.tr(),
+              ),
+            ],
+          );
+        });
+  }
+  /////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
 }

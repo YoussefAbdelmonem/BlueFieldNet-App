@@ -21,7 +21,7 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton(() => DataManager());
   locator.registerLazySingleton(() => DioService());
   locator.registerLazySingleton(() => Validation());
-  locator.registerLazySingleton(() => Media());
+  locator.registerLazySingleton(() => MyMedia());
   locator.registerLazySingleton(() => GlobalKey<ScaffoldState>());
   locator.registerLazySingleton(() => GlobalKey<NavigatorState>());
   locator.registerLazySingleton(() => SplashRepository(locator<DioService>()));

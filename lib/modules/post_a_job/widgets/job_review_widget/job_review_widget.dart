@@ -1,3 +1,4 @@
+import 'package:bluefieldnet/core/Router/Router.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defination.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../cubit/cubit.dart';
+import '../../domain/model/post_a_job_model.dart';
 
 class JobReviewWidget extends StatelessWidget {
   const JobReviewWidget({Key? key}) : super(key: key);
@@ -22,6 +24,16 @@ class JobReviewWidget extends StatelessWidget {
     return "${selectedCategory?.title ?? ''} , ${selectedCategory?.child?.firstWhere((element) => element.id.toString() == cubit.postAJobRequest.sub_category_id).title ?? ''}";
   }
 
+  String getQuestions(PostAJobCubit cubit) {
+    final questions = cubit.postJobData?.questions;
+    final data = cubit.postAJobRequest;
+    final selectedCategory = questions?.firstWhere(
+        (element) => element.id.toString() == data.screening_question_id,
+        orElse: () => Questions());
+
+    return "${selectedCategory?.question ?? 'No Question'}";
+  }
+
   String getType(PostAJobCubit cubit) {
     final dataType = cubit.postJobData?.projectTypes;
     final data = cubit.postAJobRequest;
@@ -31,6 +43,18 @@ class JobReviewWidget extends StatelessWidget {
     return selectedDataType?.title ?? '';
   }
 
+  List getSkils(PostAJobCubit cubit) {
+    final dataType = [];
+    final data = cubit.postAJobRequest.skills;
+    var concatenate = StringBuffer();
+    final selectedDataType = data?.forEach((element) {
+      dataType.add(element.title);
+      // concatenate.write(element.title);
+    });
+
+    return dataType /* data.toString().replaceAll('[', '').replaceAll(']', '') */;
+  }
+
   @override
   Widget build(BuildContext context) {
     final cubit = PostAJobCubit.get(context);
@@ -38,7 +62,7 @@ class JobReviewWidget extends StatelessWidget {
       backgroundColor: AppColors.whiteBackground,
       body: CustomScrollView(
         slivers: [
-           DefinitionRow(
+          DefinitionRow(
             title: "Review",
           ).SliverBox,
           16.ph.SliverBox,
@@ -161,8 +185,8 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  'Accounting & Bookkeeping 1. Accounting & Bookkeeping',
+                CustomText(
+                  getQuestions(cubit),
                   fontsize: 12,
                   color: AppColors.font,
                   fontFamily: "Roboto",
@@ -177,8 +201,10 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  'Yes, require a cover letter',
+                CustomText(
+                  cubit.postAJobRequest.cover_letter == "1"
+                      ? 'Yes, require a cover letter'
+                      : 'No, not require a cover letter',
                   fontsize: 12,
                   color: AppColors.font,
                   fontFamily: "Sans",
@@ -215,35 +241,27 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w500,
                 ),
                 16.ph,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      color: Colors.grey.shade100,
-                      child: const CustomText(
-                        'Auditing',
-                        fontsize: 14,
-                        color: AppColors.font,
-                        fontFamily: "Roboto",
-                        weight: FontWeight.w500,
-                      ),
-                    ),
-                    8.pw,
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      color: Colors.grey.shade100,
-                      child: const CustomText(
-                        'Accounting',
-                        fontsize: 14,
-                        color: AppColors.font,
-                        fontFamily: "Roboto",
-                        weight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+                Wrap(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: getSkils(cubit)
+                      .map(
+                        (e) => Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 4,
+                          ),
+                          color: Colors.grey.shade100,
+                          child: CustomText(
+                            e,
+                            fontsize: 14,
+                            color: AppColors.font,
+                            fontFamily: "Roboto",
+                            weight: FontWeight.w500,
+                          ),
+                        ),
+                      )
+                      .toList(),
                 )
               ],
             ),
@@ -276,8 +294,8 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  'Pay by the hour',
+                CustomText(
+                  cubit.postAJobRequest.payType ?? '',
                   fontsize: 12,
                   color: AppColors.font,
                   fontFamily: "Roboto",
@@ -292,8 +310,8 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  'Entry level',
+                CustomText(
+                  '${cubit.postAJobRequest.level_experince} level',
                   fontsize: 12,
                   color: AppColors.font,
                   fontFamily: "Roboto",
@@ -307,8 +325,8 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  'More than 6 months',
+                CustomText(
+                  cubit.postAJobRequest.expectedTime?.name ?? '',
                   fontsize: 12,
                   color: AppColors.font,
                   weight: FontWeight.w500,
@@ -321,8 +339,8 @@ class JobReviewWidget extends StatelessWidget {
                   weight: FontWeight.w600,
                 ),
                 8.ph,
-                const CustomText(
-                  '\$200.00',
+                CustomText(
+                  "${cubit.postAJobRequest.budget ?? ''} \$",
                   fontsize: 12,
                   color: AppColors.font,
                   weight: FontWeight.w500,
@@ -352,16 +370,16 @@ class JobReviewWidget extends StatelessWidget {
                 print(cubit.postAJobRequest.images?.length);
                 final res = await cubit.postAnewJob();
                 if (res == true) {
-                MySuccess.show();
+                  MySuccess.show();
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, Routes.JobTitleWidget, (route) => false);
                 }
               },
-
               title: "Publish",
               buttonColor: AppColors.buttonColor,
             ),
           ]).SliverPadding,
           32.ph.SliverBox,
-
         ],
       ),
     );

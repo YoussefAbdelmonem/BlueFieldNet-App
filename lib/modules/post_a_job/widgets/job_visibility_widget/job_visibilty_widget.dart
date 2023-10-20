@@ -47,9 +47,7 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
           ).SliverPadding,
           16.ph.SliverBox,
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal:24
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: const CustomText(
               'Who can see your job?',
               fontsize: 16,
@@ -76,7 +74,7 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
             fontFamily: "Roboto",
             weight: FontWeight.w500,
           ).SliverPadding,
-          16.ph.SliverBox,
+          //s16.ph.SliverBox,
           TalentPreferenceWidget().SliverPadding,
           16.ph.SliverPadding,
           JobTitleWidget().SliverPadding,
@@ -101,29 +99,32 @@ class _JobVisibilityWidgetState extends State<JobVisibilityWidget> {
               width: 150,
               height: 40,
               onTap: () {
-                if(cubit.postAJobRequest.visibility==null
-                ){
-                  Alerts.snack(text: "Who can see your job is required", state: SnackState.failed);
-                }  else if(cubit.postAJobRequest.talent_type==null
-                ){
-                  Alerts.snack(text: "Talent Type is required", state: SnackState.failed);
-                } else if(cubit.postAJobRequest.english_level==null
-                ){
-                  Alerts.snack(text: "English Level is required", state: SnackState.failed);
-                }else if(cubit.postAJobRequest.success_score==null
-                ){
-                  Alerts.snack(text: "Job Success is required", state: SnackState.failed);
-                }else if(cubit.postAJobRequest.earned==null
-                ){
-                  Alerts.snack(text: "Amount Earned is required", state: SnackState.failed);
-                }else if(cubit.postAJobRequest.languages==null
-                ){
-                  Alerts.snack(text: "Language is required", state: SnackState.failed);
+                if (cubit.postAJobRequest.visibility == null) {
+                  Alerts.snack(
+                      text: "Who can see your job is required",
+                      state: SnackState.failed);
+                } else if (cubit.postAJobRequest.talent_type == null) {
+                  Alerts.snack(
+                      text: "Talent Type is required",
+                      state: SnackState.failed);
+                } else if (cubit.postAJobRequest.english_level == null) {
+                  Alerts.snack(
+                      text: "English Level is required",
+                      state: SnackState.failed);
+                } else if (cubit.postAJobRequest.success_score == null) {
+                  Alerts.snack(
+                      text: "Job Success is required",
+                      state: SnackState.failed);
+                } else if (cubit.postAJobRequest.earned == null) {
+                  Alerts.snack(
+                      text: "Amount Earned is required",
+                      state: SnackState.failed);
+                } else if (cubit.postAJobRequest.lang?.isEmpty == true) {
+                  Alerts.snack(
+                      text: "Language is required", state: SnackState.failed);
+                } else {
+                  Navigator.pushNamed(context, Routes.JobBudgetWidget);
                 }
-                else{
-                   Navigator.pushNamed(context, Routes.JobBudgetWidget);
-                }
-
               },
               title: "Next",
               buttonColor: AppColors.buttonColor,

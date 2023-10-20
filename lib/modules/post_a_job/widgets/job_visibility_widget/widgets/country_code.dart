@@ -530,11 +530,6 @@ const List<Map<String, String>> codes = [
     "dial_code": "+44",
   },
   {
-    "name": "ישראל",
-    "code": "IL",
-    "dial_code": "+972",
-  },
-  {
     "name": "Italia",
     "code": "IT",
     "dial_code": "+39",

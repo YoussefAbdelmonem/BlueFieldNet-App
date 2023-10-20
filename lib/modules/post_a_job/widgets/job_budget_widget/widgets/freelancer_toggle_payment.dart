@@ -42,6 +42,7 @@ class _BudgetFreelancerTogglePaymentState
         GestureDetector(
           onTap: () {
             cubit.postAJobRequest.pay_type = "1";
+            cubit.postAJobRequest.payType = "pay by hour";
             setState(() {
               selectedBudgetItem = BudgetItem.Pay_by_the_hour;
             });
@@ -90,6 +91,7 @@ class _BudgetFreelancerTogglePaymentState
         GestureDetector(
           onTap: () {
             cubit.postAJobRequest.pay_type = "2";
+            cubit.postAJobRequest.payType = "Fixed price for project";
             selectedBudgetItem = BudgetItem.Pay_a_fixed_price;
             setState(() {});
           },

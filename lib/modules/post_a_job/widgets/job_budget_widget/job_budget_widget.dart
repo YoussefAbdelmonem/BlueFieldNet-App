@@ -26,12 +26,6 @@ class JobBudgetWidget extends StatefulWidget {
 }
 
 class _JobBudgetWidgetState extends State<JobBudgetWidget> {
-  List<PriceModel> expected_time = [
-    PriceModel(name: "More than 6 months", id: "more_than_6_months"),
-    PriceModel(name: "3 to 6 months", id: "form_3_to_6_months"),
-    PriceModel(name: "1 to 3 months", id: "form_1_to_3_months"),
-    PriceModel(name: "Less than 1 month", id: "less_than_1_month"),
-  ];
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -43,7 +37,7 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
         key: formKey,
         child: CustomScrollView(
           slivers: [
-             DefinitionRow(
+            DefinitionRow(
               title: "Budget",
             ).SliverBox,
             16.ph.SliverBox,
@@ -86,13 +80,14 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
             CustomAutoCompleteTextField(
               localData: true,
               function: (s) {
-                return expected_time;
+                return cubit.expected_time;
               },
               itemAsString: (p0) {
                 return p0.name ?? '';
               },
               onChanged: (s) {
                 cubit.postAJobRequest.expected_time = s.id;
+                cubit.postAJobRequest.expectedTime = s;
               },
               validator: Validation.defaultValidation,
             ).SliverPadding,
@@ -147,29 +142,36 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
                 height: 40,
                 onTap: () {
                   formKey.currentState!.save();
-                  if(cubit.postAJobRequest.pay_type ==null){
-                    Alerts.snack(text: "Pay Type is Required", state: SnackState.failed);
-                  } else if(cubit.postAJobRequest.level_experince  ==null){
-                    Alerts.snack(text: "Level Experience is Required", state: SnackState.failed);
-                  } else if(cubit.postAJobRequest.expected_time  ==null){
-                    Alerts.snack(text: "Expected Time is Required", state: SnackState.failed);
-                  }else if(cubit.postAJobRequest.budget   ==null){
-                    Alerts.snack(text: "Budget is Required", state: SnackState.failed);
-                  }else if(cubit.postAJobRequest.number_payment  ==null){
-                    Alerts.snack(text: "Number of Payment is Required", state: SnackState.failed);
-                  }else if( cubit.postAJobRequest.payment_frequency ==null){
-                    Alerts.snack(text: "payment frequency is Required", state: SnackState.failed);
-                  }else{
-                     Navigator.pushNamed(context, Routes.JobReviewWidget);
+                  if (cubit.postAJobRequest.pay_type == null) {
+                    Alerts.snack(
+                        text: "Pay Type is Required", state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.level_experince == null) {
+                    Alerts.snack(
+                        text: "Level Experience is Required",
+                        state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.expected_time == null) {
+                    Alerts.snack(
+                        text: "Expected Time is Required",
+                        state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.budget == null) {
+                    Alerts.snack(
+                        text: "Budget is Required", state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.number_payment == null) {
+                    Alerts.snack(
+                        text: "Number of Payment is Required",
+                        state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.payment_frequency == null) {
+                    Alerts.snack(
+                        text: "payment frequency is Required",
+                        state: SnackState.failed);
+                  } else {
+                    Navigator.pushNamed(context, Routes.JobReviewWidget);
                   }
-
                 },
                 title: "Next",
                 buttonColor: AppColors.buttonColor,
               ),
             ]).SliverPadding
-
-
           ],
         ),
       ),

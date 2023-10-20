@@ -75,7 +75,7 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
                 8.pw,
                 CustomText(
                   cubit.postJobData?.questions?[index].question ?? '',
-                  fontsize: 10,
+                  fontsize: 12,
                   color: AppColors.font,
                   fontFamily: "Sans",
                   weight: FontWeight.w500,
@@ -101,7 +101,7 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
             fontFamily: "Sans",
             weight: FontWeight.w400,
           ).SliverPadding,
-          16.ph.SliverPadding,
+          4.ph.SliverPadding,
           Row(children: [
             Checkbox.adaptive(
                 value: cubit.postAJobRequest.cover_letter == "1",
@@ -112,7 +112,7 @@ class _JobDetailsWidgetState extends State<JobDetailsWidget> {
             8.pw,
             const CustomText(
               'Yes, require a cover letter',
-              fontsize: 14,
+              fontsize: 16,
               color: Color(0xFF495858),
               fontFamily: "Roboto",
               weight: FontWeight.w500,

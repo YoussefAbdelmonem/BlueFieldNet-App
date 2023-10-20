@@ -21,7 +21,6 @@ class JobExpertiseWidget extends StatefulWidget {
 }
 
 class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
-
   @override
   Widget build(BuildContext context) {
     final cubit = PostAJobCubit.get(context);
@@ -57,33 +56,32 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
           16.ph.SliverPadding,
           MultiSelectDropDown<Skills>(
             label: "",
-            selectedItems: cubit.postAJobRequest.skill_id
-                ?.map((e) => Skills(id: int.parse(e)))
-                .toList(growable: false),
+            selectedItems: cubit.postAJobRequest
+                .skills /* cubit.postAJobRequest.skill_id
+                ?.map((e) => Skills(id: int.parse(e),title: ""))
+                .toList(growable: false) */
+            ,
             items: () => cubit.postJobData?.skills ?? [],
             onChange: (s) {
-              cubit.postAJobRequest.skill_id =
-                  s.map((e) => e.id.toString()).toList(growable: false);
+              cubit.postAJobRequest.skills = s;
             },
             itemAsString: (p0) => p0.title ?? '',
           ).SliverPadding,
           64.ph.SliverPadding,
           64.ph.SliverPadding,
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             ButtonWidget(
-            width: 150,
-            height: 40,
-            borderColor: AppColors.buttonBorderColor,
-            withBorder: true,
-            buttonColor: Colors.white,
-            textColor: AppColors.buttonBorderColor,
-            title: "Cancel",
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-
+              width: 150,
+              height: 40,
+              borderColor: AppColors.buttonBorderColor,
+              withBorder: true,
+              buttonColor: Colors.white,
+              textColor: AppColors.buttonBorderColor,
+              title: "Cancel",
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
             ButtonWidget(
               width: 150,
               height: 40,
@@ -93,8 +91,6 @@ class _JobExpertiseWidgetState extends State<JobExpertiseWidget> {
               title: "Next",
               buttonColor: AppColors.buttonColor,
             ),
-
-
           ]).SliverPadding,
           32.ph.SliverPadding
         ],

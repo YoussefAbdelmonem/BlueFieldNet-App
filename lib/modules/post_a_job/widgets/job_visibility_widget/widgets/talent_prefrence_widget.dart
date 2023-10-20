@@ -39,18 +39,16 @@ class _TalentPreferenceWidgetState extends State<TalentPreferenceWidget> {
       children: [
         MultiSelectDropDown<CountryCode>(
           label: "",
-          selectedItems: cubit.postAJobRequest.qualifications
-              ?.map((e) => CountryCode(name: e))
-              .toList(growable: false),
+          selectedItems: cubit.postAJobRequest.countries
+          /*   ?.map((e) => CountryCode(name: e))
+              .toList(growable: false) */
+          ,
           items: () => elements,
           onChange: (s) {
-            cubit.postAJobRequest.qualifications =
-                s.map((e) => e.name.toString()).toList(growable: false);
+            cubit.postAJobRequest.countries = s;
           },
-          itemAsString: (p0) => p0.code?.tr() ?? '',
+          itemAsString: (p0) => p0.code?.tr() ?? "",
         ),
-
-
         16.ph,
         CustomAutoCompleteTextField<String>(
           hint: "Talent type",

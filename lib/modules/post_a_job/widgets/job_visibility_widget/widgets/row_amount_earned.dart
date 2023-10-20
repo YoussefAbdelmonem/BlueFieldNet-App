@@ -18,12 +18,12 @@ class RowAmountEarnedWidget extends StatefulWidget {
 }
 
 class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
-  final List<String> items = [
-    'Item1',
-    'Item2',
-    'Item3',
-    'Item4',
-  ];
+  // final List<String> items = [
+  //   'Item1',
+  //   'Item2',
+  //   'Item3',
+  //   'Item4',
+  // ];
   List<String> selectedItems = [];
   List<PriceModel> amountItems = [
     PriceModel(name: 'Any amount earned', id: '0'),
@@ -114,13 +114,12 @@ class _RowAmountEarnedWidgetState extends State<RowAmountEarnedWidget> {
                   // 16.ph,
                   MultiSelectDropDown<Languages>(
                     label: "",
-                    selectedItems: cubit.postAJobRequest.languages
-                        ?.map((e) => Languages(id: int.parse(e)))
-                        .toList(growable: false),
+                    selectedItems: cubit.postAJobRequest.lang,
                     items: () => cubit.postJobData?.languages ?? [],
                     onChange: (s) {
-                      cubit.postAJobRequest.languages =
-                          s.map((e) => e.id.toString()).toList(growable: false);
+                      cubit.postAJobRequest.lang = s;
+                      // cubit.postAJobRequest.languages =
+                      //     s.map((e) => e.id.toString()).toList(growable: false);
                     },
                     itemAsString: (p0) => p0.title ?? '',
                   ),

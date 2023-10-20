@@ -2,7 +2,10 @@
 import 'dart:io';
 
 import 'package:bluefieldnet/modules/post_a_job/domain/model/post_a_job_model.dart';
+import 'package:bluefieldnet/modules/post_a_job/widgets/job_visibility_widget/widgets/visability_utils.dart';
 import 'package:dio/dio.dart';
+
+import '../model/check_box_models.dart';
 
 class PostAJobRequest {
   String? title;
@@ -18,8 +21,10 @@ class PostAJobRequest {
   String? budget;
   String? expected_hour_per_week;
   String? expected_time;
+  PriceModel? expectedTime;
   String? level_experince;
   String? pay_type;
+  String? payType;
   String? earned;
   String? english_level;
   String? success_score;
@@ -27,6 +32,8 @@ class PostAJobRequest {
   List<String>? skill_id;
   List<Skills>? skills;
   List<String>? qualifications;
+  List<CountryCode>? countries;
+  List<Languages>? lang;
   List<String>? languages;
   List<File>? images = [];
   PostAJobRequest({
@@ -77,13 +84,18 @@ class PostAJobRequest {
       'english_level': english_level,
       'success_score': success_score,
       'talent_type': talent_type,
-      'skill_id[]':
-          skill_id /* skills?.isNotEmpty == true
+      'skill_id[]': /* skill_id  */ skills?.isNotEmpty == true
           ? skills?.map((x) => x.id.toString()).toList()
-          : null */
-      ,
-      'qualifications[]': qualifications,
-      'languages[]': languages,
+          : null,
+      'qualifications[]': /* qualifications */
+
+          countries?.isNotEmpty == true
+              ? countries?.map((x) => x.name.toString()).toList()
+              : null,
+      'languages[]': /* languages */
+          lang?.isNotEmpty == true
+              ? lang?.map((x) => x.id.toString()).toList()
+              : null,
       'images[]': [
         for (int i = 0; i < (images ?? []).length; i++)
           await MultipartFile.fromFile((images ?? [])[i].path),

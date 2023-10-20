@@ -33,7 +33,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-           DefinitionRow(
+          DefinitionRow(
             title: "Description",
           ).SliverBox,
           16.ph.SliverBox,
@@ -76,7 +76,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                         ),
                         8.pw,
                         CustomText(
-                          'Type of freelancer or agency you are looking for',
+                          'What the deliverable is',
                           fontsize: 12,
                           color: AppColors.dotColor,
                           fontFamily: "Roboto",
@@ -255,7 +255,7 @@ class _JobDescriptionWidgetState extends State<JobDescriptionWidget> {
                             height: 40,
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-                                if ( cubit.postAJobRequest.images == null  ) {
+                                if (cubit.postAJobRequest.images == null) {
                                   Alerts.snack(
                                       text: "You have to choose image",
                                       state: SnackState.failed);

@@ -47,8 +47,8 @@ class CountryCode {
 
   factory CountryCode.fromJson(Map<String, dynamic> json) {
     return CountryCode(
-      name: json['name'],
-      code: json['code'],
+      name: json['name'].toString(),
+      code: json['code'].toString(),
       dialCode: json['dial_code'],
       flagUri: 'assets/flags/${json['code'].toLowerCase()}.png',
     );

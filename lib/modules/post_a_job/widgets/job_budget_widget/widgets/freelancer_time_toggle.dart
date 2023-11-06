@@ -42,6 +42,7 @@ class _BudgetFreelancerTimeToggleWidgetState
           child: GestureDetector(
             onTap: () {
               cubit.postAJobRequest.expected_hour_per_week = "1";
+              cubit.postAJobRequest.time_requirement_week = "i'don't know";
               selectedTimeItem = TimeItem.one;
               setState(() {});
             },
@@ -81,6 +82,8 @@ class _BudgetFreelancerTimeToggleWidgetState
           child: GestureDetector(
             onTap: () {
               cubit.postAJobRequest.expected_hour_per_week = "2";
+              cubit.postAJobRequest.time_requirement_week = "more than 30 hrs/week";
+
               selectedTimeItem = TimeItem.two;
               setState(() {});
             },
@@ -121,6 +124,8 @@ class _BudgetFreelancerTimeToggleWidgetState
           child: GestureDetector(
             onTap: () {
               cubit.postAJobRequest.expected_hour_per_week = "3";
+              cubit.postAJobRequest.time_requirement_week = "less than 30 hrs/week";
+
               selectedTimeItem = TimeItem.three;
               setState(() {});
             },

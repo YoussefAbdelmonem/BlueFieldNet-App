@@ -15,6 +15,8 @@ class PostAJobRequest {
   String? project_type_id;
   String? screening_question_id;
   String? cover_letter;
+  String? total_hours;
+  String? time_requirement_week;
   String? visibility;
   String? payment_frequency;
   String? number_payment;
@@ -45,6 +47,8 @@ class PostAJobRequest {
     this.screening_question_id,
     this.skills,
     this.cover_letter,
+    this.time_requirement_week,
+    this.total_hours,
     this.visibility,
     this.payment_frequency,
     this.number_payment,
@@ -67,6 +71,8 @@ class PostAJobRequest {
     return <String, dynamic>{
       'title': title,
       'category_id': category_id,
+      'time_requirement_week': time_requirement_week,
+      'total_hours': total_hours,
       'sub_category_id': sub_category_id,
       'description': description,
       'project_type_id': project_type_id,

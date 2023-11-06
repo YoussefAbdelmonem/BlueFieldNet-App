@@ -37,7 +37,8 @@ class MyActiveJobWidget extends StatelessWidget {
                     height: 40,
                     onTap: () {
                       Navigator.pushNamed(
-                          context, Routes.AppliedForJobWidget);
+                          context, Routes.AppliedForJobWidget,
+                      );
                     },
                     title: "Next",
                     buttonColor: AppColors.buttonColor,

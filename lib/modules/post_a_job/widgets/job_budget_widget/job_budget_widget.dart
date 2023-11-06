@@ -2,16 +2,14 @@ import 'package:bluefieldnet/core/helpers/alerts.dart';
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
 import 'package:bluefieldnet/core/utiles/validations.dart';
-import 'package:bluefieldnet/modules/post_a_job/domain/model/check_box_models.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/widgets/drop_down_payment.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/widgets/freelancer_experience_toggle.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/widgets/freelancer_time_toggle.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/widgets/freelancer_toggle_payment.dart';
-import 'package:bluefieldnet/modules/post_a_job/widgets/job_budget_widget/widgets/summary_widget.dart';
 import 'package:bluefieldnet/modules/post_a_job/widgets/widgets/custome_row_defination.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
-import 'package:bluefieldnet/shared/widgets/dropdown.dart';
+import 'package:bluefieldnet/shared/widgets/edit_text_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/Router/Router.dart';
@@ -104,6 +102,21 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
 
             16.ph.SliverPadding,
             const CustomText(
+              'What is your total time requirement for the project (hrs.)?',
+              fontsize: 14,
+              color: AppColors.font,
+              fontFamily: "Sans",
+              weight: FontWeight.w500,
+            ).SliverPadding,
+            16.ph.SliverPadding,
+            TextFormFieldWidget(
+              onSaved: (e){
+                cubit.postAJobRequest.total_hours = e;
+              },
+
+            ).SliverPadding,
+            16.ph.SliverPadding,
+            const CustomText(
               'Do you have a time requirement/week for this project?',
               fontsize: 14,
               color: AppColors.font,
@@ -163,6 +176,10 @@ class _JobBudgetWidgetState extends State<JobBudgetWidget> {
                   } else if (cubit.postAJobRequest.payment_frequency == null) {
                     Alerts.snack(
                         text: "payment frequency is Required",
+                        state: SnackState.failed);
+                  } else if (cubit.postAJobRequest.total_hours== null) {
+                    Alerts.snack(
+                        text: "Total hours is Required",
                         state: SnackState.failed);
                   } else {
                     Navigator.pushNamed(context, Routes.JobReviewWidget);

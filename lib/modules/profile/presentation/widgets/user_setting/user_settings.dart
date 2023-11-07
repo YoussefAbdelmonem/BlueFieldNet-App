@@ -12,10 +12,12 @@ class UserSettingsProfileWidget extends StatefulWidget {
   const UserSettingsProfileWidget({super.key});
 
   @override
-  State<UserSettingsProfileWidget> createState() => _UserSettingsProfileWidgetState();
+  State<UserSettingsProfileWidget> createState() =>
+      _UserSettingsProfileWidgetState();
 }
 
-class _UserSettingsProfileWidgetState extends State<UserSettingsProfileWidget>  with SingleTickerProviderStateMixin {
+class _UserSettingsProfileWidgetState extends State<UserSettingsProfileWidget>
+    with SingleTickerProviderStateMixin {
   late TabController tabController;
 
   @override
@@ -23,13 +25,17 @@ class _UserSettingsProfileWidgetState extends State<UserSettingsProfileWidget>  
     super.initState();
     tabController = TabController(length: (4), vsync: this);
   }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            DefinitionRow(title: "user setting",isDone: false,),
+            DefinitionRow(
+              title: "user setting",
+              isDone: false,
+            ),
             16.ph,
             8.ph,
             Expanded(
@@ -40,6 +46,7 @@ class _UserSettingsProfileWidgetState extends State<UserSettingsProfileWidget>  
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TabBar(
+                        physics: NeverScrollableScrollPhysics(),
                         isScrollable: true,
                         labelPadding: EdgeInsets.only(
                           left: 16,
@@ -102,14 +109,15 @@ class _UserSettingsProfileWidgetState extends State<UserSettingsProfileWidget>  
                     8.ph,
                     Expanded(
                         child: TabBarView(
-                          controller: tabController,
-                          children: [
-                            ContactInfoUserSettingWidget(),
-                            MyProfileUserSettingsWidget(),
-                            ProfileSettingUserSettingWidget(),
-                            PasswordAndSecurityUserSetting(),
-                          ],
-                        )),
+                      physics: NeverScrollableScrollPhysics(),
+                      controller: tabController,
+                      children: [
+                        ContactInfoUserSettingWidget(),
+                        MyProfileUserSettingsWidget(),
+                        ProfileSettingUserSettingWidget(),
+                        PasswordAndSecurityUserSetting(),
+                      ],
+                    )),
                   ],
                 ),
               ),

@@ -32,7 +32,6 @@ class _JobsScreenState extends State<JobsScreen>
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
         create: (context) => JobsCubit(),
         child: Scaffold(
@@ -42,21 +41,21 @@ class _JobsScreenState extends State<JobsScreen>
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  16.ph,
-                  const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                    CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
-                    Spacer(),
-                    CustomText(
-                      "Jobs",
-                      color: AppColors.font,
-                      fontFamily: "Sans",
-                      fontsize: 16,
-                      weight: FontWeight.w600,
-                    ),
-                    Spacer(),
-                  ]),
+                  // 16.ph,
+                  // const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  //   CircleAvatar(
+                  //       backgroundImage: NetworkImage(
+                  //           "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                  //   Spacer(),
+                  //   CustomText(
+                  //     "Jobs",
+                  //     color: AppColors.font,
+                  //     fontFamily: "Sans",
+                  //     fontsize: 16,
+                  //     weight: FontWeight.w600,
+                  //   ),
+                  //   Spacer(),
+                  // ]),
                   16.ph,
                   TextFormFieldWidget(
                     prefixIcon: SvgPicture.asset(
@@ -89,8 +88,8 @@ class _JobsScreenState extends State<JobsScreen>
                         right: 1,
                       ),
                       unselectedLabelColor: Colors.grey,
-                      indicatorColor: Colors.red ,
-                      onTap: (index)  {
+                      indicatorColor: Colors.red,
+                      onTap: (index) {
                         setState(() {
                           controller.animateTo(index);
                         });
@@ -98,56 +97,51 @@ class _JobsScreenState extends State<JobsScreen>
                       indicator: BoxDecoration(
                         color: AppColors.tabBarColor,
                         border: Border.all(
-                            color: AppColors.tabBarColor,
-
-                            width: 1.5),
-
+                            color: AppColors.tabBarColor, width: 1.5),
                         borderRadius: BorderRadius.circular(4),
-
-
                       ),
                       controller: controller,
                       tabs: [
-
-
                         Tab(
                           child: CustomText(
                             'Find Jobs',
                             fontsize: 12,
                             fontFamily: "Sans",
-                            color: controller.index == 0? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                            color: controller.index == 0
+                                ? AppColors.whiteBackground
+                                : AppColors.tabBarColorUnSelected,
                           ),
                         ),
-                         Tab(
+                        Tab(
                           child: CustomText(
                             'Current Jobs',
                             fontsize: 12,
                             fontFamily: "Sans",
-
-                            color: controller.index == 1? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                            color: controller.index == 1
+                                ? AppColors.whiteBackground
+                                : AppColors.tabBarColorUnSelected,
                           ),
                         ),
-                         Tab(
+                        Tab(
                           child: CustomText(
                             'Saved Jobs',
                             fontsize: 12,
                             fontFamily: "Sans",
-
-                            color: controller.index == 2? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                            color: controller.index == 2
+                                ? AppColors.whiteBackground
+                                : AppColors.tabBarColorUnSelected,
                           ),
                         ),
                       ]),
                   Expanded(
-                    child: TabBarView(
-                      controller: controller,
-                      children: const [
-                        FindJobsTab(),
-                        CurrentJobsTab(),
-                        SavedJobsTab(),
-
-                      ],
-                    )
-                  )
+                      child: TabBarView(
+                    controller: controller,
+                    children: const [
+                      FindJobsTab(),
+                      CurrentJobsTab(),
+                      SavedJobsTab(),
+                    ],
+                  ))
                 ],
               ),
             ),

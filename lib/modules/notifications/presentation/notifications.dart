@@ -17,7 +17,8 @@ class NotificationsScreen extends StatefulWidget {
   State<NotificationsScreen> createState() => _NotificationsScreenState();
 }
 
-class _NotificationsScreenState extends State<NotificationsScreen> {
+class _NotificationsScreenState extends State<NotificationsScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -36,24 +37,24 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    16.ph,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
-                        Spacer(),
-                        CustomText(
-                          "Notifications",
-                          color: AppColors.font,
-                          fontFamily: "Sans",
-                          fontsize: 16,
-                          weight: FontWeight.w600,
-                        ),
-                        Spacer(),
-                      ],
-                    ),
+                    // 16.ph,
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: [
+                    //     CircleAvatar(
+                    //         backgroundImage: NetworkImage(
+                    //             "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                    //     Spacer(),
+                    //     CustomText(
+                    //       "Notifications",
+                    //       color: AppColors.font,
+                    //       fontFamily: "Sans",
+                    //       fontsize: 16,
+                    //       weight: FontWeight.w600,
+                    //     ),
+                    //     Spacer(),
+                    //   ],
+                    // ),
                     16.ph,
                     JobDefinitionRow(
                         title: "Notifications", image: "assets/icons/noti.svg"),
@@ -96,10 +97,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          SvgPicture.asset(
-                                            "assets/icons/x.svg",
-                                            color: Colors.black,
-                                          ),
+                                          // SvgPicture.asset(
+                                          //   "assets/icons/x.svg",
+                                          //   color: Colors.black,
+                                          // ),
                                           16.ph,
                                           Row(
                                             children: [
@@ -189,4 +190,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           ),
         ));
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

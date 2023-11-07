@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../cubit/cubit.dart';
-///// put it in routes 
+///// put it in routes
 ///  import '../../modules/client_jobs/presentation/client_jobs.dart';
 /// static const String client_jobsScreen = "/clientJobsScreen";
 
@@ -23,7 +23,8 @@ class ClientJobsScreen extends StatefulWidget {
   State<ClientJobsScreen> createState() => _ClientJobsScreenState();
 }
 
-class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerProviderStateMixin {
+class _ClientJobsScreenState extends State<ClientJobsScreen>
+    with SingleTickerProviderStateMixin {
   late TabController controller;
   @override
   void initState() {
@@ -34,29 +35,27 @@ class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerP
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:(context)=>  ClientJobsCubit(),
-      child:Scaffold(
-        body: SafeArea(
-
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                16.ph,
-                const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
-                  Spacer(),
-                  CustomText(
-                    "Jobs",
-                    color: AppColors.font,
-                    fontFamily: "Sans",
-                    fontsize: 16,
-                    weight: FontWeight.w600,
-                  ),
-                  Spacer(),
-                ]),
+        create: (context) => ClientJobsCubit(),
+        child: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(children: [
+                // 16.ph,
+                // const Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                //   CircleAvatar(
+                //       backgroundImage: NetworkImage(
+                //           "https://media.cnn.com/api/v1/images/stellar/prod/230621042149-01-cristiano-ronaldo-euro-200-apps-062023-restricted.jpg?c=16x9&q=h_720,w_1280,c_fill")),
+                //   Spacer(),
+                //   CustomText(
+                //     "Jobs",
+                //     color: AppColors.font,
+                //     fontFamily: "Sans",
+                //     fontsize: 16,
+                //     weight: FontWeight.w600,
+                //   ),
+                //   Spacer(),
+                // ]),
                 16.ph,
                 TextFormFieldWidget(
                   prefixIcon: SvgPicture.asset(
@@ -89,34 +88,29 @@ class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerP
                       right: 1,
                     ),
                     unselectedLabelColor: Colors.grey,
-                    indicatorColor: Colors.red ,
-                    onTap: (index)  {
+                    indicatorColor: Colors.red,
+                    onTap: (index) {
                       setState(() {
                         controller.animateTo(index);
                       });
                     },
                     indicator: BoxDecoration(
                       color: AppColors.tabBarColor,
-                      border: Border.all(
-                          color: AppColors.tabBarColor,
-
-                          width: 1.5),
-
+                      border:
+                          Border.all(color: AppColors.tabBarColor, width: 1.5),
                       borderRadius: BorderRadius.circular(4),
-
-
                     ),
                     controller: controller,
                     tabs: [
-
-
                       Tab(
                         child: CustomText(
                           'My Jobs',
                           fontsize: 14,
                           fontFamily: "Sans",
                           weight: FontWeight.w400,
-                          color: controller.index == 0? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          color: controller.index == 0
+                              ? AppColors.whiteBackground
+                              : AppColors.tabBarColorUnSelected,
                         ),
                       ),
                       Tab(
@@ -125,7 +119,9 @@ class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerP
                           fontsize: 10,
                           fontFamily: "Sans",
                           weight: FontWeight.w400,
-                          color: controller.index == 1? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          color: controller.index == 1
+                              ? AppColors.whiteBackground
+                              : AppColors.tabBarColorUnSelected,
                         ),
                       ),
                       Tab(
@@ -134,7 +130,9 @@ class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerP
                           fontsize: 14,
                           fontFamily: "Sans",
                           weight: FontWeight.w400,
-                          color: controller.index == 2? AppColors.whiteBackground : AppColors.tabBarColorUnSelected,
+                          color: controller.index == 2
+                              ? AppColors.whiteBackground
+                              : AppColors.tabBarColorUnSelected,
                         ),
                       ),
                     ]),
@@ -149,14 +147,9 @@ class _ClientJobsScreenState extends State<ClientJobsScreen>  with SingleTickerP
                     ],
                   ),
                 )
-
-              ]
+              ]),
             ),
           ),
-        ),
-      )
-    );
-    
-    
+        ));
   }
 }

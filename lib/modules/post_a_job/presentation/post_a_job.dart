@@ -18,7 +18,8 @@ class PostAJobScreen extends StatefulWidget {
   State<PostAJobScreen> createState() => _PostAJobScreenState();
 }
 
-class _PostAJobScreenState extends State<PostAJobScreen> {
+class _PostAJobScreenState extends State<PostAJobScreen>
+    with AutomaticKeepAliveClientMixin {
   @override
   void initState() {
     super.initState();
@@ -47,12 +48,12 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                       },
                       child: Column(
                         children: [
-                          16.ph,
-                            Row(
+                          //  16.ph,
+                          /*  Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               GestureDetector(
-                                onTap: (){
+                                onTap: () {
                                   Navigator.pushNamed(context, Routes.profile);
                                 },
                                 child: CircleAvatar(
@@ -70,6 +71,7 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                               Spacer(),
                             ],
                           ),
+                          */
                           16.ph,
                           TextFormFieldWidget(
                             prefixIcon: SvgPicture.asset(
@@ -80,7 +82,6 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
                             hintText: "Search for job",
                           ),
                           16.ph,
-
                           Expanded(
                             child: Navigator(
                               key: Utils.app1Nav,
@@ -96,4 +97,8 @@ class _PostAJobScreenState extends State<PostAJobScreen> {
               ),
             )));
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

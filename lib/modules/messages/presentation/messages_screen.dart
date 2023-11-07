@@ -60,7 +60,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      16.ph,
+                      /*    16.ph,
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -78,12 +78,14 @@ class _MessagesScreenState extends State<MessagesScreen> {
                           Spacer(),
                         ],
                       ),
+                     */
                       16.ph,
-                      JobDefinitionRow(title: "Inbox", image: "assets/icons/inbox.svg"),
+                      JobDefinitionRow(
+                          title: "Inbox", image: "assets/icons/inbox.svg"),
                       16.ph,
                       Container(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
                           color: Colors.white,
@@ -99,22 +101,23 @@ class _MessagesScreenState extends State<MessagesScreen> {
                             ListView.builder(
                               itemCount: messages.length,
                               shrinkWrap: true,
-                              padding: const EdgeInsets.only(top: 10, bottom: 10),
+                              padding:
+                                  const EdgeInsets.only(top: 10, bottom: 10),
                               physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return Container(
                                   padding: const EdgeInsets.only(
                                       left: 14, right: 14, top: 10, bottom: 10),
                                   child: Align(
-                                    alignment:
-                                    (messages[index].messageType == "receiver"
+                                    alignment: (messages[index].messageType ==
+                                            "receiver"
                                         ? Alignment.topLeft
                                         : Alignment.topRight),
                                     child: Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        color:
-                                        (messages[index].messageType == "receiver"
+                                        color: (messages[index].messageType ==
+                                                "receiver"
                                             ? Color(0xffF5F5F5)
                                             : AppColors.primaryColor),
                                       ),
@@ -142,16 +145,16 @@ class _MessagesScreenState extends State<MessagesScreen> {
                                   Alerts.dialog(context,
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 24,
-                                            horizontal: 16
-                                        ),
+                                            vertical: 24, horizontal: 16),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Row(
                                               mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
                                               children: [
                                                 CustomText(
                                                   "Send Message",
@@ -181,33 +184,41 @@ class _MessagesScreenState extends State<MessagesScreen> {
                                               maxLines: 4,
                                               minLines: 3,
                                               hintText: "Type Here",
-                                              backgroundColor:Colors.grey.shade200 ,
+                                              backgroundColor:
+                                                  Colors.grey.shade200,
                                               activeBorderColor: Colors.white,
                                             ),
                                             16.ph,
-                                            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                                              ButtonWidget(
-                                                width: 130,
-                                                height: 40,
-                                                borderColor: AppColors.buttonBorderColor,
-                                                withBorder: false,
-                                                buttonColor: Colors.white,
-                                                textColor: AppColors.buttonBorderColor,
-                                                title: "Close",
-                                                onTap: () {
-                                                  // Navigator.pop(context);
-                                                },
-                                              ),
-                                              ButtonWidget(
-                                                width: 130,
-                                                height: 40,
-                                                onTap: () {
-                                                  // Navigator.pushNamed(context, Routes.CompleteContactWidget);
-                                                },
-                                                title: "Send",
-                                                buttonColor: AppColors.buttonColor,
-                                              ),
-                                            ])
+                                            Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  ButtonWidget(
+                                                    width: 130,
+                                                    height: 40,
+                                                    borderColor: AppColors
+                                                        .buttonBorderColor,
+                                                    withBorder: false,
+                                                    buttonColor: Colors.white,
+                                                    textColor: AppColors
+                                                        .buttonBorderColor,
+                                                    title: "Close",
+                                                    onTap: () {
+                                                      // Navigator.pop(context);
+                                                    },
+                                                  ),
+                                                  ButtonWidget(
+                                                    width: 130,
+                                                    height: 40,
+                                                    onTap: () {
+                                                      // Navigator.pushNamed(context, Routes.CompleteContactWidget);
+                                                    },
+                                                    title: "Send",
+                                                    buttonColor:
+                                                        AppColors.buttonColor,
+                                                  ),
+                                                ])
                                           ],
                                         ),
                                       ));
@@ -228,10 +239,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
               ),
             ),
           ),
-        )
-    );
+        ));
   }
 }
+
 class ChatMessage {
   String messageContent;
   String messageType;
@@ -239,6 +250,6 @@ class ChatMessage {
 
   ChatMessage(
       {required this.messageContent,
-        required this.messageType,
-        this.textColor});
+      required this.messageType,
+      this.textColor});
 }

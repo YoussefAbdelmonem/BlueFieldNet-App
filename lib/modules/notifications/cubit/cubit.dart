@@ -12,4 +12,16 @@ class NotificationsCubit extends Cubit<NotificationsStates> {
 
   NotificationsRepository notificationsRepository =
       NotificationsRepository(locator<DioService>());
+
+  NotificationsModel? notificationsModel;
+
+  Future<void> getNotifications() async {
+    emit(NotificationsLoading());
+    notificationsModel = await notificationsRepository.getNotifications();
+    if (notificationsModel != null) {
+      emit(NotificationsSuccess());
+    } else {
+      emit(NotificationsError());
+    }
+  }
 }

@@ -15,34 +15,83 @@ class MyMedia {
 
   Future<List<File>?> pickImages({bool isMultiple = true}) async {
     List<XFile?>? images = [];
-    final check = await handelPemission();
-    if (check != true) return null;
-    if (isMultiple) {
-      images = await _picker.pickMultiImage();
-    } else {
-      images = [
-        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 100)
-      ];
+
+    try {
+      if (isMultiple) {
+        images = await _picker.pickMultiImage();
+      } else {
+        images = [
+          await _picker.pickImage(
+              source: ImageSource.gallery, imageQuality: 100)
+        ];
+      }
+      List<File>? imageFiles =
+          images.map<File>((xfile) => File(xfile?.path ?? "")).toList();
+      return imageFiles.isNotEmpty ? imageFiles : null;
+    } catch (e) {
+      print(e);
+      final check = await handelPemission();
+      if (check != true) return null;
+      if (isMultiple) {
+        images = await _picker.pickMultiImage();
+      } else {
+        images = [
+          await _picker.pickImage(
+              source: ImageSource.gallery, imageQuality: 100)
+        ];
+      }
+      List<File>? imageFiles =
+          images.map<File>((xfile) => File(xfile?.path ?? "")).toList();
+      return imageFiles.isNotEmpty ? imageFiles : null;
     }
-    List<File>? imageFiles =
-        images.map<File>((xfile) => File(xfile?.path ?? "")).toList();
-    return imageFiles.isNotEmpty ? imageFiles : null;
+
+    // final check = await handelPemission();
+    // if (check != true) return null;
+    // if (isMultiple) {
+    //   images = await _picker.pickMultiImage();
+    // } else {
+    //   images = [
+    //     await _picker.pickImage(source: ImageSource.gallery, imageQuality: 100)
+    //   ];
+    // }
+    // List<File>? imageFiles =
+    //     images.map<File>((xfile) => File(xfile?.path ?? "")).toList();
+    // return imageFiles.isNotEmpty ? imageFiles : null;
   }
 
   Future<File?> pickImageFromGallery() async {
-    final check = await handelPemission();
-    if (check != true) return null;
-    final image =
-        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 100);
-    return image != null ? File(image.path) : null;
+    try {
+      final image = await _picker.pickImage(
+          source: ImageSource.gallery, imageQuality: 100);
+      return image != null ? File(image.path) : null;
+    } catch (e) {
+      print(e);
+      final check = await handelPemission();
+      if (check != true) return null;
+      final image = await _picker.pickImage(
+          source: ImageSource.gallery, imageQuality: 100);
+      return image != null ? File(image.path) : null;
+    }
   }
 
   Future<File?> pickImageFromCamera() async {
-    final check = await handelCameraPermission();
-    if (check != true) return null;
-    final image =
-        await _picker.pickImage(source: ImageSource.camera, imageQuality: 100);
-    return image != null ? File(image.path) : null;
+    try {
+      final image = await _picker.pickImage(
+          source: ImageSource.camera, imageQuality: 100);
+      return image != null ? File(image.path) : null;
+    } catch (e) {
+      print(e);
+      final check = await handelCameraPermission();
+      if (check != true) return null;
+      final image = await _picker.pickImage(
+          source: ImageSource.camera, imageQuality: 100);
+      return image != null ? File(image.path) : null;
+    }
+    // final check = await handelCameraPermission();
+    // if (check != true) return null;
+    // final image =
+    //     await _picker.pickImage(source: ImageSource.camera, imageQuality: 100);
+    // return image != null ? File(image.path) : null;
   }
 
   // static Future<File?> pickImage(bool isGallery) async {

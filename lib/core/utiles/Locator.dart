@@ -27,11 +27,8 @@ Future<void> setupLocator() async {
   locator.registerLazySingleton(() => SplashRepository(locator<DioService>()));
   locator.registerLazySingleton(() => AuthRepository(locator<DioService>()));
   locator.registerLazySingleton(() => JobsRepository(locator<DioService>()));
-  locator
-      .registerLazySingleton(() => PostAJobRepository(locator<DioService>()));
+  locator.registerLazySingleton(() => PostAJobRepository(locator<DioService>()));
 
-  locator
-      .registerLazySingleton(() => MessagesRepository(locator<DioService>()));
-  locator.registerLazySingleton(
-      () => NotificationsRepository(locator<DioService>()));
+  locator.registerLazySingleton(() => MessagesRepository(locator<DioService>()));
+  locator.registerLazySingleton(() => NotificationsRepository(locator<DioService>()));
 }

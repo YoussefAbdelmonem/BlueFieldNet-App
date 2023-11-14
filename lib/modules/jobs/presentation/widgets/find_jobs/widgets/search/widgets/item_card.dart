@@ -1,5 +1,6 @@
 import 'package:bluefieldnet/core/theme/dynamic_theme/colors.dart';
 import 'package:bluefieldnet/core/utiles/extentions.dart';
+import 'package:bluefieldnet/modules/jobs/domain/model/find_jobs_model.dart';
 import 'package:bluefieldnet/shared/widgets/button_widget.dart';
 import 'package:bluefieldnet/shared/widgets/customtext.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchItemCardWidget extends StatelessWidget {
-  const SearchItemCardWidget({Key? key}) : super(key: key);
+   SearchItemCardWidget({Key? key,  this.findJobsData}) : super(key: key);
 
+   FindJobsData ?findJobsData;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -35,13 +37,13 @@ class SearchItemCardWidget extends StatelessWidget {
                   SvgPicture.asset("assets/icons/carbon_favorite.svg"),
                   8.pw,
                   CustomText(
-                    "tax export",
+                    findJobsData?.title??"",
                     fontFamily: "Sans",
                     fontsize: 16,
                     color: AppColors.font,
                   ),
-                  Spacer(),
-                  CustomText(
+                  const Spacer(),
+                  const CustomText(
                     "Applied for",
                     color: AppColors.primaryColor,
                     fontsize: 14,
@@ -52,26 +54,28 @@ class SearchItemCardWidget extends StatelessWidget {
               ),
               10.ph,
               CustomText(
-                "created By : Anas Nafie _Relationship Advisor ",
+                "created By : ${findJobsData?.username??""}",
                 color: AppColors.primary,
                 fontFamily: "Sans",
                 fontsize: 12,
                 weight: FontWeight.w400,
               ),
               8.ph,
-              const CustomText(
-                "Hourly - Expert -Est. time i don't know yet,\$15.000_posted August 2023 ",
+               CustomText(
+                // "Hourly - Expert -Est. time i don't know yet,\$15.000_posted August 2023 ",
+                findJobsData?.budget.toString()??"",
                 color: AppColors.subTitleBlackColor,
                 fontFamily: "Sans",
                 fontsize: 8,
                 weight: FontWeight.w400,
               ),
               8.ph,
-              const CustomText(
-                "hghaghahahahahghgh",
+               CustomText(
+               findJobsData?.description??"",
                 color: AppColors.black,
                 fontFamily: "Sans",
                 fontsize: 8,
+                maxLine: 1,
                 weight: FontWeight.w400,
               ),
               16.ph,
@@ -92,8 +96,8 @@ class SearchItemCardWidget extends StatelessWidget {
                     allowHalfRating: true,
                     itemSize: 16,
                     itemCount: 5,
-                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                    itemBuilder: (context, _) => Icon(
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => const Icon(
                       Icons.star,
                       color: AppColors.primaryColor,
                     ),
@@ -102,7 +106,7 @@ class SearchItemCardWidget extends StatelessWidget {
                     },
                   ),
                   16.pw,
-                  CustomText(
+                  const CustomText(
                     "0\$+ Spent",
                     fontsize: 16,
                     weight: FontWeight.w600,

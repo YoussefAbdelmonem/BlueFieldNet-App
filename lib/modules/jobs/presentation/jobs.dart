@@ -36,16 +36,16 @@ class _JobsScreenState extends State<JobsScreen>
     return BlocProvider(
         create: (context) =>
         JobsCubit()
-          ..getFindJobsData(),
+          ,
         child: BlocConsumer<JobsCubit, JobsStates>(
           listener: (context, state) {
             // TODO: implement listener
-            if (state is GetFindJobsDataLoadingState) {
-              Center(
-                child: CircularProgressIndicator(),
-              );
-
-            }
+            // if (state is GetFindJobsDataLoadingState) {
+            //   Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            //
+            // }
           },
           builder: (context, state) {
 

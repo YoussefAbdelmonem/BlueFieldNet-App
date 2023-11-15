@@ -10,9 +10,9 @@ class JobsRepository {
   JobsRepository(this.dioService);
 
    getFindJobsData ()async {
-     final response = await dioService.getData(url: JobsEndPoints.jobs,loading: true);
+     final response = await dioService.getData(url: JobsEndPoints.jobs);
      if(response.isError == false) {
-       return FindJobsModel.fromJson(response.response?.data['data']);
+       return FindJobsModel.fromJson(response.response?.data);
      }
      else {
        return null;

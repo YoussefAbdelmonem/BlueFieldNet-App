@@ -17,8 +17,9 @@ class JobsCubit extends Cubit<JobsStates> {
     emit(GetFindJobsDataLoadingState());
     final response =await  jobsRepository.getFindJobsData();
     if(response != null) {
-      emit(GetFindJobsDataSuccessState());
       findJobsData = response;
+      emit(GetFindJobsDataSuccessState());
+
       return true ;
     }
     else {

@@ -1,6 +1,5 @@
 import 'package:bluefieldnet/core/utiles/validations.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 
 import '../../modules/auth/domain/model/auth_model.dart';
 import '../data_source/PrefService.dart';

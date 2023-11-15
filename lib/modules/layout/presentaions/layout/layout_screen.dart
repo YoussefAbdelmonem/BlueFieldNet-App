@@ -67,9 +67,10 @@ class _LayoutScreenState extends State<LayoutScreen>
                   children: [
                     PostAJobScreen(),
                     NotificationsScreen(),
-                    Utils.userModel.type == "freelancer"
-                        ? JobsScreen()
-                        : ClientJobsScreen(),
+                    // Utils.userModel.type == "freelancer"
+                    //     ?
+                    JobsScreen(),
+                        // : ClientJobsScreen(),
                     MessagesScreen()
                   ]),
               bottomNavigationBar: CustomBottomNavBar(cubit: cubit));
